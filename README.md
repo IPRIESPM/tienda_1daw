@@ -18,6 +18,16 @@ El proyecto constará de una vista para "guest" general, que se podrán consulta
 Un apartado de registro y login para poder ver el carrito del usuario.
 Un apartado de admin, para poder registrar nuevas categorías y productos.
 
+Secciones
+
+1. 🏠 Home
+2. 🏷️ Categorias
+    * 🛍️ Productos
+        * 🆔 Ficha del producto
+3. 🏪 Nuestra tienda
+4. 📧 Contacto
+5. 🙍 Login
+
 ### 🤖Backend
 
 1. 🛣Rutas

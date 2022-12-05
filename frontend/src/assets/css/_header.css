@@ -1,0 +1,40 @@
+header .header-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--background-color-primary);
+
+    padding:18px;
+    border-bottom: 3px solid salmon;
+}
+
+header .header-inner .header-item{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: fit-content;
+}
+
+header .header-inner ul.top-nav-inner{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    gap: 10px;
+
+
+}
+header .header-inner ul.top-nav-inner .top-nav-item{
+    padding-left:24px;
+    background-image: url("/assets/img/pink1.png");
+    background-position: left 0;
+    background-size: 0vw;
+    background-repeat: no-repeat;
+}
+header .header-inner ul.top-nav-inner .top-nav-item:hover{
+    background-size: 2vw;
+    
+}
+
