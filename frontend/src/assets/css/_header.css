@@ -24,10 +24,6 @@ header .header-inner .header-item{
 }
 
 header .header-inner ul.top-nav-inner{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
     display: flex;
     gap: 15px;
 }

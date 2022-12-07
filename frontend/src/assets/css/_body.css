@@ -56,3 +56,9 @@ input:focus{
     color: rgba(255, 255, 255, 0);
     transition: all 0.2s linear;
 }
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
