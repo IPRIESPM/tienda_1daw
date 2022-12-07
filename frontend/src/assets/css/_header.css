@@ -22,19 +22,88 @@ header .header-inner ul.top-nav-inner{
     margin: 0;
 
     display: flex;
-    gap: 10px;
-
-
+    gap: 15px;
 }
 header .header-inner ul.top-nav-inner .top-nav-item{
-    padding-left:24px;
+    padding-left:23px;
     background-image: url("/assets/img/pink1.png");
-    background-position: left 0;
+    background-position: left bottom;
     background-size: 0vw;
     background-repeat: no-repeat;
+    transition: all 0.3s linear;
+    cursor: pointer;
 }
 header .header-inner ul.top-nav-inner .top-nav-item:hover{
-    background-size: 2vw;
-    
+    background-size: 20px;
+    background-position: left 0;
+    transition: all 0.2s linear;
 }
+
+header .nav-logging {
+    text-align: right;
+    padding: 15px;
+    background-color: var(--background-color-secondary);
+}
+
+header nav.nav-logging form#form-logging input{
+    border: 3px solid var(--background-color-primary);
+    border-radius: 12px;
+    padding: 8px;
+}
+
+header nav.nav-logging form#form-logging input:focus{
+    outline: none ;
+    border:3px solid var(--background-color-primary);
+    box-shadow: 0 0 10px var(--background-color-primary);
+}
+
+header nav.nav-logging form#form-logging .test:hover::before {
+    content: "hola";
+    width: 400px;
+    background-image: url("/assets/img/pink1.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    transition: all 0.3s linear;
+}
+
+header nav.top-nav{
+    display: none;
+}
+header .header-inner .header-item .hamburger{
+    display: none;
+}
+@media screen and (max-width: 640px) {
+    
+    header .header-inner{
+        gap: 20px;
+    }
+    header .header-item img{
+        display: none;
+    }
+    header .header-inner, .top-nav-inner{
+        text-align: center;
+    }
+    header .header-inner{
+        flex-direction: column;
+    }
+    header nav.top-nav{
+        display: block;
+    }
+
+    nav.header-item.top-nav{
+        flex-direction: column;
+    }
+    header .header-inner .header-item .hamburger{
+        display: block;
+    }
+    header .header-inner .header-item .top-nav-inner{
+        display: none;
+        flex-direction: column;
+        padding: 0;
+    }
+    header .header-inner ul.top-nav-inner .top-nav-item{
+        padding: 0;
+    }
+
+  }
 
