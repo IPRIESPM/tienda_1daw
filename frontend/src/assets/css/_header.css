@@ -55,57 +55,9 @@ header .nav-logging {
     justify-content: flex-end;
     gap: 20px;
 }
-header .nav-logging .input-wrapper{
-    width: 10rem ;
-    text-align: right;
-}
-
-header nav.nav-logging form#form-logging input{
-    border: 0;
-    width: 80%;
-}
-header .nav-logging .input-wrapper,header nav.nav-logging form#form-logging input[type='submit'] {
-    display: inline-block;
-    border: 3px solid var(--background-color-primary);
-    border-radius: 12px;
-    padding: 8px;
-
-    background-color: white;
-}
-header nav.nav-logging form#form-logging input[type='submit']{
-    width: 5rem;
-}
-header nav.nav-logging form#form-logging input[type='submit']:focus{
-    display: inline-block;
-    border: 3px solid var(--background-color-primary);
-    border-radius: 12px;
-    padding: 8px;
-}
-header .nav-logging .input-wrapper:focus{
-    outline: none ;
-    border:3px solid var(--background-color-primary);
-    box-shadow: 0 0 10px var(--background-color-primary);
-}
 
 
 
-header nav.nav-logging form#form-logging input:focus{
-    outline: none ;
-    border:none;
-    box-shadow: 0 0 0;
-}
-
-
-
-header nav.nav-logging form#form-logging .input-wrapper:hover::before {
-    content: "ho";
-    width: 400px;
-    background-image: url("/assets/img/pink1.png");
-    background-size: 15px;
-    background-repeat: no-repeat;
-    transition: all 0.3s linear;
-    color: rgba(255, 255, 255, 0);
-}
 
 header .header-inner .header-item .hamburger{
     display: none;

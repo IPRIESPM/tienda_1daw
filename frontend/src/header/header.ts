@@ -5,10 +5,8 @@ export function showHiddenHamburger (): void {
   hamburgerDiv.addEventListener('click', () => {
     let action
     let icon
-    console.log(ulMenuNav)
     if (ulMenuNav.style.display === 'none') {
       action = 'flex'
-
       icon = '<i class="bi bi-x-lg"></i>'
     } else {
       action = 'none'
@@ -22,14 +20,15 @@ export function showHiddenHamburger (): void {
 
 export function loggingUser (): void {
   const loggingForm = document.querySelector('form#form-logging') as HTMLFormElement
-
+  const logginLogged = document.querySelector('div.logged') as HTMLDivElement
   loggingForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
     const userUser = document.querySelector('#email') as HTMLInputElement
     const userPassword = document.querySelector('#email') as HTMLInputElement
     if (userUser.value === 'usuario' && userPassword.value === 'usuario') {
-      console.log('Has iniciado sesión')
+      logginLogged.classList.add('ux-show')
+      loggingForm.classList.add('ux-hidden')
     }
   })
 }

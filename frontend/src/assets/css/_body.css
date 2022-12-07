@@ -1,0 +1,58 @@
+ .input-wrapper{
+    width: 10rem ;
+    text-align: right;
+}
+input{
+    border: 0;
+    width: 80%;
+}
+.input-wrapper,
+input[type='submit'],
+input[type='button'] {
+    display: inline-block;
+    border: 3px solid var(--border-color-primary);
+    border-radius: 12px;
+    padding: 8px;
+
+    background-color: white;
+}
+ input[type='submit'],
+input[type='button']{
+    width: 5rem;
+}
+input[type='button']{
+    background-color: var(--border-color-primary);
+    color:white;
+}
+ input[type='submit']:focus,
+input[type='button']:focus{
+    display: inline-block;
+    border: 3px solid var(--border-color-primary);
+    border-radius: 12px;
+    padding: 8px;
+}
+.input-wrapper:focus{
+    outline: none ;
+    border:3px solid var(--border-color-primary);
+    box-shadow: 0 0 10px var(--border-color-primary);
+}
+
+
+
+input:focus{
+    outline: none ;
+    border:none;
+    box-shadow: 0 0 0;
+}
+
+.input-wrapper:hover::before {
+    content: "ho";
+    width: 400px;
+    background-image: url("/assets/img/pink1.png");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    transition: all 0.3s linear;
+    color: rgba(255, 255, 255, 0);
+    transition: all 0.2s linear;
+}

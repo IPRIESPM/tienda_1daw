@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-  <title>Altaskur Template Project</title>
+  <title>Plort marquet</title>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="title" content="Altaskur Site" />
+  <meta name="title" content="Plort marquet" />
   <meta name="description" content="" />
   <meta name="keywords"
     content="Google ya no le da tanta importancia, pero todavía las considera (coincidiendo con tus negritas" />
@@ -33,6 +33,31 @@
 </head>
 
 <body>
+  <div class="modal ux-hidden">
+    <div class="modal-header">
+      <div class="showHideButton"><i class="bi bi-x-lg"></i></div>
+
+    </div>
+    <div class="modal-main">
+      <form id="modalRegister">
+        <h2 class="h2">Nuevo usuario</h2>
+        <fieldset>
+
+          <div class="input-wrapper">
+            <input type="text" id="rUsuario" placeholder="Usuario">
+          </div>
+        </fieldset>
+        <fieldset>
+
+          <div class="input-wrapper">
+            <input type="email" id="rEmail" placeholder="email">
+          </div>
+        </fieldset>
+        <input type="submit" value="Registrar">
+        <input type="button" value="salir">
+      </form>
+    </div>
+  </div>
   <header>
     <div class="header-inner">
       <div class="header-item">
@@ -42,10 +67,9 @@
       <nav class="header-item top-nav">
         <div class="hamburger"><i class="bi bi-list"></i></div>
         <ul class="top-nav-inner">
-          <li class="top-nav-item">
-            Home
-          </li>
+          <li class="top-nav-item">Home</li>
           <li class="top-nav-item">Productos</li>
+          <li class="top-nav-item">Sobre nosotros</li>
           <li class="top-nav-item">Contacto</li>
         </ul>
       </nav>
@@ -59,8 +83,12 @@
           <input type="password" name="" placeholder="contraseña" id="">
         </div>
         <input type="submit" value="Iniciar">
-
+        <input type="button" id="register" value="Registrar">
       </form>
+      <div class="logged ux-hidden">
+        <i class="bi bi-person-fill"></i> usuario
+
+      </div>
     </nav>
   </header>
   <main>
@@ -68,6 +96,10 @@
 
     </section>
   </main>
+  <footer>
+    <div class="footer-inner">
 
+    </div>
+  </footer>
   <script type="module" src="./src/main.ts"></script>
 </body>

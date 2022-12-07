@@ -17,3 +17,8 @@ header nav.nav-logging form.form-logging , header label{
     color: var(--font-color-primary);
     font-size: small;
 }
+
+h2.h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: var(--font-color-primary);
+}

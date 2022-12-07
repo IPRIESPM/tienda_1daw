@@ -1,0 +1,35 @@
+div.modal{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--background-color-primary);
+    z-index: 1;
+
+    padding: 19px;
+}
+div.showHideButton{
+    cursor: pointer;
+}
+div.modal .modal-header{
+    display: flex;
+    justify-content: flex-end;
+}
+
+div.modal .modal-main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+div.modal .modal-main form#modalRegister{
+    height: min-content;
+    text-align: center;
+}
+
+div.modal fieldset{
+    border: none;
+}
