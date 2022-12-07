@@ -1,3 +1,9 @@
-.hidden{
-    display: none;
+.ux-hidden{
+   visibility: hidden;
+   display: none;
+}
+
+.ux-show{
+    visibility: visible;
+    display: block;
 }

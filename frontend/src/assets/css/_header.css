@@ -1,4 +1,9 @@
+header{
+    position: fixed;
+    width: 100vw;
+}
 header .header-inner{
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,6 +12,8 @@ header .header-inner{
 
     padding:18px;
     border-bottom: 3px solid salmon;
+
+    padding-right: 30px;
 }
 
 header .header-inner .header-item{
@@ -40,42 +47,93 @@ header .header-inner ul.top-nav-inner .top-nav-item:hover{
 }
 
 header .nav-logging {
-    text-align: right;
+
     padding: 15px;
     background-color: var(--background-color-secondary);
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+header .nav-logging .input-wrapper{
+    width: 10rem ;
+    text-align: right;
 }
 
 header nav.nav-logging form#form-logging input{
+    border: 0;
+    width: 80%;
+}
+header .nav-logging .input-wrapper,header nav.nav-logging form#form-logging input[type='submit'] {
+    display: inline-block;
+    border: 3px solid var(--background-color-primary);
+    border-radius: 12px;
+    padding: 8px;
+
+    background-color: white;
+}
+header nav.nav-logging form#form-logging input[type='submit']{
+    width: 5rem;
+}
+header nav.nav-logging form#form-logging input[type='submit']:focus{
+    display: inline-block;
     border: 3px solid var(--background-color-primary);
     border-radius: 12px;
     padding: 8px;
 }
-
-header nav.nav-logging form#form-logging input:focus{
+header .nav-logging .input-wrapper:focus{
     outline: none ;
     border:3px solid var(--background-color-primary);
     box-shadow: 0 0 10px var(--background-color-primary);
 }
 
-header nav.nav-logging form#form-logging .test:hover::before {
-    content: "hola";
+
+
+header nav.nav-logging form#form-logging input:focus{
+    outline: none ;
+    border:none;
+    box-shadow: 0 0 0;
+}
+
+
+
+header nav.nav-logging form#form-logging .input-wrapper:hover::before {
+    content: "ho";
     width: 400px;
     background-image: url("/assets/img/pink1.png");
     background-size: 15px;
     background-repeat: no-repeat;
     transition: all 0.3s linear;
+    color: rgba(255, 255, 255, 0);
 }
 
-header nav.top-nav{
-    display: none;
-}
 header .header-inner .header-item .hamburger{
     display: none;
+
+    border: 2px solid var(--border-color-primary);
+    border-radius: 8px;
+
+    padding: 8px;
+    padding-bottom: 5px;
 }
+
+@media screen and (min-width: 640px) {
+
+    header .header-inner ul.top-nav-inner{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        display: flex !important;
+        flex-direction: row;
+        gap: 15px;
+    }
+  }
+
 @media screen and (max-width: 640px) {
-    
+
     header .header-inner{
-        gap: 20px;
+        gap: 10px;
     }
     header .header-item img{
         display: none;
@@ -92,6 +150,7 @@ header .header-inner .header-item .hamburger{
 
     nav.header-item.top-nav{
         flex-direction: column;
+        width: 100%;
     }
     header .header-inner .header-item .hamburger{
         display: block;
@@ -99,10 +158,15 @@ header .header-inner .header-item .hamburger{
     header .header-inner .header-item .top-nav-inner{
         display: none;
         flex-direction: column;
-        padding: 0;
+        padding:0;
+
+        width: 100%;
     }
     header .header-inner ul.top-nav-inner .top-nav-item{
-        padding: 0;
+        padding: 10px;
+        border: 2px solid var(--border-color-primary);
+        border-radius: 18px;
+        margin: 5px;
     }
 
   }

@@ -1,0 +1,6 @@
+section#principal{
+    height: 130vh;
+    background: url(/assets/img/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
