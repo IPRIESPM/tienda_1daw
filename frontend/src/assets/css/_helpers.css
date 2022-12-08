@@ -1,9 +1,9 @@
 .ux-hidden{
-   visibility: hidden;
-   display: none;
+
+    display: none !important;
 }
 
 .ux-show{
-    visibility: visible;
-    display: block;
+
+    display: flex;
 }

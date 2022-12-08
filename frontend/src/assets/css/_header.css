@@ -23,12 +23,14 @@ header .header-inner .header-item {
 
     height: fit-content;
 }
-div.header-item div.hamburger{
+
+div.header-item div.hamburger {
     width: 32px;
     height: 32px;
     border-radius: 8px;
     border: 2px solid var(--border-color-primary);
 }
+
 .header-inner nav.header-item ul {
     display: flex;
     gap: 16px;
@@ -53,7 +55,7 @@ div.header-item div.hamburger{
     /* //TODO: animation */
 }
 
-nav.header-item div.hamburger{
+nav.header-item div.hamburger {
     visibility: hidden;
     display: flex;
     align-items: center;
@@ -69,7 +71,9 @@ header nav.logging {
     position: sticky;
     right: 0;
     left: 0;
-
+    
+    display: flex;
+    justify-content: flex-end;
     background-color: rgba(245, 245, 220, 0.797);
 
     border-bottom: 2px solid var(--border-color-secondary);
@@ -88,33 +92,54 @@ nav.logging form#formLogging {
 
 
 @media screen and (max-width: 640px) {
-    nav.header-item div.hamburger{
-        visibility:visible;
+    nav.header-item div.hamburger {
+        visibility: visible;
     }
-    div.header-inner{
+
+    div.header-inner {
         text-align: center;
         flex-direction: column !important;
     }
-    nav.header-item{
+
+    nav.header-item {
         text-align: center;
         flex-direction: column !important;
     }
-    div.header-item .logo{
+
+    div.header-item .logo {
         display: none;
     }
-    nav.header-item ul{
+
+    nav.header-item ul {
         display: none;
         flex-direction: column !important;
+
+
+        padding: 0 !important;
+        margin: 0;
+
     }
-    nav.logging form#formLogging{
+
+    nav.header-item ul li {
+        padding: 0 !important;
+        margin: 0;
+        background-image: none;
+        transition: none;
+    }
+    nav.header-item ul li:hover{
+        background-image: none;
+        transition: none;
+    }
+
+    nav.logging form#formLogging {
         justify-content: center;
         text-align: center;
     }
 }
 
 @media screen and (min-width: 640px) {
-    nav.header-item ul{
+    nav.header-item ul {
         display: flex !important;
-   
+
     }
-  }
+}

@@ -29,9 +29,11 @@ export function loggingUser (): void {
     event.preventDefault()
 
     const userUser = document.querySelector('#email') as HTMLInputElement
-    const userPassword = document.querySelector('#email') as HTMLInputElement
-    if (userUser.value === 'usuario' && userPassword.value === 'usuario') {
+    const userPassword = document.querySelector('#password') as HTMLInputElement
+
+    if (userUser.value === 'usuario@usuario' && userPassword.value === 'usuario') {
       loggingLogged.classList.add('ux-show')
+      loggingLogged.classList.remove('ux-hidden')
       loggingForm.classList.add('ux-hidden')
     }
   })

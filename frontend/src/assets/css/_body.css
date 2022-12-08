@@ -8,8 +8,9 @@ div.input-wrapper {
     text-align: right;
     width: min-content;
 }
+
 div.input-wrapper:hover {
-    background-image:url("/assets/img/pink1.png") ;
+    background-image: url("/assets/img/pink1.png");
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: 10px 4px;
@@ -23,9 +24,11 @@ input {
 
     border-bottom: 0.5px solid var(--border-color-secondary);
 }
+
 input[type='password'] {
     min-width: 90px;
 }
+
 .input-wrapper,
 input[type='submit'],
 input[type='button'] {
@@ -68,8 +71,10 @@ input:focus {
     box-shadow: 0 0 0;
 }
 
-ul, li {
+ul {
+
     list-style: none;
     padding: 0 !important;
     margin: 0;
+
 }
