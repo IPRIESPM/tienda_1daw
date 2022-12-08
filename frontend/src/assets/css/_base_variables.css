@@ -1,4 +1,4 @@
-:root{
+:root {
     --background-color-primary: rgb(248, 214, 214);
     --background-color-secondary: rgb(255, 245, 247);
     --background-color-tertiary: rgb(51, 164, 234);
@@ -7,4 +7,6 @@
     --border-color-secondary: rgb(36, 120, 172);
 
     --font-color-primary: rgb(224, 109, 129);
+    --font-color-secondary: rgb(237, 231, 231);
+    --font-color-tertiary: rgb(16, 16, 16);
 }

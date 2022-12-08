@@ -1,121 +1,120 @@
-header{
+header {
     position: fixed;
-    width: 100vw;
+    right: 0;
+    left: 0;
 }
-header .header-inner{
+
+header .header-inner {
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    padding: 8px;
+
     background-color: var(--background-color-primary);
-
-    padding:18px;
-    border-bottom: 3px solid salmon;
-
-    padding-right: 30px;
+    border-bottom: 3px solid var(--border-color-primary);
 }
 
-header .header-inner .header-item{
+header .header-inner .header-item {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 5px;
+
     height: fit-content;
 }
-
-header .header-inner ul.top-nav-inner{
+div.header-item div.hamburger{
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 2px solid var(--border-color-primary);
+}
+.header-inner nav.header-item ul {
     display: flex;
-    gap: 15px;
+    gap: 16px;
 }
-header .header-inner ul.top-nav-inner .top-nav-item{
-    padding-left:23px;
-    background-image: url("/assets/img/pink1.png");
-    background-position: left bottom;
-    background-size: 0vw;
+
+.header-inner nav.header-item li {
+    padding-left: 15px;
+    background: url("/assets/img/pink1.png");
+    background-position: -15px -50px;
     background-repeat: no-repeat;
+    background-size: 0;
     transition: all 0.3s linear;
-    cursor: pointer;
-}
-header .header-inner ul.top-nav-inner .top-nav-item:hover{
-    background-size: 20px;
-    background-position: left 0;
-    transition: all 0.2s linear;
+    /* //TODO: animation */
+
 }
 
-header .nav-logging {
 
-    padding: 15px;
-    background-color: var(--background-color-secondary);
+.header-inner nav.header-item li:hover {
+    background-position: center left;
+    background-size: 13px;
+    transition: all 0.3s linear;
+    /* //TODO: animation */
+}
 
+nav.header-item div.hamburger{
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color-primary);
+
+}
+
+header nav.logging {
+    position: sticky;
+    right: 0;
+    left: 0;
+
+    background-color: rgba(245, 245, 220, 0.797);
+
+    border-bottom: 2px solid var(--border-color-secondary);
+    border-radius: 0 0 8px 8px;
+
+    padding: 0 8px;
+}
+
+nav.logging form#formLogging {
     display: flex;
     justify-content: flex-end;
-    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 
-
-
-header .header-inner .header-item .hamburger{
-    display: none;
-
-    border: 2px solid var(--border-color-primary);
-    border-radius: 8px;
-
-    padding: 8px;
-    padding-bottom: 5px;
+@media screen and (max-width: 640px) {
+    nav.header-item div.hamburger{
+        visibility:visible;
+    }
+    div.header-inner{
+        text-align: center;
+        flex-direction: column !important;
+    }
+    nav.header-item{
+        text-align: center;
+        flex-direction: column !important;
+    }
+    div.header-item .logo{
+        display: none;
+    }
+    nav.header-item ul{
+        display: none;
+        flex-direction: column !important;
+    }
+    nav.logging form#formLogging{
+        justify-content: center;
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 640px) {
-
-    header .header-inner ul.top-nav-inner{
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
+    nav.header-item ul{
         display: flex !important;
-        flex-direction: row;
-        gap: 15px;
+   
     }
   }
-
-@media screen and (max-width: 640px) {
-
-    header .header-inner{
-        gap: 10px;
-    }
-    header .header-item img{
-        display: none;
-    }
-    header .header-inner, .top-nav-inner{
-        text-align: center;
-    }
-    header .header-inner{
-        flex-direction: column;
-    }
-    header nav.top-nav{
-        display: block;
-    }
-
-    nav.header-item.top-nav{
-        flex-direction: column;
-        width: 100%;
-    }
-    header .header-inner .header-item .hamburger{
-        display: block;
-    }
-    header .header-inner .header-item .top-nav-inner{
-        display: none;
-        flex-direction: column;
-        padding:0;
-
-        width: 100%;
-    }
-    header .header-inner ul.top-nav-inner .top-nav-item{
-        padding: 10px;
-        border: 2px solid var(--border-color-primary);
-        border-radius: 18px;
-        margin: 5px;
-    }
-
-  }
-

@@ -27,28 +27,27 @@
   <meta name="dc.description" content="same" />
 
   <link rel="shortcut icon" href="../path/imgSample/logos/favicon.png(ico, fav, svg)" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-  <link rel="stylesheet" type="text/css" href="/src/assets/css/style.css">
 
+  <link rel="stylesheet" type="text/css" href="/src/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 </head>
 
 <body>
   <div class="modal ux-hidden">
     <div class="modal-header">
-      <div class="showHideButton"><i class="bi bi-x-lg"></i></div>
-
+      <div class="showHideButton">
+        <i class="bi bi-x-lg"></i>
+      </div>
     </div>
     <div class="modal-main">
       <form id="modalRegister">
         <h2 class="h2">Nuevo usuario</h2>
         <fieldset>
-
           <div class="input-wrapper">
             <input type="text" id="rUsuario" placeholder="Usuario">
           </div>
         </fieldset>
         <fieldset>
-
           <div class="input-wrapper">
             <input type="email" id="rEmail" placeholder="email">
           </div>
@@ -61,36 +60,38 @@
   <header>
     <div class="header-inner">
       <div class="header-item">
-        <img src="/assets/img/pink1.png" alt="pinkLogo" class="logo">
-        <h1 class="h1">Plort marquet</h1>
+        <div class="logo"></div>
+        <h1 class="h1">Plort Marquet</h1>
       </div>
-      <nav class="header-item top-nav">
-        <div class="hamburger"><i class="bi bi-list"></i></div>
-        <ul class="top-nav-inner">
-          <li class="top-nav-item">Home</li>
-          <li class="top-nav-item">Productos</li>
-          <li class="top-nav-item">Sobre nosotros</li>
-          <li class="top-nav-item">Contacto</li>
+      <nav class="header-item">
+        <div class="hamburger">
+          <i class="bi bi-list"></i>
+        </div>
+        <ul class="header-ul">
+          <li>Inicio</li>
+          <li>Productos</li>
+          <li>Sobre nosotros</li>
+          <li>Contacto</li>
         </ul>
       </nav>
     </div>
-    <nav class="nav-logging">
-      <form id="form-logging">
+    <nav class="logging">
+      <form id="formLogging">
         <div class="input-wrapper">
-          <input type="text" id="email" placeholder="email">
+          <input type="email" placeholder="Correo electrónico" id="email">
         </div>
         <div class="input-wrapper">
-          <input type="password" name="" placeholder="contraseña" id="">
+          <input type="password" autocomplete="usuario" placeholder="contraseña" id="password">
         </div>
-        <input type="submit" value="Iniciar">
-        <input type="button" id="register" value="Registrar">
+        <div class="input-inner">
+          <input type="submit" value="Iniciar">
+          <input type="button" value="Registrarse">
+        </div>
       </form>
-      <div class="logged ux-hidden">
-        <i class="bi bi-person-fill"></i> usuario
-
-      </div>
     </nav>
   </header>
+
+
   <main>
     <section id="principal">
 
@@ -104,6 +105,8 @@
         <li>Sobre nosotros</li>
       </ul>
     </div>
+
+
   </footer>
   <script type="module" src="./src/main.ts"></script>
 </body>

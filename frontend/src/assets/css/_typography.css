@@ -1,29 +1,65 @@
-header h1.h1{
-    color: var(--font-color-primary);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-shadow: 1px 1px 3px rgba(119, 37, 119, 0.333);
-    padding:0;
-    margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Nerko+One&display=swap');
+
+:root {
+  text-rendering: optimizeLegibility;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
 }
 
-header ul.top-nav-inner {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bold;
-    color: var(--font-color-primary);
+input {
+  font-size: 13px;
 }
 
-header nav.nav-logging form.form-logging , header label{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: var(--font-color-primary);
-    font-size: small;
+header h1.h1 {
+  padding: 0;
+  margin: 0;
+
+  color: var(--font-color-primary);
+
+  font-family: 'Nerko One', cursive;
+  text-shadow: 1px 1px 3px rgba(119, 37, 119, 0.333);
+
+  letter-spacing: 1.2px;
+  text-transform: capitalize;
 }
 
-h2.h2{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: var(--font-color-primary);
+header .header-item ul li {
+  color: var(--font-color-tertiary);
+  font-weight: 900;
+  transition: color 0.5s linear;
 }
 
-footer{
-    color: white;
-    font-weight: bold;
+header .header-item ul li:hover {
+  color: var(--font-color-primary);
 }
+
+/* @keyframes water {
+    0%,
+    100% {
+      clip-path: polygon(
+        0% 45%,
+        16% 44%,
+        33% 50%,
+        54% 60%,
+        70% 61%,
+        84% 59%,
+        100% 52%,
+        100% 100%,
+        0% 100%
+      );
+    }
+
+    50% {
+      clip-path: polygon(
+        0% 60%,
+        15% 65%,
+        34% 66%,
+        51% 62%,
+        67% 50%,
+        84% 45%,
+        100% 46%,
+        100% 100%,
+        0% 100%
+      );
+    }
+  } */

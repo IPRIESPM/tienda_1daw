@@ -1,4 +1,11 @@
-.logo{
-    width: 3vw;
-    height: 3vw;
+.logo {
+    width: 2vw;
+    height: 2vw;
+
+    max-width: 32px;
+    max-height: 32px;
+
+    background-image: url(/assets/img/pink1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
