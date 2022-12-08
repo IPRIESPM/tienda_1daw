@@ -2,6 +2,9 @@ header {
     position: fixed;
     right: 0;
     left: 0;
+
+    height: 15rem;
+    z-index: 2;
 }
 
 header .header-inner {
@@ -64,14 +67,13 @@ nav.header-item div.hamburger {
     height: 32px;
     border-radius: 8px;
     border: 1px solid var(--border-color-primary);
-
 }
 
 header nav.logging {
     position: sticky;
     right: 0;
     left: 0;
-    
+
     display: flex;
     justify-content: flex-end;
     background-color: rgba(245, 245, 220, 0.797);
@@ -80,18 +82,29 @@ header nav.logging {
     border-radius: 0 0 8px 8px;
 
     padding: 0 8px;
+    height: 3.5vw;
+    min-height: max-content;
 }
 
 nav.logging form#formLogging {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    flex-wrap: wrap;
+
     gap: 8px;
 }
-
+nav.logging div.logged{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
 @media screen and (max-width: 640px) {
+    header{
+        position:sticky;
+        height: min-content;
+        z-index: 1;
+    }
     nav.header-item div.hamburger {
         visibility: visible;
     }
@@ -126,11 +139,14 @@ nav.logging form#formLogging {
         background-image: none;
         transition: none;
     }
-    nav.header-item ul li:hover{
+
+    nav.header-item ul li:hover {
         background-image: none;
         transition: none;
     }
-
+    header nav.logging {
+        display: none;
+    }
     nav.logging form#formLogging {
         justify-content: center;
         text-align: center;

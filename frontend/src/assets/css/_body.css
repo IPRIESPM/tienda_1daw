@@ -16,7 +16,9 @@ div.input-wrapper:hover {
     background-position: 10px 4px;
     transition: all 0.3s linear;
 }
-
+.btn{
+    padding: 8px;
+}
 input {
     border: 0;
     width: 80%;
