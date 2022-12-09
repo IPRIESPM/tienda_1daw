@@ -59,4 +59,4 @@ Secciones
 
 ### 🛢📊Base de datos
 
-Base de datos basada en oracle
+Base de datos basada en oracle [Documentación base de datos](https://github.com/IPRIESPM/tienda_1daw/blob/main/Base%20de%20datos/ModeloRelacional.md).
