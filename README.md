@@ -6,7 +6,7 @@ El proyecto consta en una tienda web con un carrito de compra.
 
 ## Partes
 
-1. El front-end constará exclusivamente de css y JavaScript.
+1. El front-end constará de css y JavaScript.
 2. El back-end estará construido en Java.
 3. La base de datos estará en Oracle.
 
@@ -21,12 +21,11 @@ Un apartado de admin, para poder registrar nuevas categorías y productos.
 Secciones
 
 1. 🏠 Home
-2. 🏷️ Categorias
+2. 🏷️ Categorías
     * 🛍️ Productos
         * 🆔 Ficha del producto
 3. 🏪 Nuestra tienda
 4. 📧 Contacto
-5. 🙍 Login
 
 ### 🤖Backend
 
@@ -41,9 +40,8 @@ Secciones
     1. 🙍‍♂️🙍‍♀️Usuario:
         * Actualizar datos.
         * Eliminar usuario.
-        * Set Carrito del usuario.
+        * Set Carrito del usuario (LocalStorage)
         * Delete Carrito.
-        * Update carrito.
         * Generar factura.
 
     2. 👩‍💻👩‍💻Admin:
@@ -61,5 +59,4 @@ Secciones
 
 ### 🛢📊Base de datos
 
-    En un principio voy a guardar los datos en JSON
-    a la espera de Oracle.
+Base de datos basada en oracle
