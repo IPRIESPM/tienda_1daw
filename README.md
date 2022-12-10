@@ -27,6 +27,10 @@ Secciones
 3. 🏪 Nuestra tienda
 4. 📧 Contacto
 
+#### Previsualización
+
+Puedes ver el proyecto aquí [versión Live](https://ipriespm.github.io/tienda_1daw/frontend/dist/)
+
 #### Ejecutar el proyecto
 
 hacemos la instalación de los módulos de node.
