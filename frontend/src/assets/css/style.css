@@ -1,11 +1,11 @@
 @import url('/assets/css/normalize.css');
-@import url("./_base_variables.css");
-@import url("./_helpers.css");
-@import url("./_typography.css");
-@import url("./_img.css");
-@import url("./_body.css");
-@import url("./_modal.css");
-@import url("./_header.css");
-@import url("./_section.css");
-@import url("./_footer.css");
+@import url("./base_variables.css");
+@import url("./helpers.css");
+@import url("./typography.css");
+@import url("./img.css");
+@import url("./body.css");
+@import url("./modal.css");
+@import url("./header.css");
+@import url("./section.css");
+@import url("./footer.css");
 
