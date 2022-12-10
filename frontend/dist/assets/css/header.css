@@ -44,7 +44,7 @@ div.header-item div.hamburger {
 
 .header-inner nav.header-item li {
     padding-left: 15px;
-    background: url("/assets/img/pink1.png");
+    background: url("../img/pink1.png");
     background-position: -15px -50px;
     background-repeat: no-repeat;
     background-size: 0;
