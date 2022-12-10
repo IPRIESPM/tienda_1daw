@@ -3,7 +3,7 @@ header {
     right: 0;
     left: 0;
 
-    height: 15rem;
+    height: min-content;
     z-index: 2;
 }
 
@@ -14,9 +14,12 @@ header .header-inner {
     align-items: center;
 
     padding: 8px;
+    padding-right: 18px;
+    margin: 18px;
 
-    background-color: var(--background-color-primary);
-    border-bottom: 3px solid var(--border-color-primary);
+    background-color: var(--background-cristal-color-primary);
+    border-bottom: 3px solid var(--border-cristal-color-primary);
+    border-radius: 18px;
 }
 
 header .header-inner .header-item {

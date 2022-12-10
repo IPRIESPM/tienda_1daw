@@ -17,20 +17,24 @@ header h1.h1 {
   color: var(--font-color-primary);
 
   font-family: 'Nerko One', cursive;
-  text-shadow: 1px 1px 3px rgba(119, 37, 119, 0.333);
+  text-shadow: 1px 1px 3px rgba(119, 37, 119, 0.611);
 
   letter-spacing: 1.2px;
   text-transform: capitalize;
 }
 
 header .header-item ul li {
-  color: var(--font-color-tertiary);
+
   font-weight: 900;
+
+  color: var(--font-color-tertiary);
+
   transition: color 0.5s linear;
 }
 
 header .header-item ul li:hover {
-  color: var(--font-color-primary);
+  color: var(--font-color-secondary);
+  text-shadow: 1px 1px 3px rgba(119, 37, 119, 0.373);
 }
 
 /* @keyframes water {

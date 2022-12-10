@@ -4,8 +4,7 @@ export function showHiddenHamburger (): void {
   const ulMenuNav = document.querySelector('ul.header-ul') as HTMLUListElement
 
   hamburgerDiv.addEventListener('click', () => {
-    let action
-    let icon, iconRemove
+    let icon, iconRemove, action
     if (ulMenuNav.style.display === 'none') {
       action = 'flex'
       icon = 'bi-x-lg'
