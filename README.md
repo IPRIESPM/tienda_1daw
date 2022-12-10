@@ -27,6 +27,26 @@ Secciones
 3. 🏪 Nuestra tienda
 4. 📧 Contacto
 
+#### Ejecutar el proyecto
+
+hacemos la instalación de los módulos de node.
+
+```bash
+npm i
+```
+
+Ejecutarlo en entorno de desarrollo.
+
+```bash
+npm run dev
+```
+
+Preparar el proyecto para producción.
+
+```bash
+npm run build
+```
+
 ### 🤖Backend
 
 1. 🛣Rutas
