@@ -1,4 +1,4 @@
-@import url('/assets/css/normalize.css');
+@import url('./normalize.css');
 @import url("./base_variables.css");
 @import url("./helpers.css");
 @import url("./typography.css");

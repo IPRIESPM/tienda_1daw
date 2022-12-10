@@ -1,0 +1,16 @@
+:root {
+    --background-color-primary: rgb(248, 214, 214);
+    --background-color-secondary: rgb(255, 245, 247);
+    --background-color-tertiary: rgb(51, 164, 234);
+
+    --background-cristal-color-primary: rgb(255 234 238 / 50%);;
+
+    --border-color-primary: rgb(224, 109, 129);
+    --border-color-secondary: rgb(36, 120, 172);
+
+    --border-cristal-color-primary:rgb(255 245 247 / 40%);;
+
+    --font-color-primary: rgb(224, 109, 129);
+    --font-color-secondary: rgb(226 74 100);
+    --font-color-tertiary: rgba(16, 16, 16, 0.867);
+}

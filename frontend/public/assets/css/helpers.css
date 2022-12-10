@@ -1,0 +1,7 @@
+.ux-hidden {
+    display: none !important;
+}
+
+.ux-show {
+    display: flex;
+}
