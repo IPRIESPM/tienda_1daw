@@ -27,6 +27,10 @@ Secciones
 3. 🏪 Nuestra tienda
 4. 📧 Contacto
 
+#### Mockup
+
+Puedes ver el mockup del proyecto aquí [Figma](https://www.figma.com/file/8G9xQP1LFwZPP0mHR8pXcB/Plort-marquet?node-id=1%3A2&t=yRjYLueuugNaM6ap-1)
+
 #### Previsualización
 
 Puedes ver el proyecto aquí [versión Live](https://ipriespm.github.io/tienda_1daw/frontend/dist/)
