@@ -44,13 +44,45 @@
         <h2 class="h2">Nuevo usuario</h2>
         <fieldset>
           <div class="input-wrapper">
-            <input type="text" id="rUsuario" placeholder="Usuario">
+            <input type="text" id="rUsuario" placeholder="Usuario" required>
           </div>
         </fieldset>
         <fieldset>
           <div class="input-wrapper">
-            <input type="email" id="rEmail" placeholder="email">
+            <input type="email" id="rEmail" placeholder="email" required>
           </div>
+        </fieldset>
+        <fieldset>
+          <label for="city">Zona</label>
+          <div class="input-wrapper">
+            <select name="city" id="citys">
+              <option value="El Rancho">El Rancho</option>
+              <option value="El Malezal">El Malezal</option>
+              <option value="La Gruta">La Gruta</option>
+              <option value="El Laboratorio">El Laboratorio</option>
+              <option value="El Arrecife seco">El Arrecife seco</option>
+              <option value="La Cantera Indigo">La Cantera Indigo</option>
+              <option value="La Capa de Musgo">La Capa de Musgo</option>
+              <option value="Las Ruinas Antiguas">Las Ruinas Antiguas</option>
+              <option value="Isla de las cenizas">Isla de las cenizas</option>
+              <option value="Isla de los anillos">Isla de los anillos</option>
+              <option value="Isla Bigote">Isla Bigote</option>
+            </select>
+          </div>
+          <label for="region">Región</label>
+          <div class="input-wrapper">
+            <input type="text" name="region" id="region" value="Lejana Lejana Pradera"
+              placeholder="Lejana Lejana Pradera" readonly>
+          </div>
+        </fieldset>
+        <fieldset>
+          <label for="tel">Teléfono</label>
+          <div class="input-wrapper">
+            <input type="tel" name="tel" id="tel" placeholder="+34 666 666 666">
+          </div>
+          <label for="birth">Fecha de nacimiento</label>
+          <div class="input-wrapper">
+            <input type="date" name="birth" id="birth" min="1922-12-31" max="today">
         </fieldset>
         <input type="submit" value="Registrar">
         <input type="button" value="salir">
@@ -75,10 +107,10 @@
             <a class="ux-deactivated" href="">Productos</a>
           </li>
           <li>
-            <a class="ux-deactivated" href=""></a>Sobre nosotros</a>
+            <a class="ux-deactivated" href="">Sobre nosotros</a>
           </li>
           <li>
-            <a class="ux-deactivated" href=""></a>Contacto</a>
+            <a class="ux-deactivated" href="">Contacto</a>
           </li>
         </ul>
       </nav>
@@ -95,10 +127,10 @@
       </div>
       <form id="formLogging">
         <div class="input-wrapper">
-          <input type="email" placeholder="Correo@electrónico" id="email">
+          <input type="email" placeholder="usuario@usuario" id="email">
         </div>
         <div class="input-wrapper">
-          <input type="password" autocomplete="usuario" placeholder="contraseña" id="password">
+          <input type="password" autocomplete="usuario" placeholder="usuario" id="password">
         </div>
         <div class="input-inner">
           <input type="submit" value="Iniciar">

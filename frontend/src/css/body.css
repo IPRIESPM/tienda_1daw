@@ -26,7 +26,7 @@ div.input-wrapper:hover {
 .btn{
     padding: 8px;
 }
-input {
+input,select {
     border: 0;
     width: 80%;
     min-width: 110px;
@@ -62,7 +62,10 @@ input[type='button'] {
 }
 
 input[type='submit']:focus,
-input[type='button']:focus {
+input[type='button']:focus,
+select:focus,
+select:active,
+select {
     display: inline-block;
     border: 2px solid var(--border-color-primary);
     border-radius: 12px;

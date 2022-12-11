@@ -43,4 +43,6 @@ div.modal fieldset {
     border: none;
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap:0px;
 }
