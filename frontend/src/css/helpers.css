@@ -5,3 +5,7 @@
 .ux-show {
     display: flex;
 }
+
+/* .ux-deactivated{
+    pointer-events:none;
+} */

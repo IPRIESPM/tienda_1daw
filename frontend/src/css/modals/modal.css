@@ -8,7 +8,10 @@ div.modal {
     background-color: var(--background-color-primary);
     z-index: 3;
 
-    padding: 19px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
 }
 
 div.showHideButton {

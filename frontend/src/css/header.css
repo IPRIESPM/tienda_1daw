@@ -16,6 +16,7 @@ header .header-inner {
     padding: 8px;
     padding-right: 18px;
     margin: 18px;
+    margin-bottom: 0;
 
     background-color: var(--background-cristal-color-primary);
     border-bottom: 3px solid var(--border-cristal-color-primary);
@@ -76,15 +77,14 @@ header nav.logging {
     position: sticky;
     right: 0;
     left: 0;
-
     display: flex;
     justify-content: flex-end;
-    background-color: rgba(245, 245, 220, 0.797);
 
-    border-bottom: 2px solid var(--border-color-secondary);
     border-radius: 0 0 8px 8px;
 
     padding: 0 8px;
+    padding-bottom: 0;
+    margin-bottom: 0;
     height: 3.5vw;
     min-height: max-content;
 }
@@ -107,7 +107,10 @@ nav.logging div.logged{
         position:sticky;
         height: min-content;
         z-index: 1;
+        padding: 0 !important;
+        margin: 0;
     }
+
     nav.header-item div.hamburger {
         visibility: visible;
     }
@@ -115,6 +118,8 @@ nav.logging div.logged{
     div.header-inner {
         text-align: center;
         flex-direction: column !important;
+        margin: 0;
+        border-radius: 0;
     }
 
     nav.header-item {

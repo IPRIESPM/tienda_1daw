@@ -3,7 +3,8 @@
     --background-color-secondary: rgb(255, 245, 247);
     --background-color-tertiary: rgb(51, 164, 234);
 
-    --background-cristal-color-primary: rgb(255 234 238 / 50%);;
+    --background-cristal-color-primary: rgb(255 234 238 / 50%);
+    --background-cristal-color-secondary: rgba(255, 234, 238, 0.951);
 
     --border-color-primary: rgb(224, 109, 129);
     --border-color-secondary: rgb(36, 120, 172);

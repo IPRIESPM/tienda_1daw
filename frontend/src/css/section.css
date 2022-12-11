@@ -1,0 +1,68 @@
+section#principal{
+    display: flex;
+    justify-content: center;
+
+}
+div.principal-inner{
+    z-index: 1;
+    padding-top: 11rem;
+    padding-left: 18px;
+    height: 100vh;
+    min-height: max-content;
+    width: 70vw;
+    max-width: 1200px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+
+    overflow-y: scroll; 
+}
+
+div.principal-inner::-webkit-scrollbar{
+    display: none;
+  }
+section.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.card-inner{
+    max-width: 250px;
+    min-width: 150px;
+    border-radius: 18px;
+    background-color: white;
+}
+
+div.card-header{
+    background:url("/assets/img/background2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 10rem;
+
+    border-radius: 15px;
+}
+
+div.card-body{
+    padding:18px;
+    background-image: url(/assets/img/pink1.png);
+
+    background-size: 0;
+    background-repeat: no-repeat;
+    background-position: 99% 99%; 
+    transition: all 0.2s;
+}
+
+div.card-body:hover {
+    background-size: 34px;
+    background-repeat: no-repeat;
+    background-position: 95% 95%;
+}
+
+@media screen and (max-width: 640px) {
+    div.principal-inner{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
