@@ -16,21 +16,22 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="" />
   <meta property="og:site_name" content="" />
-  <meta property="og:title" content="Tiene que coincidir con tu H1" />
+  <meta property="og:title" content="Plort Marquet" />
   <meta property="og:description" content="" />
   <meta property="og:image" content="" />
   <meta property="og:locale" content="" />
 
   <meta name="dc.language" content="es/ES" />
   <meta name="dc.source" content="Url" />
-  <meta name="dc.title" content="Coincide con tu H1" />
+  <meta name="dc.title" content="Plort marquet" />
   <meta name="dc.description" content="same" />
 
   <link rel="shortcut icon" href="" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/normalize.css">
 
-  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-  <script type="module" src="./assets/index.5344825c.js"></script>
+  <script type="module" crossorigin src="./assets/index.24b8c59e.js"></script>
+  <link rel="stylesheet" href="./assets/index.a509d921.css">
 </head>
 
 <body>
@@ -45,13 +46,45 @@
         <h2 class="h2">Nuevo usuario</h2>
         <fieldset>
           <div class="input-wrapper">
-            <input type="text" id="rUsuario" placeholder="Usuario">
+            <input type="text" id="rUsuario" placeholder="Usuario" required>
           </div>
         </fieldset>
         <fieldset>
           <div class="input-wrapper">
-            <input type="email" id="rEmail" placeholder="email">
+            <input type="email" id="rEmail" placeholder="email" required>
           </div>
+        </fieldset>
+        <fieldset>
+          <label for="city">Zona</label>
+          <div class="input-wrapper">
+            <select name="city" id="citys">
+              <option value="El Rancho">El Rancho</option>
+              <option value="El Malezal">El Malezal</option>
+              <option value="La Gruta">La Gruta</option>
+              <option value="El Laboratorio">El Laboratorio</option>
+              <option value="El Arrecife seco">El Arrecife seco</option>
+              <option value="La Cantera Indigo">La Cantera Indigo</option>
+              <option value="La Capa de Musgo">La Capa de Musgo</option>
+              <option value="Las Ruinas Antiguas">Las Ruinas Antiguas</option>
+              <option value="Isla de las cenizas">Isla de las cenizas</option>
+              <option value="Isla de los anillos">Isla de los anillos</option>
+              <option value="Isla Bigote">Isla Bigote</option>
+            </select>
+          </div>
+          <label for="region">Región</label>
+          <div class="input-wrapper">
+            <input type="text" name="region" id="region" value="Lejana Lejana Pradera"
+              placeholder="Lejana Lejana Pradera" readonly>
+          </div>
+        </fieldset>
+        <fieldset>
+          <label for="tel">Teléfono</label>
+          <div class="input-wrapper">
+            <input type="tel" name="tel" id="tel" placeholder="+34 666 666 666">
+          </div>
+          <label for="birth">Fecha de nacimiento</label>
+          <div class="input-wrapper">
+            <input type="date" name="birth" id="birth" min="1922-12-31" max="today">
         </fieldset>
         <input type="submit" value="Registrar">
         <input type="button" value="salir">
@@ -62,21 +95,29 @@
     <div class="header-inner">
       <div class="header-item">
         <div class="logo"></div>
-        <h1 class="h1">Plort Marquet</h1>
+        <h1 class="h1"><a class="ux-deactivated" href="">Plort Marquet</a></h1>
       </div>
       <nav class="header-item">
         <div class="hamburger">
           <i class="bi bi-list"></i>
         </div>
         <ul class="header-ul">
-          <li>Inicio</li>
-          <li>Productos</li>
-          <li>Sobre nosotros</li>
-          <li>Contacto</li>
+          <li>
+            <a class="ux-deactivated" href="">Inicio</a>
+          </li>
+          <li>
+            <a class="ux-deactivated" href="">Productos</a>
+          </li>
+          <li>
+            <a class="ux-deactivated" href="">Sobre nosotros</a>
+          </li>
+          <li>
+            <a class="ux-deactivated" href="">Contacto</a>
+          </li>
         </ul>
       </nav>
     </div>
-    <!-- <nav class="logging">
+    <nav class="logging">
       <div class="logged ux-hidden">
         <p class="btn input-wrapper">
           <i class="bi bi-person-bounding-box"></i> Usuario
@@ -88,22 +129,96 @@
       </div>
       <form id="formLogging">
         <div class="input-wrapper">
-          <input type="email" placeholder="Correo electrónico" id="email">
+          <input type="email" placeholder="usuario@usuario" id="email">
         </div>
         <div class="input-wrapper">
-          <input type="password" autocomplete="usuario" placeholder="contraseña" id="password">
+          <input type="password" autocomplete="usuario" placeholder="usuario" id="password">
         </div>
         <div class="input-inner">
           <input type="submit" value="Iniciar">
           <input type="button" id="register" value="Registrarse">
         </div>
       </form>
-    </nav> -->
+    </nav>
   </header>
   <main>
     <section id="principal">
       <div class="blur"></div>
+      <div class="card-modal ux-hidden">
+        <div class="modal-inner">
+          <div class="modal-header">
+            <div class="showHideButton">
+              <i class="bi bi-x-lg"></i>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="img"></div>
+            <div class="title">
+              <h2 class="h2">Article</h2>
+            </div>
+            <article>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur tenetur hic ullam laboriosam facere
+              velit quaerat odio amet? Illo, debitis.
+              Itaque maiores fuga quam animi reiciendis consectetur iste
+              adipisci soluta!
+            </article>
+            <div class="buttons">
+              <input type="button" value="Añadir a carrito">
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="principal-inner">
+        <section class="card">
+          <div class="card-inner">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <h2 class="h2">Artículo</h2>
+              <p>As we forged ever on to the release of the early access launch of Slime Rancher 2, the team was buzzing
+                with anticipation to share all we have created with the world, and NOW is that time!</p>
+            </div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-inner">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <h2 class="h2">Artículo</h2>
+              <p>As we forged ever on to the release of the early access launch of Slime Rancher 2, the team was buzzing
+                with anticipation to share all we have created with the world, and NOW is that time!</p>
+            </div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-inner">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <h2 class="h2">Artículo</h2>
+              <p>As we forged ever on to the release of the early access launch of Slime Rancher 2, the team was buzzing
+                with anticipation to share all we have created with the world, and NOW is that time!</p>
+            </div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-inner">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <h2 class="h2">Artículo</h2>
+              <p>As we forged ever on to the release of the early access launch of Slime Rancher 2, the team was buzzing
+                with anticipation to share all we have created with the world, and NOW is that time!</p>
+            </div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-inner">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <h2 class="h2">Artículo</h2>
+              <p>As we forged ever on to the release of the early access launch of Slime Rancher 2, the team was buzzing
+                with anticipation to share all we have created with the world, and NOW is that time!</p>
+            </div>
+          </div>
+        </section>
         <section class="card">
           <div class="card-inner">
             <div class="card-header"></div>
@@ -120,9 +235,9 @@
   <footer>
     <div class="footer-inner">
       <ul>
-        <li>Política de cookies</li>
-        <li>Condiciones de venta</li>
-        <li>Sobre nosotros</li>
+        <li> <a class="" href="policies.html">Política de cookies</a></li>
+        <li><a class="ux-deactivated" href="">Condiciones de venta</a></li>
+        <li><a class="ux-deactivated" href="">Sobre nosotros</a></li>
       </ul>
     </div>
   </footer>
