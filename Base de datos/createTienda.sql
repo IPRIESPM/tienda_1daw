@@ -76,3 +76,10 @@ CREATE TABLE TIENDA_CATEGORIAS_PRODUCTOS (
     FOREIGN KEY (CODIGO_CATEGORIAS) REFERENCES TIENDA_CATEGORIAS(CODIGO),
     CONSTRAINT PK_CATEGORIAS_PRODUCTOS PRIMARY KEY (CODIGO_PRODUCTOS, CODIGO_CATEGORIAS)
 );
+drop table tienda_categorias_productos;
+drop table tienda_Categorias;
+drop table tienda_pedidos_tienen_productos;
+drop table tienda_productos;
+drop table tienda_pedidos_facturados;
+drop table tienda_direccion;
+drop table tienda_usuario;
