@@ -1,0 +1,64 @@
+:root {
+    --header-gap: 12px;
+}
+header{
+    display: flex;
+   justify-content: flex-end;
+}
+header section.header-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 12px 0px 12px 22px;
+    gap: var(--header-gap);
+
+    border-radius: 33px;
+    box-shadow: 5px 5px 4px 0 #c3c3c3;
+
+    height: 44px;
+    margin-top: 8px;
+    width: fit-content;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--header-gap);
+}
+
+header a:link,
+header a:visited,
+header a:active {
+    font-weight: bolder;
+    font-size: larger;
+}
+header h1{
+   color:linear-gradient(0deg, rgba(246,89,59,1) 0%, rgba(247,121,255,1) 100%);
+
+    font-size: 22pt;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    
+    background: linear-gradient(0deg, rgba(246,89,59,1) 0%, rgba(247,121,255,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+header input[type="button"] {
+    position: relative;
+    width: 220px;
+    height: 90px;
+    border: 8px solid #ffffff;
+    border-radius: 38px;
+    padding: 0 10px;
+
+    box-shadow: 5px 5px 4px 0 #c3c3c3;
+    background: linear-gradient(0deg, rgba(246,89,59,1) 0%, rgba(247,121,255,1) 100%);
+    color: white;
+    font-weight: bolder;
+    font-size: 22pt;
+    cursor: pointer;
+}

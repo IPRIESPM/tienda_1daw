@@ -1,0 +1,56 @@
+---
+import Header from '../../components/header/Header.astro';
+import Footer from '../../components/Footer.astro';
+const { title, description } = Astro.props;
+
+import './principal.css';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>{title}</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <!-- <meta name="keywords"
+       content="Google ya no le da tanta importancia, pero todavía las considera (coincidiendo con tus negritas)"> -->
+    <meta name="keywords" content="Marquet, plorts, store, SlimeRancher,buy" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="" />
+    <meta property="og:locale" content="es/ES" />
+
+    <meta name="dc.language" content="es/ES" />
+    <meta name="dc.source" content="Url" />
+    <meta name="dc.title" content={title} />
+    <meta name="dc.description" content={description} />
+
+    <link rel="shortcut icon" href="." />
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./src/assets/vendor/bootstrap-icons-1.9.1/bootstrap-icons-1.9.1/bootstrap-icons.css"
+    />
+
+  </head>
+  <body>
+    <Header title={title} />
+      <slot />
+    <Footer />
+  </body>
+</html>

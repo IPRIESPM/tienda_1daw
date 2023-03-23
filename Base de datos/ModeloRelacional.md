@@ -22,37 +22,39 @@ Administrador (código)
 * PK: codigo
 * FK: codigo -> USUARIO.codigo
 
-Direcciones (codigo, direccion, codigo_postal, ciudad, provincia)
+Direcciones (codigo, direccion, codigo_postal, ciudad, provincia, usuario_codigo)
 
 * PK: codigo
+* FK: usuario_codigo -> USUARIO.codigo
 * NN (direccion, codigo_postal, ciudad, provincia)
 
-Direccion_de_cliente(cod_cliente,cod_direccion)
+Direccines_de_Clientes (codigo_direccion, codigo_cliente)
 
-* PK: (cod_cliente,cod_direccion)
-* FK: cod_cliente -> CLIENTE.codigo
-* FK: cod_direccion -> CLIENTE.direccion
+* PK: (codigo_direccion, codigo_cliente)
+* FK: codigo_direccion -> DIRECCIONES.codigo
+* FK: codigo_cliente -> CLIENTE.codigo
+* NN (codigo_direccion, codigo_cliente)
 
-Pedidos_facturados(cod_pedido, codigo_factura, fecha, facturado, dir_envio, fecha_facturacion, cod_cliente, cod_direccion, cod_facturacion)
+Pedidos_facturados(cod_pedido, codigo_factura, fecha, fecha_facturacion, cod_cliente, cod_direccion, cod_facturacion)
 
 * PK: cod_pedido
 * UK: cod_factura
 * FK: cod_cliente -> CLIENTE.codigo
 * FK: cod_direccion -> DIRECCION.codigo
 * FK: cod_facturacion -> DIRECCION.codigo
-* NN (cod_cliente, fecha, facturado, dir_envio, fecha_facturacion, cod_direccion, cod_facturacion )
+* NN (cod_cliente, fecha, fecha_facturacion, cod_direccion, cod_facturacion )
 
-Productos (codigo, nombre, descripccion, unidad, IVA, cantidad_disponible, stock_min, foto_path)
+Productos (codigo, nombre, descripccion, unidad, iva, cantidad_disponible, stock_min, foto_path)
 
 * PK: codigo
-* NN (nombre, descripccion, unidad, IVA, cantidad_disponible, stock_min, foto_path)
+* NN (nombre, descripccion, unidad, iva, cantidad_disponible, stock_min, foto_path)
 
-Pedidos_Tienen_productos (cod_productos, cod_pedidos, , linea, cantidad, precio)
+Pedidos_Tienen_productos (cod_productos, cod_pedidos, cantidad, precio)
 
 * PK: cod_productos, cod_pedidos
 * FK: cod_productos -> PRODUCTOS.codigo
 * FK: cod_pedidos -> PRODUCTOS.codigo
-* NN (linea, cantidad, precio)
+* NN (cantidad, precio)
 
 Creacion_producto(cod_administrador, cod_productos, fecha_creacion)
 
@@ -78,12 +80,6 @@ Categorias_de_productos (codigo_producto, codigo_categoria)
 * PK: (codigo_producto, codigo_categoria)
 * FK: codigo_producto -> PRODUCTO.codigo
 * FK: codigo_categoria -> CATEGORIA.codigo
-
-Subcategorias (cod_categoria, cod_subcategoria)
-
-* PK: cod_categoria, cod_subcategoria
-* FK: cod_categoria -> CATEGORIA.codigo
-* FK: cod_subcategoria -> CATEGORIA.codigo
 
 ## Perdida semánticas
 
