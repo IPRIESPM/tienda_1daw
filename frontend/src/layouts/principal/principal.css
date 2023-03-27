@@ -1,3 +1,4 @@
+@import url('/css/helpers.css');
 a:link, a:visited, a:active{
     text-decoration: none;
     color: #000;
@@ -12,4 +13,37 @@ fieldset{
     margin: 0;
     border: 0;
     padding: 0;
+}
+
+
+.button{
+    position: relative;
+    width: var(--header-button-width);
+    height: 90px;
+    border: 8px solid #ffffff;
+    border-radius: 38px;
+    padding: 0 10px;
+
+    box-shadow: -7px 5px 4px 0 #c3c3c380;
+    background: linear-gradient(0deg, rgba(246,89,59,1) 0%, rgba(247,121,255,1) 100%);
+    color: white;
+    font-weight: bolder;
+    font-size: 22pt;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    font-size: var(--header-button-size);
+}
+
+.button:hover {
+    box-shadow: -7px 5px 4px 0 #c3c3c380;
+    background: linear-gradient(0deg, rgb(178, 59, 246) 0%, rgba(247,121,255,1) 100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.button:active {
+   box-shadow: 0px 0px 0px 0 #c3c3c380;
+    background: linear-gradient(0deg, rgb(178, 59, 246) 0%, rgba(247,121,255,1) 100%);
+    transition: all 0.3s ease-in-out;
+    border: 12px solid #ffffff;
 }

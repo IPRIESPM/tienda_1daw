@@ -1,0 +1,88 @@
+section.hero{
+    height: 100vh;
+    width: 100vw;
+}
+
+section.hero section.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+section.hero section.logo-wrapper fieldset{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+section.hero fieldset div.play-btn-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 0px 30px;
+}
+   section.hero fieldset div.play-btn-inner .icon{
+    background-color: white;
+    border-radius: 50%;
+    padding: 12px;
+    color: red;
+   }
+section.hero fieldset div.play-btn-inner p{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+}
+
+
+section.hero div.bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -6;
+}
+
+section.hero section.bg div.bg-layer{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+}
+
+
+
+section.hero section.bg div.bg-layer:nth-child(5){
+    background-image: url("/img/hero-scene-layer-1.png");
+    z-index: -1;
+}
+section.hero section.bg div.bg-layer:nth-child(4){
+    background-image: url("/img/hero-scene-layer-2.png");
+    z-index: -2;
+}
+section.hero section.bg div.bg-layer:nth-child(3){
+    background-image: url("/img/hero-scene-layer-3.png");
+    z-index: -3;
+}
+section.hero section.bg div.bg-layer:nth-child(2){
+    background-image: url("/img/hero-scene-layer-4.png");
+    z-index: -4;
+}
+section.hero section.bg div.bg-layer:nth-child(1){
+    background-image: url("/img/hero-scene-layer-5.png");
+    z-index: -5;
+}

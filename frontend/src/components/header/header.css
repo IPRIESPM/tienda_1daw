@@ -1,9 +1,15 @@
 :root {
     --header-gap: 12px;
+    --header-font-size: 20px;
+    --header-button-width: 220px;
+    --header-button-size: 30px;
 }
 header{
     display: flex;
+    width: 100%;
    justify-content: flex-end;
+   position: absolute;
+   margin-top: 30px;
 }
 header section.header-inner {
     display: flex;
@@ -14,11 +20,13 @@ header section.header-inner {
     gap: var(--header-gap);
 
     border-radius: 33px;
-    box-shadow: 5px 5px 4px 0 #c3c3c3;
+    box-shadow: -7px 7px 12px 0 #c3c3c380;
 
     height: 44px;
     margin-top: 8px;
     width: fit-content;
+
+    background-color: #ffffff;
 }
 
 header nav {
@@ -26,6 +34,7 @@ header nav {
     flex-direction: row;
     justify-content: space-between;
     gap: var(--header-gap);
+    font-size: var(--header-font-size);
 }
 
 header a:link,
@@ -33,11 +42,12 @@ header a:visited,
 header a:active {
     font-weight: bolder;
     font-size: larger;
+    font-size: var(--header-font-size);
 }
 header h1{
    color:linear-gradient(0deg, rgba(246,89,59,1) 0%, rgba(247,121,255,1) 100%);
 
-    font-size: 22pt;
+    font-size: var(--header-font-size);
     font-weight: bolder;
     margin: 0;
     padding: 0;
@@ -49,16 +59,55 @@ header h1{
 }
 header input[type="button"] {
     position: relative;
-    width: 220px;
+    width: var(--header-button-width);
     height: 90px;
     border: 8px solid #ffffff;
     border-radius: 38px;
     padding: 0 10px;
 
-    box-shadow: 5px 5px 4px 0 #c3c3c3;
+    box-shadow: -7px 5px 4px 0 #c3c3c380;
     background: linear-gradient(0deg, rgba(246,89,59,1) 0%, rgba(247,121,255,1) 100%);
     color: white;
     font-weight: bolder;
     font-size: 22pt;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    font-size: var(--header-button-size);
+}
+
+header input[type="button"]:hover {
+    box-shadow: -7px 5px 4px 0 #c3c3c380;
+    background: linear-gradient(0deg, rgb(178, 59, 246) 0%, rgba(247,121,255,1) 100%);
+    transition: all 0.3s ease-in-out;
+}
+
+header input[type="button"]:active {
+   box-shadow: 0px 0px 0px 0 #c3c3c380;
+    background: linear-gradient(0deg, rgb(178, 59, 246) 0%, rgba(247,121,255,1) 100%);
+    transition: all 0.3s ease-in-out;
+    border: 12px solid #ffffff;
+}
+
+
+@media (max-height: 640px) {
+    :root {
+        --header-button-width: 30vw;
+        --header-button-size: 4.2vw;
+    }
+    header section.header-inner nav{
+       display: none;
+    }
+    header h1{
+        display: none;
+    }
+    header section.header-inner input[type="button"] {
+        width: var(--header-button-width);
+    }
+}
+
+@media (min-height: 640px) {
+    header section svg {
+        display: none;
+    }
 }
