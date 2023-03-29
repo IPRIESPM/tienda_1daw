@@ -40,7 +40,7 @@ Factura(codigo, fecha)
 * PK: codigo
 * NN(fecha)
 
-Pedido(cod_pedido, cod_factura, fecha, fecha_Pedido, cod_cliente, cod_direccion, cod_facturacion)
+Pedido(cod_pedido, cod_factura, fecha_Pedido, cod_cliente, cod_direccion, cod_facturacion)
 
 * PK: cod_pedido
 * UK: cod_factura
