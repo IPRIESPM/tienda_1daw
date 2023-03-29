@@ -35,14 +35,18 @@ Direccines_de_Clientes (codigo_direccion, codigo_cliente)
 * FK: codigo_cliente -> CLIENTE.codigo
 * NN (codigo_direccion, codigo_cliente)
 
-Pedidos_facturados(cod_pedido, codigo_factura, fecha, fecha_facturacion, cod_cliente, cod_direccion, cod_facturacion)
+Factura(codigo, fecha)
+
+* PK: codigo
+* NN(fecha)
+
+Pedido(cod_pedido, cod_factura, fecha, fecha_Pedido, cod_cliente, cod_direccion, cod_facturacion)
 
 * PK: cod_pedido
 * UK: cod_factura
 * FK: cod_cliente -> CLIENTE.codigo
 * FK: cod_direccion -> DIRECCION.codigo
-* FK: cod_facturacion -> DIRECCION.codigo
-* NN (cod_cliente, fecha, fecha_facturacion, cod_direccion, cod_facturacion )
+* NN (cod_cliente, fecha, fecha_pedido, cod_direccion, cod_facturacion )
 
 Productos (codigo, nombre, descripccion, unidad, iva, cantidad_disponible, stock_min, foto_path)
 
@@ -56,14 +60,7 @@ Pedidos_Tienen_productos (cod_productos, cod_pedidos, cantidad, precio)
 * FK: cod_pedidos -> PRODUCTOS.codigo
 * NN (cantidad, precio)
 
-Creacion_producto(cod_administrador, cod_productos, fecha_creacion)
-
-* PK: (cod_administrador, cod_productos)
-* FK: cod_administrador -> ADMINISTRADOR.codigo
-* FK: cod_producto -> PRODUCTO.codigo
-* NN(fecha_creacion)
-
-Modificacion_producto(Cod_administrador, cod_productos, fecha_modificacion)
+Administracion_producto(Cod_administrador, cod_productos, fecha_modificacion)
 
 * PK: (cod_administrador, cod_productos)
 * FK: cod_administrador -> ADMINISTRADOR.codigo
@@ -75,7 +72,7 @@ Categorias (codigo, nombre)
 * PK: codigo
 * NN (nombre)
 
-Categorias_de_productos (codigo_producto, codigo_categoria)
+productos_Con_Categoria (codigo_producto, codigo_categoria)
 
 * PK: (codigo_producto, codigo_categoria)
 * FK: codigo_producto -> PRODUCTO.codigo
