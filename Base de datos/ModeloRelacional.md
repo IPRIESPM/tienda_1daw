@@ -6,84 +6,50 @@
 
 ## Modelo relacional
 
-Usuarios (codigo, email, nombre, apellido, contraseña, ultima_conexion, tel, fecha_nacimiento, foto )
+Usuario (codigo, email, nombre, apellido, contraseña, ultima_conexion, tel, fecha_nacimiento, foto, direccion, tipo )
 
 * PK: codigo
 * UK: Email
-* NN (nombre, apellidos, contra, ultima-con)
+* FK: direccion -> DIRECCIONES.codigo
+* NN (nombre, apellidos, contra, ultima-con, direccion, tipo)
 
-Cliente (codigo)
-
-* PK: codigo
-* FK: codigo -> USUARIO.codigo
-
-Administrador (código)
+Direccion (codigo, direccion, codigo_postal, ciudad, provincia)
 
 * PK: codigo
-* FK: codigo -> USUARIO.codigo
-
-Direcciones (codigo, direccion, codigo_postal, ciudad, provincia, usuario_codigo)
-
-* PK: codigo
-* FK: usuario_codigo -> USUARIO.codigo
 * NN (direccion, codigo_postal, ciudad, provincia)
 
-Direccines_de_Clientes (codigo_direccion, codigo_cliente)
-
-* PK: (codigo_direccion, codigo_cliente)
-* FK: codigo_direccion -> DIRECCIONES.codigo
-* FK: codigo_cliente -> CLIENTE.codigo
-* NN (codigo_direccion, codigo_cliente)
-
-Pedidos_facturados(cod_pedido, codigo_factura, fecha, fecha_facturacion, cod_cliente, cod_direccion, cod_facturacion)
-
-* PK: cod_pedido
-* UK: cod_factura
-* FK: cod_cliente -> CLIENTE.codigo
-* FK: cod_direccion -> DIRECCION.codigo
-* FK: cod_facturacion -> DIRECCION.codigo
-* NN (cod_cliente, fecha, fecha_facturacion, cod_direccion, cod_facturacion )
-
-Productos (codigo, nombre, descripccion, unidad, iva, cantidad_disponible, stock_min, foto_path)
+Pedido (codigo, codigo_usuario, fecha, estado)
 
 * PK: codigo
-* NN (nombre, descripccion, unidad, iva, cantidad_disponible, stock_min, foto_path)
+* FK: codigo_usuario -> USUARIOS.codigo
+* NN (codigo_usuario, fecha, estado)
 
-Pedidos_Tienen_productos (cod_productos, cod_pedidos, cantidad, precio)
+Producto (codigo, codigo_categoria, nombre, descripcion, precio, stock, imagen)
 
-* PK: cod_productos, cod_pedidos
-* FK: cod_productos -> PRODUCTOS.codigo
-* FK: cod_pedidos -> PRODUCTOS.codigo
-* NN (cantidad, precio)
+* PK: codigo
+* FK: codigo_categoria -> CATEGORIAS.codigo
+* NN (nombre, descripcion, precio, stock)
 
-Creacion_producto(cod_administrador, cod_productos, fecha_creacion)
-
-* PK: (cod_administrador, cod_productos)
-* FK: cod_administrador -> ADMINISTRADOR.codigo
-* FK: cod_producto -> PRODUCTO.codigo
-* NN(fecha_creacion)
-
-Modificacion_producto(Cod_administrador, cod_productos, fecha_modificacion)
-
-* PK: (cod_administrador, cod_productos)
-* FK: cod_administrador -> ADMINISTRADOR.codigo
-* FK: cod_producto -> PRODUCTO.codigo
-* NN(fecha_modificacion)
-
-Categorias (codigo, nombre)
+Categoria (codigo, nombre)
 
 * PK: codigo
 * NN (nombre)
 
-Categorias_de_productos (codigo_producto, codigo_categoria)
+Pedido_Producto (codigo_pedido, codigo_producto, cantidad)
 
-* PK: (codigo_producto, codigo_categoria)
-* FK: codigo_producto -> PRODUCTO.codigo
-* FK: codigo_categoria -> CATEGORIA.codigo
+* PK: codigo_pedido, codigo_producto
+* FK: codigo_pedido -> PEDIDOS.codigo
+* FK: codigo_producto -> PRODUCTOS.codigo
+* NN (codigo_pedido, codigo_producto, cantidad)
+
+factura (codigo, codigo_pedido, fecha)
+
+* PK: codigo
+* FK: codigo_pedido -> PEDIDOS.codigo
+* NN (codigo_pedido, fecha)
 
 ## Perdida semánticas
 
-1. Pierdo la exclusividad y totalidad de la generalización.
-2. Se pierden el **"1"** de categoria y pedidos.
-3. Se pierden los **"1"** de administrador y productos.
-4. Se pierden los **"1"** de cliente y direccion.
+1. Se pierden el **"1"** de categoria y pedidos.
+2. Se pierden los **"1"** de administrador y productos.
+3. Se pierden los **"1"** de cliente y direccion.
