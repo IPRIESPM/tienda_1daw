@@ -1,4 +1,33 @@
-footer{
-    background-color: rgb(44, 20, 105);
-    height: 20vh;
+footer {
+  background-color: #222347;
+  height: 20vh;
+
+  display: flex;
+  justify-content: space-around;
+
+  padding-top: 10vh;
+
+  color: aliceblue;
+  font-weight: bolder;
+}
+
+footer ul,
+footer a:link {
+  list-style: disc;
+  color: aliceblue;
+  font-weight: bolder;
+}
+
+footer ul::before {
+  content: "";
+  width: 3px;
+  height: 18vh;
+  display: inline-block;
+  background-color: aliceblue;
+  position: absolute;
+  transform: translate(150px);
+}
+
+footer ul li {
+  padding-top: 15px;
 }
