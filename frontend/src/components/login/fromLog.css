@@ -1,0 +1,67 @@
+:root{
+    --loggin-width: 800px;
+}
+main.loggin{
+    background-color:blanchedalmond;
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+main.loggin section.inner{
+    width: var(--loggin-width);
+}
+
+main.loggin section.inner article{
+    text-align: center;
+}
+main.loggin section.inner article h2{
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+main.loggin section.inner form{
+    background-color: rgb(251, 251, 251);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    margin-bottom: 22px;
+    padding: 12px;
+    border-radius: 12px;
+
+    box-shadow: 12px 12px 12px 0px rgba(0, 0, 0, 0.169);
+}
+
+main.loggin section.inner form fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+main.loggin section.inner form fieldset input{
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+
+    background-color: rgb(234, 234, 234);
+}
+
+main.loggin section.inner form fieldset input:focus{
+    outline: 2px solid rgb(18, 122, 167);
+
+}

@@ -6,6 +6,7 @@
 
 ## Modelo relacional
 
+<<<<<<< HEAD
 Usuarios (codigo, email, nombre, apellido, contraseña, ultima_conexion, tel, fecha_nacimiento, foto )
 
 * PK: codigo
@@ -23,11 +24,15 @@ Administrador (código)
 * FK: codigo -> USUARIO.codigo
 
 Direcciones (codigo, direccion, codigo_postal, ciudad, provincia, cliente)
+=======
+Direccion (codigo, direccion, codigo_postal, ciudad, provincia)
+>>>>>>> dev
 
 * PK: codigo
 * FK: cliente -> CLIENTE.codigo
 * NN (direccion, codigo_postal, ciudad, provincia)
 
+<<<<<<< HEAD
 Pedidos_facturados(cod_pedido, codigo_factura, fecha, facturado, dir_envio, fecha_facturacion, cod_cliente, cod_direccion, cod_facturacion)
 
 * PK: cod_pedido
@@ -43,25 +48,44 @@ Productos (codigo, nombre, descripccion, unidad, IVA, cantidad_disponible, stock
 * FK: creador -> ADMINISTRADOR.codigo
 * FK: modificador -> ADMINISTRADOR.codigo
 * NN (nombre, descripccion, unidad, IVA, cantidad_disponible, stock_min, foto_path, fecha_creacion)
+=======
+Usuario (codigo, email, nombre, apellido, contraseña, ultima_conexion, tel, fecha_nacimiento, foto, direccion, tipo )
 
-Pedidos_Tienen_productos (cod_productos, cod_pedidos, , linea, cantidad, precio)
+* PK: codigo
+* UK: Email
+* FK: direccion -> DIRECCIONES.codigo
+* NN (nombre, apellidos, contra, ultima-con, direccion, tipo)
+>>>>>>> dev
 
-* PK: cod_productos, cod_pedidos
-* FK: cod_productos -> PRODUCTOS.codigo
-* FK: cod_pedidos -> PRODUCTOS.codigo
-* NN (linea, cantidad, precio)
+Pedido (codigo, codigo_usuario, fecha, estado)
 
+* PK: codigo
+* FK: codigo_usuario -> USUARIOS.codigo
+* NN (codigo_usuario, fecha, estado)
+
+<<<<<<< HEAD
 Categorias (codigo, nombre)
+=======
+Producto (codigo, codigo_categoria, nombre, descripcion, precio, stock, imagen)
+
+* PK: codigo
+* FK: codigo_categoria -> CATEGORIAS.codigo
+* NN (nombre, descripcion, precio, stock)
+
+Categoria (codigo, nombre)
+>>>>>>> dev
 
 * PK: codigo
 * NN (nombre)
 
-Categorias_de_productos (codigo_producto, codigo_categoria)
+Pedido_Producto (codigo_pedido, codigo_producto, cantidad)
 
-* PK: (codigo_producto, codigo_categoria)
-* FK: codigo_producto -> PRODUCTO.codigo
-* FK: codigo_categoria -> CATEGORIA.codigo
+* PK: codigo_pedido, codigo_producto
+* FK: codigo_pedido -> PEDIDOS.codigo
+* FK: codigo_producto -> PRODUCTOS.codigo
+* NN (codigo_pedido, codigo_producto, cantidad)
 
+<<<<<<< HEAD
 ## Perdida semánticas
 
 1. Pierdo la exclusividad y totalidad de la generalización.
@@ -69,3 +93,16 @@ Categorias_de_productos (codigo_producto, codigo_categoria)
 3. Se pierden los **"1"** de administrador y productos.
 4. Los atributos de la fecha de modificación y creacion son de la relación
    y por lo tanto al pasarlo al relacional perdemos ese origen.
+=======
+factura (codigo, codigo_pedido, fecha)
+
+* PK: codigo
+* FK: codigo_pedido -> PEDIDOS.codigo
+* NN (codigo_pedido, fecha)
+
+## Perdida semánticas
+
+1. Se pierden el **"1"** de categoria y pedidos.
+2. Se pierden los **"1"** de administrador y productos.
+3. Se pierden los **"1"** de cliente y direccion.
+>>>>>>> dev

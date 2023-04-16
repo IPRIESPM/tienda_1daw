@@ -1,0 +1,12 @@
+---
+import Hero from "../components/hero/Hero.astro";
+import Principal from "../layouts/principal/Principal.astro";
+
+const title = "Plort Marquet";
+const description = "Mi tienda web";
+const page = "index";
+---
+
+<Principal title={title} description={description} page={page}>
+  <Hero />
+</Principal>
