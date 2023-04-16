@@ -6,17 +6,17 @@
 
 ## Modelo relacional
 
+Direccion (codigo, direccion, codigo_postal, ciudad, provincia)
+
+* PK: codigo
+* NN (direccion, codigo_postal, ciudad, provincia)
+
 Usuario (codigo, email, nombre, apellido, contraseña, ultima_conexion, tel, fecha_nacimiento, foto, direccion, tipo )
 
 * PK: codigo
 * UK: Email
 * FK: direccion -> DIRECCIONES.codigo
 * NN (nombre, apellidos, contra, ultima-con, direccion, tipo)
-
-Direccion (codigo, direccion, codigo_postal, ciudad, provincia)
-
-* PK: codigo
-* NN (direccion, codigo_postal, ciudad, provincia)
 
 Pedido (codigo, codigo_usuario, fecha, estado)
 
