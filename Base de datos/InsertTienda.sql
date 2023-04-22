@@ -11,13 +11,13 @@ VALUES (3, 'Calle Falsa 123', '1234', 'Ciudad Falsa', 'Falsia');
 
 
 -- Insert para TIENDA_USUARIO
-INSERT INTO TIENDA_USUARIO (codigo, email, nombre, apellido, contraseña, ultima_conexion, telefono, fecha_nacimiento, foto, direccion, tipo)
+INSERT INTO TIENDA_USUARIO (codigo, email, nombre, apellido, contrasenya, ultima_conexion, telefono, fecha_nacimiento, foto, direccion, tipo)
 VALUES (1, 'beatrix@rancher.com', 'Beatrix', 'LeBeau', 'plortslife', SYSDATE, '123456789', TO_DATE('01-01-1990', 'DD-MM-YYYY'), NULL, 1, 'CLIENTE');
 
-INSERT INTO TIENDA_USUARIO (codigo, email, nombre, apellido, contraseña, ultima_conexion, telefono, fecha_nacimiento, foto, direccion, tipo)
+INSERT INTO TIENDA_USUARIO (codigo, email, nombre, apellido, contrasenya, ultima_conexion, telefono, fecha_nacimiento, foto, direccion, tipo)
 VALUES (2, 'gordo@rancher.com', 'Gordo', 'Ogordo', 'slimey', SYSDATE, '987654321', TO_DATE('01-01-1995', 'DD-MM-YYYY'), NULL, 2, 'CLIENTE');
 
-INSERT INTO TIENDA_USUARIO (codigo, email, nombre, apellido, contraseña, ultima_conexion, telefono, fecha_nacimiento, foto, direccion, tipo)
+INSERT INTO TIENDA_USUARIO (codigo, email, nombre, apellido, contrasenya, ultima_conexion, telefono, fecha_nacimiento, foto, direccion, tipo)
 VALUES (3, 'victor@rancher.com', 'Victor', 'Humphries', 'plortzrule', SYSDATE, '123456789', TO_DATE('01-01-1990', 'DD-MM-YYYY'), NULL, 1, 'ADMIN');
 
 -- Insert para TIENDA_CATEGORIA

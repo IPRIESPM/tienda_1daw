@@ -12,7 +12,7 @@ Direccion (codigo, direccion, codigo_postal, ciudad, provincia)
 * FK: cliente -> CLIENTE.codigo
 * NN (direccion, codigo_postal, ciudad, provincia)
 
-Usuario (codigo, email, nombre, apellido, contraseña, ultima_conexion, tel, fecha_nacimiento, foto, direccion, tipo )
+Usuario (codigo, email, nombre, apellido, contrasenya, ultima_conexion, tel, fecha_nacimiento, foto, direccion, tipo )
 
 * PK: codigo
 * UK: Email

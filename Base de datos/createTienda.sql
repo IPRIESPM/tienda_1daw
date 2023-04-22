@@ -11,7 +11,7 @@ CREATE TABLE TIENDA_USUARIO (
   email VARCHAR2(100) UNIQUE NOT NULL,
   nombre VARCHAR2(50) NOT NULL,
   apellido VARCHAR2(50) NOT NULL,
-  contraseña VARCHAR2(100) NOT NULL,
+  contrasenya VARCHAR2(100) NOT NULL,
   ultima_conexion DATE,
   telefono VARCHAR2(20),
   fecha_nacimiento DATE,
@@ -60,6 +60,7 @@ CREATE TABLE TIENDA_FACTURA (
   fecha DATE NOT NULL,
   CONSTRAINT fk_factura_pedido FOREIGN KEY (codigo_pedido) REFERENCES TIENDA_PEDIDO(codigo)
 );
+
 
 drop table tienda_categorias_productos;
 drop table tienda_Categorias;
