@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class FacturaDAO extends TablaDAO<FacturaDTO> {
 
     public FacturaDAO() {
-        this.tabla = "factura";
+        this.tabla = "TIENDA_FACTURA";
     }
 
     @Override
@@ -63,7 +63,7 @@ public class FacturaDAO extends TablaDAO<FacturaDTO> {
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int codigo = resultSet.getInt("codigo");
-            PedidoDTO pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("pedido"));
+            PedidoDTO pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("codigo_pedido"));
             LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
             lista.add(new FacturaDTO(codigo, pedidoAsociado, fecha));
         }

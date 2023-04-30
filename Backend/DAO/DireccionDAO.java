@@ -16,8 +16,14 @@ import java.util.ArrayList;
  */
 public class DireccionDAO extends TablaDAO<DireccionDTO> {
 
+    private static String tablaCodigo = "codigo";
+    private static String tablaDireccion = "direccion";
+    private static String tablaPostal = "codigo_postal";
+    private static String tablaProvincia = "provincia";
+    private static String tablaCiudad = "ciudad";
+
     public DireccionDAO() {
-        this.tabla = "direccion";
+        this.tabla = "TIENDA_DIRECCION";
     }
 
     @Override
@@ -60,12 +66,12 @@ public class DireccionDAO extends TablaDAO<DireccionDTO> {
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            int codigo = resultSet.getInt("codigo");
-            String direccion = resultSet.getString("dir");
-            String poblacion = resultSet.getString("poblacion");
-            String provincia = resultSet.getString("provincia");
-            int cp = resultSet.getInt("cp");
-            lista.add(new DireccionDTO(codigo, direccion, cp, poblacion, provincia));
+            int codigo = resultSet.getInt(tablaCodigo);
+            String direccion = resultSet.getString(tablaDireccion);
+            int codigoPostal = resultSet.getInt(tablaPostal);
+            String ciudad = resultSet.getString(tablaCiudad);
+            String provincia = resultSet.getString(tablaProvincia);
+            lista.add(new DireccionDTO(codigo, direccion, codigoPostal, ciudad, provincia));
         }
         return lista;
     }
@@ -77,11 +83,12 @@ public class DireccionDAO extends TablaDAO<DireccionDTO> {
         prepared.setInt(1, codigo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            String direccion = resultSet.getString("dir");
-            String poblacion = resultSet.getString("poblacion");
+            String direccion = resultSet.getString("direccion");
+            int codigoPostal = resultSet.getInt("codigo_postal");
+            String ciudad = resultSet.getString("ciudad");
             String provincia = resultSet.getString("provincia");
-            int cp = resultSet.getInt("cp");
-            return new DireccionDTO(codigo, direccion, cp, poblacion, provincia);
+
+            return new DireccionDTO(codigo, direccion, codigoPostal, ciudad, provincia);
         }
         return null;
     }

@@ -17,8 +17,16 @@ import java.util.ArrayList;
  */
 public class ProductoDAO extends TablaDAO<ProductoDTO> {
 
+    private static String tablaCodigo = "codigo";
+    private static String tablaCategoria = "codigo_categoria";
+    private static String tablaNombre = "nombre";
+    private static String tablaDescripccion = "descripccion";
+    private static String tablaPrecio = "precio";
+    private static String tablaStock = "stock";
+    private static String tablaImagen = "imagen";
+
     public ProductoDAO() {
-        this.tabla = "producto";
+        this.tabla = "TIENDA_PRODUCTO";
     }
 
     @Override
@@ -85,7 +93,6 @@ public class ProductoDAO extends TablaDAO<ProductoDTO> {
             int codigo = resultSet.getInt("codigo");
             int codigo_categoria = resultSet.getInt("codigo_categoria");
             CategoriaDTO categoria = new CategoriaDAO().getByCodigo(resultSet.getInt("codigo_categoria"));
-            // new UsuarioDAO().getByCodigo(resultSet.getInt("usucrea")
             String nombre = resultSet.getString("nombre");
             String descripcion = resultSet.getString("descripcion");
             double precio = resultSet.getDouble("precio");

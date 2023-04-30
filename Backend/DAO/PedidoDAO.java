@@ -23,7 +23,7 @@ import java.util.Map;
 public class PedidoDAO extends TablaDAO<PedidoDTO> {
 
     public PedidoDAO() {
-        this.tabla = "pedido";
+        this.tabla = "TIENDA_PEDIDO";
     }
 
     public int actualizar(PedidoDAO p) throws SQLException {

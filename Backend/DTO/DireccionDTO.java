@@ -11,6 +11,7 @@ import java.util.Objects;
  * @author isaac
  */
 public class DireccionDTO {
+
     int codigo;
     String direccion;
     int codigoPostal;
@@ -23,6 +24,7 @@ public class DireccionDTO {
         this.codigoPostal = codigoPostal;
         this.ciudad = ciudad;
         this.provincia = provincia;
+
     }
 
     public int getCodigo() {
@@ -103,5 +105,5 @@ public class DireccionDTO {
     public String toString() {
         return "Direccion{" + "codigo=" + codigo + ", direccion=" + direccion + ", codigoPostal=" + codigoPostal + ", ciudad=" + ciudad + ", provincia=" + provincia + '}';
     }
-     
+
 }

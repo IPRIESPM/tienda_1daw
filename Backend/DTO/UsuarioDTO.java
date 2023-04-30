@@ -25,7 +25,7 @@ public class UsuarioDTO {
     String tipo;
     DireccionDTO direccion;
 
-    public UsuarioDTO(int codigo, String nombre, String apellido, String contrasenya, LocalDateTime ultimaConexion, String telefono, String email, String tipo, DireccionDTO direccion) {
+    public UsuarioDTO(int codigo, String email, String nombre, String apellido, String contrasenya, LocalDateTime ultimaConexion, String telefono, LocalDateTime fechaNacimiento, String foto, DireccionDTO direccion, String tipo) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
