@@ -1,5 +1,6 @@
 package DTO;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Objects;
  * @author Isaac
  *
  */
-public class ProductoPedidoDTO {
+public class ProductoPedidoDTO implements Serializable {
 
     PedidoDTO pedido;
     ProductoDTO producto;
@@ -68,6 +69,11 @@ public class ProductoPedidoDTO {
             return false;
         }
         return Objects.equals(this.producto, other.producto);
+    }
+
+    @Override
+    public String toString() {
+        return "ProductoPedidoDTO{" + "pedido=" + pedido + ", producto=" + producto + ", canitdad=" + canitdad + '}';
     }
 
 }

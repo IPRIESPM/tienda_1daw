@@ -4,13 +4,15 @@
  */
 package DTO;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author isaac
  */
-public class CategoriaDTO {
+public class CategoriaDTO implements Serializable {
+
     int codigo;
     String nombre;
 
@@ -61,5 +63,5 @@ public class CategoriaDTO {
     public String toString() {
         return "Categoria{" + "codigo=" + codigo + ", nombre=" + nombre + '}';
     }
-    
+
 }

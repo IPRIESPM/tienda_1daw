@@ -4,13 +4,14 @@
  */
 package DTO;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  *
  * @author isaac
  */
-public class FacturaDTO {
+public class FacturaDTO implements Serializable {
 
     int codigo;
     PedidoDTO pedido;
@@ -66,6 +67,11 @@ public class FacturaDTO {
         }
         final FacturaDTO other = (FacturaDTO) obj;
         return this.codigo == other.codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "FacturaDTO{" + "codigo=" + codigo + ", pedido=" + pedido + ", fecha=" + fecha + '}';
     }
 
 }

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package serveletTest;
+package servelets;
 
-import DAO.UsuarioDAO;
-import DTO.UsuarioDTO;
+import DAO.ProductoDAO;
+import DTO.ProductoDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author isaac
  */
-public class verUsuarios extends HttpServlet {
+public class verProductos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,18 +35,18 @@ public class verUsuarios extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            List<UsuarioDTO> usuarios = new UsuarioDAO().getAll();
+            List<ProductoDTO> productos = new ProductoDAO().getAll();
 
-            for (UsuarioDTO usuario : usuarios) {
-                out.println(usuario.toString());
+            for (ProductoDTO producto : productos) {
+                out.println(producto.toString());
             }
 
-            request.setAttribute("usuarios", usuarios);
+            request.setAttribute("productos", productos);
 
-            request.getRequestDispatcher("/usuarios.jsp").forward(request, response);
+            request.getRequestDispatcher("/productos.jsp").forward(request, response);
 
         } catch (SQLException ex) {
-            Logger.getLogger(verUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(verProductos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

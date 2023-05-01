@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package serveletTest;
+package servelets;
 
-import DAO.CategoriaDAO;
-import DTO.CategoriaDTO;
+import DAO.FacturaDAO;
+import DTO.FacturaDTO;
+import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -16,12 +17,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.tiendaSesion;
 
 /**
  *
  * @author isaac
  */
-public class verCategorias extends HttpServlet {
+public class verFacturas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,17 +37,26 @@ public class verCategorias extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ArrayList<CategoriaDTO> categorias = new CategoriaDAO().getAll();
 
-            for (CategoriaDTO categoria : categorias) {
-                out.println(categoria.toString());
+            Object sesion = request.getSession().getAttribute("usuario");
+            UsuarioDTO tiendaUsuario = tiendaSesion.usuario(sesion);
+
+            if (tiendaUsuario.getEmail() == null) {
+                response.sendRedirect("index.jsp");
+            } else {
+
+                ArrayList<FacturaDTO> facturas = new FacturaDAO().getAll();
+
+                for (FacturaDTO factura : facturas) {
+                    out.println(factura.toString());
+                }
+
+                request.setAttribute("factura", facturas);
+
+                request.getRequestDispatcher("/facturas.jsp").forward(request, response);
             }
-
-            request.setAttribute("categorias", categorias);
-
-            request.getRequestDispatcher("/categorias.jsp").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(verCategorias.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(verFacturas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

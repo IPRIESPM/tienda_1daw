@@ -88,3 +88,44 @@ npm run build
 ### 🛢📊Base de datos
 
 Base de datos basada en oracle [Documentación base de datos](https://github.com/IPRIESPM/tienda_1daw/blob/main/Base%20de%20datos/ModeloRelacional.md).
+
+## Requisitos
+
+### OBLIGATORIAS
+
+-------------------------------
+
+* Iniciar sesión
+* Cerrar sesión
+* Distintas vistas dependiendo del tipo de usuario
+* Vista de artículos dinámica
+* Vista de artículo individual -
+* Vista de pedidos
+* Vista de facturas -
+* Filtros de categorías -
+* Carrito
+
+### OPCIONALES
+
+-------------------------------
+
+* Añadir usuario
+* Añadir comentario
+* Añadir artículo
+* Eliminar artículo
+
+### ANOTACIONES
+
+-------------------------------
+
+* Administrador puede ver todos los pedidos y facturas (GetAll) y cuando es un usuario normal (GetByUsuario)
+* En filtros para categorias (En artículo tendrá un GetByCategorias)
+* NO HACE FALTA HACER 'VER DATOS SESIÓN'
+* HttpSession session = request.getSession(false); (si existe una sesión la importa, sino no la crea y se queda en null)
+* producto.jsp se necesita enviar el codigo del articulo en AnyadirAlCarrito 'hidden' para el servlet
+* Hacer método isAdmin o isCliente
+* Cuando el usuario inicie sesión cambiar la fecha de ultima conexion de la base de datos
+* En carrito antes de confirmar pedido poner un select con todas las direcciones del usuario
+* En pedidos poner botón de facturar en los pedidos que no estén facturados junto con otro select de dirección
+* Si no hay stock no dejar añadir al carrito el producto con un mensajito dice JP
+* Cuando se haga pedido descontar del stock esa cantidad

@@ -33,6 +33,35 @@ public class UsuarioDAO extends TablaDAO<UsuarioDTO> {
         this.tabla = "TIENDA_USUARIO";
     }
 
+    private UsuarioDTO resulsetGetUser(ResultSet resultSet) throws SQLException {
+        int codigo = resultSet.getInt(tablaCodigo);
+        String email = resultSet.getString(tablaEmail);
+        String nombre = resultSet.getString(tablaNombre);
+        String apellido = resultSet.getString(tablaApellido);
+        String contrasenya = resultSet.getString(tablaContrasenya);
+        Timestamp ultimaConexionTS = resultSet.getTimestamp(tablaUltimaConexion);
+        String telefono = resultSet.getString(tablaTelefono);
+        Timestamp fechaNacimientoTS = resultSet.getTimestamp(tablaFechaNacimiento);
+        String foto = resultSet.getString("foto");
+        int idDireccion = resultSet.getInt("direccion");
+        DireccionDTO direccion = new DireccionDAO().getByCodigo(idDireccion);
+        String tipo = resultSet.getString("tipo");
+        LocalDateTime ultimaConexion = ultimaConexionTS == null ? null : ultimaConexionTS.toLocalDateTime();
+        LocalDateTime fechaNacimiento = fechaNacimientoTS == null ? null : fechaNacimientoTS.toLocalDateTime();
+        return new UsuarioDTO(codigo, email, nombre, apellido, contrasenya, ultimaConexion, telefono, fechaNacimiento, foto, direccion, tipo);
+    }
+
+    public UsuarioDTO comprobarContrasenya(String email, String password) throws SQLException {
+        String sentenciaSQL = "select * from TIENDA_USUARIO WHERE EMAIL like ? and CONTRASENYA like ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setString(1, email);
+        prepared.setString(2, password);
+        ResultSet resultSet = prepared.executeQuery();
+
+        return !resultSet.next() ? new UsuarioDTO() : resulsetGetUser(resultSet);
+
+    }
+
     @Override
     public int actualizar(UsuarioDTO u) {
         // NO SE UTILIZA EN NUESTRO PROYECTO
@@ -91,21 +120,8 @@ public class UsuarioDAO extends TablaDAO<UsuarioDTO> {
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            int codigo = resultSet.getInt(tablaCodigo);
-            String email = resultSet.getString(tablaEmail);
-            String nombre = resultSet.getString(tablaNombre);
-            String apellido = resultSet.getString(tablaApellido);
-            String contrasenya = resultSet.getString(tablaContrasenya);
-            Timestamp ultimaConexionTS = resultSet.getTimestamp(tablaUltimaConexion);
-            String telefono = resultSet.getString(tablaTelefono);
-            Timestamp fechaNacimientoTS = resultSet.getTimestamp(tablaFechaNacimiento);
-            String foto = resultSet.getString("foto");
-            int idDireccion = resultSet.getInt("direccion");
-            DireccionDTO direccion = new DireccionDAO().getByCodigo(idDireccion);
-            String tipo = resultSet.getString("tipo");
-            LocalDateTime ultimaConexion = ultimaConexionTS == null ? null : ultimaConexionTS.toLocalDateTime();
-            LocalDateTime fechaNacimiento = fechaNacimientoTS == null ? null : fechaNacimientoTS.toLocalDateTime();
-            lista.add(new UsuarioDTO(codigo, email, nombre, apellido, contrasenya, ultimaConexion, telefono, fechaNacimiento, foto, direccion, tipo));
+
+            lista.add(resulsetGetUser(resultSet));
         }
 
         return lista;
@@ -118,21 +134,7 @@ public class UsuarioDAO extends TablaDAO<UsuarioDTO> {
         prepared.setInt(1, codigo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            String email = resultSet.getString(tablaEmail);
-            String nombre = resultSet.getString(tablaNombre);
-            String apellido = resultSet.getString(tablaApellido);
-            String contrasenya = resultSet.getString(tablaContrasenya);
-            Timestamp ultimaConexionTS = resultSet.getTimestamp(tablaUltimaConexion);
-            String telefono = resultSet.getString(tablaTelefono);
-            Timestamp fechaNacimientoTS = resultSet.getTimestamp(tablaFechaNacimiento);
-            String foto = resultSet.getString("foto");
-            int idDireccion = resultSet.getInt("direccion");
-            DireccionDTO direccion = new DireccionDAO().getByCodigo(idDireccion);
-            String tipo = resultSet.getString("tipo");
-            LocalDateTime ultimaConexion = ultimaConexionTS == null ? null : ultimaConexionTS.toLocalDateTime();
-            LocalDateTime fechaNacimiento = fechaNacimientoTS == null ? null : fechaNacimientoTS.toLocalDateTime();
-            return new UsuarioDTO(codigo, email, nombre, apellido, contrasenya, ultimaConexion, telefono, fechaNacimiento, foto, direccion, tipo);
-
+            return resulsetGetUser(resultSet);
         }
 
         return null;

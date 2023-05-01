@@ -6,6 +6,7 @@ package DAO;
 
 import DTO.CategoriaDTO;
 import DTO.ProductoDTO;
+import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author jmas
  */
-public class ProductoDAO extends TablaDAO<ProductoDTO> {
+public class ProductoDAO extends TablaDAO<ProductoDTO> implements Serializable {
 
     private static String tablaCodigo = "codigo";
     private static String tablaCategoria = "codigo_categoria";

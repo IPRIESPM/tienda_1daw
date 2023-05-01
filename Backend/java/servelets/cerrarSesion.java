@@ -2,16 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package serveletTest;
+package servelets;
 
-import DAO.ProductoDAO;
-import DTO.ProductoDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author isaac
  */
-public class verProductos extends HttpServlet {
+public class cerrarSesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,18 +29,8 @@ public class verProductos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            List<ProductoDTO> productos = new ProductoDAO().getAll();
-
-            for (ProductoDTO producto : productos) {
-                out.println(producto.toString());
-            }
-
-            request.setAttribute("productos", productos);
-
-            request.getRequestDispatcher("/productos.jsp").forward(request, response);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(verProductos.class.getName()).log(Level.SEVERE, null, ex);
+            request.getSession().invalidate();
+            response.sendRedirect("index.jsp");
         }
     }
 

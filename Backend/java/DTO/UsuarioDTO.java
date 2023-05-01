@@ -4,6 +4,7 @@
  */
 package DTO;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
  *
  * @author isaac
  */
-public class UsuarioDTO {
+public class UsuarioDTO implements Serializable {
 
     int codigo;
     String nombre;
@@ -24,6 +25,11 @@ public class UsuarioDTO {
     String foto;
     String tipo;
     DireccionDTO direccion;
+
+    public UsuarioDTO() {
+
+        this.direccion = new DireccionDTO();
+    }
 
     public UsuarioDTO(int codigo, String email, String nombre, String apellido, String contrasenya, LocalDateTime ultimaConexion, String telefono, LocalDateTime fechaNacimiento, String foto, DireccionDTO direccion, String tipo) {
         this.codigo = codigo;
@@ -125,6 +131,14 @@ public class UsuarioDTO {
 
     public void setDireccion(DireccionDTO direccion) {
         this.direccion = direccion;
+    }
+
+    public boolean isAdmin() {
+        return this.tipo.trim().equals("ADMIN");
+    }
+
+    public boolean isCliente() {
+        return this.tipo.trim().equals("CLIENTE");
     }
 
     @Override

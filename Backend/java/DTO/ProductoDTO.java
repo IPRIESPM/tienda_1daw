@@ -4,13 +4,14 @@
  */
 package DTO;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author isaac
  */
-public class ProductoDTO {
+public class ProductoDTO implements Serializable {
 
     int codigo;
     CategoriaDTO categoria;
@@ -28,6 +29,7 @@ public class ProductoDTO {
         this.precio = precio;
         this.stock = stock;
         this.imagen = imagen;
+
     }
 
     public int getCodigo() {

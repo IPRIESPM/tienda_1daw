@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package serveletTest;
+package servelets;
 
-import DAO.DireccionDAO;
-import DTO.DireccionDTO;
+import DAO.ProductoDAO;
+import DTO.PedidoDTO;
+import DTO.ProductoDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author isaac
  */
-public class verDirecciones extends HttpServlet {
+public class addCarrito extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,18 +35,25 @@ public class verDirecciones extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            List<DireccionDTO> direcciones = new DireccionDAO().getAll();
+            /* TODO output your page here. You may use following sample code. */
 
-            for (DireccionDTO direccion : direcciones) {
-                out.println(direccion.toString());
+            String options = request.getParameter("carrito");
+            if (options.equals("add") && request.getParameter("product") != null) {
+
+                PedidoDTO pedido = (PedidoDTO) request.getSession().getAttribute("carrito");
+
+                int codigo = Integer.parseInt(request.getParameter("product"));
+
+                ProductoDTO producto = new ProductoDAO().getByCodigo(codigo);
+
+                pedido.getProductos().put(producto, codigo);
+
+                request.getSession().setAttribute("carrito", pedido);
+
+                response.sendRedirect("./verProductos");
             }
-
-            request.setAttribute("direcciones", direcciones);
-
-            request.getRequestDispatcher("/direcciones.jsp").forward(request, response);
-
         } catch (SQLException ex) {
-            Logger.getLogger(verDirecciones.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(addCarrito.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

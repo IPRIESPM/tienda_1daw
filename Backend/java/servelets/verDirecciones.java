@@ -2,26 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package serveletTest;
+package servelets;
 
-import DAO.FacturaDAO;
-import DTO.FacturaDTO;
+import DAO.DireccionDAO;
+import DTO.DireccionDTO;
+import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.tiendaSesion;
 
 /**
  *
  * @author isaac
  */
-public class verFacturas extends HttpServlet {
+public class verDirecciones extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,17 +37,26 @@ public class verFacturas extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ArrayList<FacturaDTO> facturas = new FacturaDAO().getAll();
 
-            for (FacturaDTO factura : facturas) {
-                out.println(factura.toString());
+            Object sesion = request.getSession().getAttribute("usuario");
+            UsuarioDTO tiendaUsuario = tiendaSesion.usuario(sesion);
+
+            if (tiendaUsuario.getEmail() == null || !tiendaUsuario.isAdmin()) {
+                response.sendRedirect("index.jsp");
+            } else {
+
+                List<DireccionDTO> direcciones = new DireccionDAO().getAll();
+
+                for (DireccionDTO direccion : direcciones) {
+                    out.println(direccion.toString());
+                }
+
+                request.setAttribute("direcciones", direcciones);
+
+                request.getRequestDispatcher("/direcciones.jsp").forward(request, response);
             }
-
-            request.setAttribute("factura", facturas);
-
-            request.getRequestDispatcher("/facturas.jsp").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(verFacturas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(verDirecciones.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

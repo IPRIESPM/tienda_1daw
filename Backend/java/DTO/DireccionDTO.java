@@ -4,19 +4,23 @@
  */
 package DTO;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author isaac
  */
-public class DireccionDTO {
+public class DireccionDTO implements Serializable {
 
     int codigo;
     String direccion;
     int codigoPostal;
     String ciudad;
     String provincia;
+
+    public DireccionDTO() {
+    }
 
     public DireccionDTO(int codigo, String direccion, int codigoPostal, String ciudad, String provincia) {
         this.codigo = codigo;

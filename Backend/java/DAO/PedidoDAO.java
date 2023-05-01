@@ -7,6 +7,7 @@ package DAO;
 import DTO.PedidoDTO;
 import DTO.ProductoDTO;
 import DTO.UsuarioDTO;
+import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ import java.util.Map;
  *
  * @author Isaac
  */
-public class PedidoDAO extends TablaDAO<PedidoDTO> {
+public class PedidoDAO extends TablaDAO<PedidoDTO> implements Serializable {
 
     public PedidoDAO() {
         this.tabla = "TIENDA_PEDIDO";
@@ -40,7 +41,6 @@ public class PedidoDAO extends TablaDAO<PedidoDTO> {
         prepared.setString(4, p.getEstado());
         int resultado = prepared.executeUpdate();
         return resultado;
-
     }
 
     public PedidoDTO eliminar(PedidoDTO p) throws SQLException {

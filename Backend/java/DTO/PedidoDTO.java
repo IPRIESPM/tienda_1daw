@@ -4,21 +4,26 @@
  */
 package DTO;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
-import java.util.Objects;
+import java.util.Map;
 
 /**
  *
  * @author isaac
  */
-public class PedidoDTO {
+public class PedidoDTO implements Serializable {
 
     int codigo;
     UsuarioDTO usuario;
     LocalDateTime fecha;
     String estado;
     LinkedHashMap<ProductoDTO, Integer> productos;
+
+    public PedidoDTO() {
+        productos = new LinkedHashMap<ProductoDTO, Integer>();
+    }
 
     public PedidoDTO(int codigo, UsuarioDTO usuario, LocalDateTime fecha, String estado, LinkedHashMap<ProductoDTO, Integer> productos) {
         this.codigo = codigo;
@@ -68,11 +73,22 @@ public class PedidoDTO {
         this.productos = productos;
     }
 
+    public double getPrecioTotal() {
+        double total = 0;
+        for (Map.Entry<ProductoDTO, Integer> producto : productos.entrySet()) {
+
+            ProductoDTO key = producto.getKey();
+            int value = producto.getValue();
+
+            total += key.getPrecio() * value;
+        }
+        return total;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + this.codigo;
-        hash = 89 * hash + Objects.hashCode(this.usuario);
+        hash = 59 * hash + this.codigo;
         return hash;
     }
 
@@ -88,10 +104,12 @@ public class PedidoDTO {
             return false;
         }
         final PedidoDTO other = (PedidoDTO) obj;
-        if (this.codigo != other.codigo) {
-            return false;
-        }
-        return Objects.equals(this.usuario, other.usuario);
+        return this.codigo == other.codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "PedidoDTO{" + "codigo=" + codigo + ", usuario=" + usuario + ", fecha=" + fecha + ", estado=" + estado + ", productos=" + productos + '}';
     }
 
 }
