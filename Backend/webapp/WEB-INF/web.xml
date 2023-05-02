@@ -48,6 +48,14 @@
         <servlet-name>addCarrito</servlet-name>
         <servlet-class>servelets.addCarrito</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>showCategoryProducts</servlet-name>
+        <servlet-class>servelets.showCategoryProducts</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>categoryProducts</servlet-name>
+        <servlet-class>servelets.categoryProducts</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>addCarrito</servlet-name>
         <url-pattern>/addCarrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showCategoryProducts</servlet-name>
+        <url-pattern>/showCategoryProducts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>categoryProducts</servlet-name>
+        <url-pattern>/categoryProducts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

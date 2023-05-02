@@ -28,6 +28,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ver Carrito</title>
+        <%@ include file="/styles/style.jsp" %>
     </head>
     <body>
         <h1>Carrito</h1>

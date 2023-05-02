@@ -37,6 +37,16 @@ public class verProductos extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             List<ProductoDTO> productos = new ProductoDAO().getAll();
 
+            if (request.getParameter("product") != null) {
+
+                int idProduct = Integer.parseInt(request.getParameter("product"));
+                ProductoDTO product = new ProductoDAO().getByCodigo(idProduct);
+                request.setAttribute("product", product);
+
+                request.getRequestDispatcher("/fichaProducto.jsp").forward(request, response);
+                return;
+            }
+
             for (ProductoDTO producto : productos) {
                 out.println(producto.toString());
             }

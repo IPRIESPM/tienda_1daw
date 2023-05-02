@@ -22,22 +22,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <title>Tienda</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            body{
-                background-color: #626262;
-            }
-            a:link,
-            a:active,
-            a:visited{
-                color: white;
-            }
-        </style>
+        <%@ include file="/styles/style.jsp" %>
     </head>
     <body>
 
         <%
             if (usuario.getEmail() != null) {
-            out.println(usuario.getTipo());
+                out.println(usuario.getTipo());
                 if (usuario.isAdmin()) {
         %>
         <div>
@@ -47,20 +38,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <div>
             <a href="./verUsuarios">Ver usuarios</a>
         </div>
+            <div>
+            <a href="./verFacturas">Ver Facturas</a>
+        </div>
         <%
-                }
+            }
         %>
-        
+
         <div>
             <a href="./carrito?carrito=ver">Ver carrito</a>
-        </div>
-
-        <div>
-            <a href="./verCategorias">Ver categorias</a>
-        </div>
-
-        <div>
-            <a href="./verProductos">Ver Productos</a>
         </div>
 
         <div>
@@ -70,6 +56,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <%
         } else {
         %>
+
         <div>
             <a href="./loggin.jsp">Iniciar sesión</a>
         </div>
@@ -77,6 +64,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <%
             }
         %>
+        <div>
+            <a href="./verCategorias">Ver categorias</a>
+        </div>
 
+        <div>
+            <a href="./verProductos">Ver Productos</a>
+        </div>
     </body>
 </html>

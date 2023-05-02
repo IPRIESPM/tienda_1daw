@@ -51,6 +51,7 @@ public class addCarrito extends HttpServlet {
                 request.getSession().setAttribute("carrito", pedido);
 
                 response.sendRedirect("./verProductos");
+                return;
             }
         } catch (SQLException ex) {
             Logger.getLogger(addCarrito.class.getName()).log(Level.SEVERE, null, ex);

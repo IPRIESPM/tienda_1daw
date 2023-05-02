@@ -26,6 +26,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listado de facturas</title>
+        <%@ include file="/styles/style.jsp" %>
     </head>
     <body>
         <h1>Listado de facturas</h1>
@@ -39,8 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                <%                    
-                    for (FacturaDTO factura : facturas) {
+                <%                    for (FacturaDTO factura : facturas) {
                 %>
                 <tr>
                     <td><%= factura.getCodigo()%></td>

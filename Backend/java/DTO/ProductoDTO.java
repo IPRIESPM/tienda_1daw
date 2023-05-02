@@ -21,6 +21,10 @@ public class ProductoDTO implements Serializable {
     int stock;
     String imagen;
 
+    public ProductoDTO() {
+
+    }
+
     public ProductoDTO(int codigo, CategoriaDTO categoria, String nombre, String descripccion, double precio, int stock, String imagen) {
         this.codigo = codigo;
         this.categoria = categoria;

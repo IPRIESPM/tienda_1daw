@@ -27,7 +27,7 @@ public class UsuarioDTO implements Serializable {
     DireccionDTO direccion;
 
     public UsuarioDTO() {
-
+        this.tipo = "GUEST";
         this.direccion = new DireccionDTO();
     }
 

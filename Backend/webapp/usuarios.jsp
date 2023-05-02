@@ -25,6 +25,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listado de usuarios</title>
+        <%@ include file="/styles/style.jsp" %>
     </head>
     <body>
         <h1>Listado de usuarios</h1>

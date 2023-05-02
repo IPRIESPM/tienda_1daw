@@ -99,10 +99,10 @@ Base de datos basada en oracle [Documentación base de datos](https://github.com
 * Cerrar sesión
 * Distintas vistas dependiendo del tipo de usuario
 * Vista de artículos dinámica
-* Vista de artículo individual -
+* Vista de artículo individual
 * Vista de pedidos
 * Vista de facturas -
-* Filtros de categorías -
+* Filtros de categorías
 * Carrito
 
 ### OPCIONALES

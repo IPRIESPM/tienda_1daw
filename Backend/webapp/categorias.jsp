@@ -28,6 +28,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listado de categorias</title>
+        <%@ include file="/styles/style.jsp" %>
     </head>
     <body>
         <h1>Listado de Categorias</h1>
@@ -39,12 +40,13 @@
                 </tr>
             </thead>
             <tbody>
-                <%
+                <%                    
                     for (CategoriaDTO categoria : categorias) {
                 %>
                 <tr>
                     <td><%= categoria.getCodigo()%></td>
                     <td><%= categoria.getNombre()%></td>
+                    <td><a href="./categoryProducts?category=<%=categoria.getCodigo()%>">Ver productos</a></td>
                 </tr>
                 <%
                     }

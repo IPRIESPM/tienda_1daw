@@ -4,25 +4,26 @@
  */
 package servelets;
 
-import DAO.UsuarioDAO;
-import DTO.UsuarioDTO;
+import DAO.CategoriaDAO;
+import DAO.ProductoDAO;
+import DTO.CategoriaDTO;
+import DTO.ProductoDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.tiendaSesion;
 
 /**
  *
  * @author isaac
  */
-public class verUsuarios extends HttpServlet {
+public class categoryProducts extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,25 +38,13 @@ public class verUsuarios extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            Object sesion = request.getSession().getAttribute("usuario");
-            UsuarioDTO tiendaUsuario = tiendaSesion.usuario(sesion);
-
-            if (tiendaUsuario.getEmail() == null || !tiendaUsuario.isAdmin()) {
-                response.sendRedirect("index.jsp");
-            } else {
-
-                List<UsuarioDTO> usuarios = new UsuarioDAO().getAll();
-
-                for (UsuarioDTO usuario : usuarios) {
-                    out.println(usuario.toString());
-                }
-
-                request.setAttribute("usuarios", usuarios);
-                request.getRequestDispatcher("/productos.jsp").forward(request, response);
-            }
-
+            int idCategory = request.getParameter("category") == null ? 1 : Integer.parseInt(request.getParameter("category"));
+            CategoriaDTO category = new CategoriaDAO().getByCodigo(idCategory);
+            ArrayList<ProductoDTO> products = new ProductoDAO().getAllByCategory(category);
+            request.setAttribute("productos", products);
+            request.getRequestDispatcher("/productos.jsp").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(verUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(categoryProducts.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
