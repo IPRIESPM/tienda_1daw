@@ -63,10 +63,10 @@ CREATE TABLE TIENDA_FACTURA (
 );
 
 
-drop table tienda_categorias_productos;
-drop table tienda_Categorias;
-drop table tienda_pedidos_tienen_productos;
-drop table tienda_productos;
-drop table tienda_pedidos_facturados;
-drop table tienda_direccion;
+drop table tienda_Factura;
+drop table pedido_producto;
+drop table tienda_producto;
+drop table tienda_Categoria;
+drop table tienda_pedido;
 drop table tienda_usuario;
+drop table tienda_direccion;
