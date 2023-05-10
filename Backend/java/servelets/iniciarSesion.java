@@ -10,6 +10,7 @@ import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -43,7 +44,13 @@ public class iniciarSesion extends HttpServlet {
             if (usuarioIdentificado.getEmail() == null) {
                 request.setAttribute("error", "Usuario/contraseña incorrectos");
                 request.getRequestDispatcher("./loggin.jsp").forward(request, response);
-            } else if (usuarioIdentificado.isCliente()) {
+            } else {
+                usuarioIdentificado.setUltimaConexion(LocalDateTime.now());
+                System.out.println(usuarioIdentificado.getUltimaConexion());
+                new UsuarioDAO().actualizar(usuarioIdentificado);
+            }
+
+            if (usuarioIdentificado.isCliente()) {
                 request.getSession().setAttribute("carrito", new PedidoDTO());
             }
 

@@ -4,13 +4,15 @@
  */
 package servelets;
 
-import DAO.DireccionDAO;
-import DTO.DireccionDTO;
+import DAO.FacturaDAO;
+import DAO.PedidoDAO;
+import DTO.FacturaDTO;
+import DTO.PedidoDTO;
 import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,7 +25,7 @@ import utils.tiendaSesion;
  *
  * @author isaac
  */
-public class verDirecciones extends HttpServlet {
+public class addInvoice extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,26 +39,24 @@ public class verDirecciones extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            Object sesionUsuario = request.getSession().getAttribute("usuario");
+            Object sesionCarrito = request.getSession().getAttribute("carrito");
 
-            Object sesion = request.getSession().getAttribute("usuario");
-            UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(sesion);
+            UsuarioDTO usuario = tiendaSesion.checkUsuario(sesionUsuario);
+            PedidoDTO carrito = tiendaSesion.checkCarrito(sesionCarrito);
 
-            if (tiendaUsuario.getEmail() == null || !tiendaUsuario.isAdmin()) {
-                response.sendRedirect("index.jsp");
-            } else {
+            if (!usuario.isGuest()) {
+                if (request.getParameter("invoice") != null && new PedidoDAO().existe(Integer.parseInt(request.getParameter("invoice")))) {
 
-                List<DireccionDTO> direcciones = new DireccionDAO().getAll();
+                    PedidoDTO pedido = new PedidoDAO().getByCodigo(Integer.parseInt(request.getParameter("invoice")));
 
-                for (DireccionDTO direccion : direcciones) {
-                    out.println(direccion.toString());
+                    FacturaDTO factura = new FacturaDTO(0, pedido, LocalDateTime.now());
+                    new FacturaDAO().anyadir(factura);
                 }
-
-                request.setAttribute("direcciones", direcciones);
-
-                request.getRequestDispatcher("/direcciones.jsp").forward(request, response);
             }
+
         } catch (SQLException ex) {
-            Logger.getLogger(verDirecciones.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(addInvoice.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

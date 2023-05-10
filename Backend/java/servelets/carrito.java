@@ -4,9 +4,12 @@
  */
 package servelets;
 
+import DTO.PedidoDTO;
+import DTO.ProductoDTO;
 import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedHashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,15 +35,51 @@ public class carrito extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            Object sesion = request.getSession().getAttribute("usuario");
-            UsuarioDTO tiendaUsuario = tiendaSesion.usuario(sesion);
-            if (tiendaUsuario.getEmail() == null || tiendaUsuario.isAdmin()) {
+            Object usuario = request.getSession().getAttribute("usuario");
+            Object carrito = request.getSession().getAttribute("carrito");
+            UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(usuario);
+            PedidoDTO tiendaCarrito = tiendaSesion.checkCarrito(carrito);
+            if (tiendaUsuario.isAdmin()) {
                 response.sendRedirect("index.jsp");
             } else {
 
                 String options = request.getParameter("carrito");
+                int line = request.getParameter("line") != null ? Integer.parseInt(request.getParameter("line")) : 0;
 
                 if (options.equals("ver")) {
+                    response.sendRedirect("verCarrito.jsp");
+                    return;
+                }
+
+                if (options.equals("del")) {
+
+                    LinkedHashMap viejoCarrito = tiendaCarrito.getProductos();
+
+                    ProductoDTO productoEliminar = new ProductoDTO(line);
+
+                    viejoCarrito.remove(productoEliminar);
+
+                    tiendaCarrito.setProductos(viejoCarrito);
+                    request.getSession().setAttribute("carrito", tiendaCarrito);
+
+                    response.sendRedirect("verCarrito.jsp");
+                    return;
+
+                }
+
+                if (options.equals("mod")) {
+                    out.println((String) request.getParameter("line"));
+                    out.println((String) request.getParameter("value"));
+
+                    int value = Integer.parseInt(request.getParameter("value"));
+
+                    LinkedHashMap viejoCarrito = tiendaCarrito.getProductos();
+
+                    ProductoDTO key = new ProductoDTO(line);
+
+                    viejoCarrito.replace(key, value);
+                    tiendaCarrito.setProductos(viejoCarrito);
+                    request.getSession().setAttribute("carrito", tiendaCarrito);
                     response.sendRedirect("verCarrito.jsp");
                     return;
                 }

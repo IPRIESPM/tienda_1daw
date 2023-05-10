@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servelets;
 
 import DAO.ProductoDAO;
@@ -35,6 +31,7 @@ public class verProductos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+
             List<ProductoDTO> productos = new ProductoDAO().getAll();
 
             if (request.getParameter("product") != null) {
@@ -45,6 +42,10 @@ public class verProductos extends HttpServlet {
 
                 request.getRequestDispatcher("/fichaProducto.jsp").forward(request, response);
                 return;
+            }
+            if (request.getParameter("buscar") != null) {
+                String productName = request.getParameter("buscar");
+                productos = new ProductoDAO().searchProduct(productName);
             }
 
             for (ProductoDTO producto : productos) {

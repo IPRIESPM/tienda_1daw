@@ -27,6 +27,25 @@ public class PedidoDAO extends TablaDAO<PedidoDTO> implements Serializable {
         this.tabla = "TIENDA_PEDIDO";
     }
 
+    public ArrayList<PedidoDTO> getByUser(UsuarioDTO user) throws SQLException {
+        int userCode = user.getCodigo();
+        ArrayList<PedidoDTO> lista = new ArrayList<>();
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo_usuario=?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, userCode);
+        ResultSet resultSet = prepared.executeQuery();
+
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
+            String estado = resultSet.getString("estado");
+            LinkedHashMap<ProductoDTO, Integer> productos = new PedidoDAO().getLineas(codigo);
+            lista.add(new PedidoDTO(codigo, user, fecha, estado, productos));
+        }
+
+        return lista;
+    }
+
     public int actualizar(PedidoDAO p) throws SQLException {
         //No necesario para el proyecto
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -34,12 +53,18 @@ public class PedidoDAO extends TablaDAO<PedidoDTO> implements Serializable {
 
     public int anyadir(PedidoDTO p) throws SQLException {
         String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?)";
+
+        // añadir una nueva función que nos de la ultima id
+        // SELECT * from TIENDA_PEDIDO order by codigo DESC
+        p.setCodigo(this.siguienteCodigo());
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, p.getCodigo());
+        prepared.setInt(1, p.getCodigo()); //funct() ultima id +1
         prepared.setInt(2, p.getUsuario().getCodigo());
         prepared.setTimestamp(3, Timestamp.valueOf(p.getFecha()));
         prepared.setString(4, p.getEstado());
         int resultado = prepared.executeUpdate();
+
+        anyadirLineas(p);
         return resultado;
     }
 
@@ -91,12 +116,12 @@ public class PedidoDAO extends TablaDAO<PedidoDTO> implements Serializable {
     public LinkedHashMap<ProductoDTO, Integer> getLineas(int codPedido) throws SQLException {
 
         LinkedHashMap<ProductoDTO, Integer> lineas = new LinkedHashMap<>();
-        String sentenciaSQL = "SELECT producto, cantidad FROM PEDIDO_PRODUCTO WHERE codigo_pedido = ?";
+        String sentenciaSQL = "SELECT * FROM PEDIDO_PRODUCTO WHERE codigo_pedido = ?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codPedido);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            ProductoDTO producto = new ProductoDAO().getByCodigo(resultSet.getInt("producto"));
+            ProductoDTO producto = new ProductoDAO().getByCodigo(resultSet.getInt("codigo_producto"));
             int cantidad = resultSet.getInt("cantidad");
             lineas.put(producto, cantidad);
         }

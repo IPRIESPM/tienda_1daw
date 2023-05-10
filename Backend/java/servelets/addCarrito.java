@@ -4,6 +4,7 @@
  */
 package servelets;
 
+import DAO.PedidoDAO;
 import DAO.ProductoDAO;
 import DTO.PedidoDTO;
 import DTO.ProductoDTO;
@@ -35,8 +36,6 @@ public class addCarrito extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-
             String options = request.getParameter("carrito");
             if (options.equals("add") && request.getParameter("product") != null) {
 
@@ -46,13 +45,20 @@ public class addCarrito extends HttpServlet {
 
                 ProductoDTO producto = new ProductoDAO().getByCodigo(codigo);
 
-                pedido.getProductos().put(producto, codigo);
+                pedido.addLines(producto);
 
                 request.getSession().setAttribute("carrito", pedido);
 
                 response.sendRedirect("./verProductos");
                 return;
             }
+
+            if (options.equals("makeOrder")) {
+                PedidoDTO newOrder = (PedidoDTO) request.getSession().getAttribute("carrito");
+                new PedidoDAO().anyadir(newOrder);
+
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(addCarrito.class.getName()).log(Level.SEVERE, null, ex);
         }

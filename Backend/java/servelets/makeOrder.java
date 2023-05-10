@@ -4,13 +4,13 @@
  */
 package servelets;
 
-import DAO.DireccionDAO;
-import DTO.DireccionDTO;
+import DAO.PedidoDAO;
+import DTO.PedidoDTO;
 import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,7 +23,7 @@ import utils.tiendaSesion;
  *
  * @author isaac
  */
-public class verDirecciones extends HttpServlet {
+public class makeOrder extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,25 +38,27 @@ public class verDirecciones extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            Object sesion = request.getSession().getAttribute("usuario");
-            UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(sesion);
+            Object sesionUsuario = request.getSession().getAttribute("usuario");
+            Object sesionCarrito = request.getSession().getAttribute("carrito");
 
-            if (tiendaUsuario.getEmail() == null || !tiendaUsuario.isAdmin()) {
-                response.sendRedirect("index.jsp");
-            } else {
+            UsuarioDTO usuario = tiendaSesion.checkUsuario(sesionUsuario);
+            PedidoDTO carrito = tiendaSesion.checkCarrito(sesionCarrito);
 
-                List<DireccionDTO> direcciones = new DireccionDAO().getAll();
+            if (!usuario.isGuest()) {
 
-                for (DireccionDTO direccion : direcciones) {
-                    out.println(direccion.toString());
-                }
+                carrito.setUsuario(usuario);
+                carrito.setFecha(LocalDateTime.now());
+                carrito.setEstado("EN PROCESO");
+                int result = new PedidoDAO().anyadir(carrito);
 
-                request.setAttribute("direcciones", direcciones);
+                request.getSession().setAttribute("carrito", new PedidoDTO());
 
-                request.getRequestDispatcher("/direcciones.jsp").forward(request, response);
+                response.sendRedirect("./verPedidos");
+                return;
+
             }
         } catch (SQLException ex) {
-            Logger.getLogger(verDirecciones.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(makeOrder.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

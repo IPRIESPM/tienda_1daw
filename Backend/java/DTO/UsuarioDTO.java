@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTO;
 
 import java.io.Serializable;
@@ -29,6 +25,21 @@ public class UsuarioDTO implements Serializable {
     public UsuarioDTO() {
         this.tipo = "GUEST";
         this.direccion = new DireccionDTO();
+    }
+
+    public UsuarioDTO(UsuarioDTO usuario) {
+        this.codigo = usuario.getCodigo();
+        this.nombre = usuario.getNombre();
+        this.apellido = usuario.apellido;
+        this.contrasenya = usuario.contrasenya;
+        this.ultimaConexion = ultimaConexion;
+        this.telefono = telefono;
+        this.fechaNacimiento = fechaNacimiento;
+        this.email = email;
+        this.foto = foto;
+        this.tipo = tipo;
+        this.direccion = direccion;
+
     }
 
     public UsuarioDTO(int codigo, String email, String nombre, String apellido, String contrasenya, LocalDateTime ultimaConexion, String telefono, LocalDateTime fechaNacimiento, String foto, DireccionDTO direccion, String tipo) {
@@ -139,6 +150,10 @@ public class UsuarioDTO implements Serializable {
 
     public boolean isCliente() {
         return this.tipo.trim().equals("CLIENTE");
+    }
+
+    public boolean isGuest() {
+        return this.tipo.trim().equals("GUEST");
     }
 
     @Override

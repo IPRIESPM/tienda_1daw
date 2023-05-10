@@ -70,3 +70,7 @@ drop table tienda_productos;
 drop table tienda_pedidos_facturados;
 drop table tienda_direccion;
 drop table tienda_usuario;
+
+
+-- CREATE SEQUENCE dept_seq START WITH 1;
+-- ID  NUMBER(10) DEFAULT dept_seq.nextval NOT NULL

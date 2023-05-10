@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import DTO.CategoriaDTO;
@@ -20,7 +16,7 @@ public class ProductoDAO extends TablaDAO<ProductoDTO> implements Serializable {
 
     private static String tablaCodigo = "codigo";
     private static String tablaCategoria = "codigo_categoria";
-    private static String tablaNombre = "nombre";
+    private static String tablaNombre = "NOMBRE";
     private static String tablaDescripccion = "descripccion";
     private static String tablaPrecio = "precio";
     private static String tablaStock = "stock";
@@ -28,6 +24,29 @@ public class ProductoDAO extends TablaDAO<ProductoDTO> implements Serializable {
 
     public ProductoDAO() {
         this.tabla = "TIENDA_PRODUCTO";
+    }
+
+    public ArrayList<ProductoDTO> searchProduct(String productName) throws SQLException {
+        ArrayList<ProductoDTO> lista = new ArrayList<>();
+        // productName = '%' + productName + '%';
+
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE " + tablaNombre + " LIKE ? ";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+
+        prepared.setString(1, productName);
+
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            CategoriaDTO categoria = new CategoriaDAO().getByCodigo(resultSet.getInt("categoria"));
+            String nombre = resultSet.getString("nombre");
+            String descripcion = resultSet.getString("descripcion");
+            double precio = resultSet.getDouble("precio");
+            int stock = resultSet.getInt("stock");
+            String imagen = resultSet.getString("imagen");
+            lista.add(new ProductoDTO(codigo, categoria, nombre, descripcion, precio, stock, imagen));
+        }
+        return lista;
     }
 
     public ArrayList<ProductoDTO> getAllByCategory(CategoriaDTO categoria) throws SQLException {

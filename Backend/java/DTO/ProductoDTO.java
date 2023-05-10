@@ -5,7 +5,6 @@
 package DTO;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
@@ -23,6 +22,10 @@ public class ProductoDTO implements Serializable {
 
     public ProductoDTO() {
 
+    }
+
+    public ProductoDTO(int codigo) {
+        this.codigo = codigo;
     }
 
     public ProductoDTO(int codigo, CategoriaDTO categoria, String nombre, String descripccion, double precio, int stock, String imagen) {
@@ -94,8 +97,8 @@ public class ProductoDTO implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.nombre);
+        int hash = 7;
+        hash = 71 * hash + this.codigo;
         return hash;
     }
 
@@ -111,7 +114,7 @@ public class ProductoDTO implements Serializable {
             return false;
         }
         final ProductoDTO other = (ProductoDTO) obj;
-        return Objects.equals(this.nombre, other.nombre);
+        return this.codigo == other.codigo;
     }
 
     @Override

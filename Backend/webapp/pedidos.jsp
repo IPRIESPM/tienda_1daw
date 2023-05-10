@@ -4,6 +4,7 @@
     Author     : isaac
 --%>
 
+<%@page import="DTO.PedidoDTO"%>
 <%@page import="DTO.FacturaDTO"%>
 <%@page import="DTO.UsuarioDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,44 +12,44 @@
 <%@page import="DTO.DireccionDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-
-    List<FacturaDTO> facturas;
-    if (request.getAttribute("facturas") == null) {
-        facturas = new ArrayList<>();
-    } else {
-        facturas = (ArrayList<FacturaDTO>) request.getAttribute("facturas");
-    }
-
+    UsuarioDTO usuario = (UsuarioDTO) session.getAttribute("usuario");
+    List<PedidoDTO> pedidos = (ArrayList<PedidoDTO>) request.getAttribute("pedidos");
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listado de facturas</title>
+        <title>Listado de pedidos</title>
         <%@ include file="/styles/style.jsp" %>
     </head>
     <body>
-        <h1>Listado de facturas</h1>
+        <h1>Listado de Pedidos</h1>
         <table>
             <thead>
                 <tr>
                     <td>Codigo</td>
+                    <td>Usuario</td>
                     <td>Fecha</td>
-                    <td>Pedido</td>
-                    
+                    <td>Estado</td>
                 </tr>
             </thead>
             <tbody>
                 <% 
                    
-                    for (FacturaDTO factura : facturas) {
+                    for (PedidoDTO pedido : pedidos) {
                 %>
                 <tr>
-                    <td><%= factura.getCodigo()%></td>
-                    <td><%= factura.getFecha()%></td>
-                    <td><%= factura.getPedido()%></td>
-                    <td><a href="#">XML</a></td>
-                    <td><a href="#">PDF</a></td>
+                    <td><%= pedido.getCodigo()%></td>
+                    <td><%= pedido.getUsuario()%></td>
+                    <td><%= pedido.getFecha()%></td>
+                    <td><%= pedido.getEstado()%></td>
+                   <%
+                       if(usuario.isCliente()){
+                   %>
+                   <td><a href="./addInvoice?invoice=<%= pedido.getCodigo()%>">Facturar</a></td>
+                   <% 
+                       }
+                   %>
                 </tr>
                 <%
                     }

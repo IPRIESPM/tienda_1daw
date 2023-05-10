@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import DTO.FacturaDTO;
@@ -23,6 +19,28 @@ public class FacturaDAO extends TablaDAO<FacturaDTO> {
         this.tabla = "TIENDA_FACTURA";
     }
 
+    public ArrayList<FacturaDTO> getByUser(int user_code) throws SQLException {
+        ArrayList<FacturaDTO> lista = new ArrayList<>();
+        String sentenciaSQL = "SELECT * "
+                + "FROM TIENDA_FACTURA F "
+                + "LEFT JOIN TIENDA_PEDIDO P ON P.CODIGO = F.CODIGO_PEDIDO "
+                + "LEFT JOIN TIENDA_USUARIO U ON U.CODIGO = P.CODIGO_USUARIO "
+                + "WHERE U.CODIGO = ? ";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, user_code);
+        ResultSet resultSet = prepared.executeQuery();
+
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            PedidoDTO pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("codigo_pedido"));
+            LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
+            lista.add(new FacturaDTO(codigo, pedidoAsociado, fecha));
+        }
+
+        return lista;
+    }
+
+    // Select * from tienda_facturas f JOIN TIENDA_USUARIOS u ON f.codigo = u.codigo WHERE u.nombre = '';
     @Override
     public int actualizar(FacturaDTO f) throws SQLException {
         //No necesario para el proyecto
@@ -33,7 +51,7 @@ public class FacturaDAO extends TablaDAO<FacturaDTO> {
     public int anyadir(FacturaDTO f) throws SQLException {
         String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, f.getCodigo());
+        prepared.setInt(1, this.siguienteCodigo());
         prepared.setInt(2, f.getPedido().getCodigo());
 
         prepared.setTimestamp(3, Timestamp.valueOf(f.getFecha()));
@@ -78,7 +96,7 @@ public class FacturaDAO extends TablaDAO<FacturaDTO> {
         prepared.setInt(1, codigo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            PedidoDTO pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("pedido"));
+            PedidoDTO pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("codigo_pedido"));
             LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
             return new FacturaDTO(codigo, pedidoAsociado, fecha);
         }

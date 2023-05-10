@@ -39,22 +39,26 @@ public class verFacturas extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             Object sesion = request.getSession().getAttribute("usuario");
-            UsuarioDTO tiendaUsuario = tiendaSesion.usuario(sesion);
+            UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(sesion);
+            ArrayList<FacturaDTO> facturas = new ArrayList<>();
 
             if (tiendaUsuario.getEmail() == null) {
                 response.sendRedirect("index.jsp");
+            } else if (tiendaUsuario.isCliente()) {
+                facturas = new FacturaDAO().getByUser(tiendaUsuario.getCodigo());
             } else {
 
-                ArrayList<FacturaDTO> facturas = new FacturaDAO().getAll();
-
-                for (FacturaDTO factura : facturas) {
-                    out.println(factura.toString());
-                }
-
-                request.setAttribute("factura", facturas);
-
-                request.getRequestDispatcher("/facturas.jsp").forward(request, response);
+                facturas = new FacturaDAO().getAll();
             }
+
+            for (FacturaDTO factura : facturas) {
+                out.println(factura.toString());
+            }
+
+            request.setAttribute("facturas", facturas);
+
+            request.getRequestDispatcher("/facturas.jsp").forward(request, response);
+
         } catch (SQLException ex) {
             Logger.getLogger(verFacturas.class.getName()).log(Level.SEVERE, null, ex);
         }

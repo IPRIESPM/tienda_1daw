@@ -56,6 +56,18 @@
         <servlet-name>categoryProducts</servlet-name>
         <servlet-class>servelets.categoryProducts</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>verPedidos</servlet-name>
+        <servlet-class>servelets.verPedidos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>makeOrder</servlet-name>
+        <servlet-class>servelets.makeOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addInvoice</servlet-name>
+        <servlet-class>servelets.addInvoice</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
@@ -111,6 +123,18 @@
     <servlet-mapping>
         <servlet-name>categoryProducts</servlet-name>
         <url-pattern>/categoryProducts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>verPedidos</servlet-name>
+        <url-pattern>/verPedidos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>makeOrder</servlet-name>
+        <url-pattern>/makeOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addInvoice</servlet-name>
+        <url-pattern>/addInvoice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

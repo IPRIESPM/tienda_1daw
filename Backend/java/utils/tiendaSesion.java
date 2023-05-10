@@ -1,6 +1,9 @@
 package utils;
 
+import DTO.PedidoDTO;
 import DTO.UsuarioDTO;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  *
@@ -10,11 +13,19 @@ import DTO.UsuarioDTO;
 public class tiendaSesion {
 
     // Albustriick
-    public static UsuarioDTO usuario(Object session) {
-        UsuarioDTO usuario = session == null ? new UsuarioDTO() : (UsuarioDTO) session;
+    // Usuario
+    public static UsuarioDTO checkUsuario(Object session) {
 
+        Supplier<UsuarioDTO> generarUsuario = UsuarioDTO::new;
+        Function<UsuarioDTO, UsuarioDTO> generarUsuario2 = UsuarioDTO::new;
+        UsuarioDTO usuario = session == null ? generarUsuario.get() : generarUsuario2.apply((UsuarioDTO) session);
         return usuario;
     }
 
-    // carrito
+    // Carrito
+    public static PedidoDTO checkCarrito(Object session) {
+        PedidoDTO pedido = session == null ? new PedidoDTO() : (PedidoDTO) session;
+        return pedido;
+    }
+
 }

@@ -1,16 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servelets;
 
-import DAO.DireccionDAO;
-import DTO.DireccionDTO;
+import DAO.PedidoDAO;
+import DTO.PedidoDTO;
 import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,7 +19,7 @@ import utils.tiendaSesion;
  *
  * @author isaac
  */
-public class verDirecciones extends HttpServlet {
+public class verPedidos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,26 +33,25 @@ public class verDirecciones extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
 
             Object sesion = request.getSession().getAttribute("usuario");
             UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(sesion);
+            ArrayList<PedidoDTO> pedidos = new ArrayList<>();
 
-            if (tiendaUsuario.getEmail() == null || !tiendaUsuario.isAdmin()) {
+            if (tiendaUsuario.getEmail() == null) {
                 response.sendRedirect("index.jsp");
+            } else if (tiendaUsuario.isCliente()) {
+                pedidos = new PedidoDAO().getByUser(tiendaUsuario);
             } else {
-
-                List<DireccionDTO> direcciones = new DireccionDAO().getAll();
-
-                for (DireccionDTO direccion : direcciones) {
-                    out.println(direccion.toString());
-                }
-
-                request.setAttribute("direcciones", direcciones);
-
-                request.getRequestDispatcher("/direcciones.jsp").forward(request, response);
+                pedidos = new PedidoDAO().getAll();
             }
+
+            request.setAttribute("pedidos", pedidos);
+
+            request.getRequestDispatcher("/pedidos.jsp").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(verDirecciones.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(verPedidos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

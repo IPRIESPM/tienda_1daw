@@ -4,6 +4,7 @@
     Author     : isaac
 --%>
 
+<%@page import="DTO.UsuarioDTO"%>
 <%@page import="DTO.PedidoDTO"%>
 <%@page import="java.lang.Integer"%>
 <%@page import="java.util.Map"%>
@@ -13,15 +14,14 @@
 
 <%
     PedidoDTO carrito = new PedidoDTO();
-        
-    
-    if(session.getAttribute("carrito") != null){
+
+    UsuarioDTO usuario = (UsuarioDTO) session.getAttribute("usuario");
+    if (session.getAttribute("carrito") != null) {
         System.out.println(session.getAttribute("carrito"));
         carrito = (PedidoDTO) session.getAttribute("carrito");
     }
-            
-    
-    LinkedHashMap<ProductoDTO,Integer > productos = carrito.getProductos();
+
+    LinkedHashMap<ProductoDTO, Integer> productos = carrito.getProductos();
 %>
 <!DOCTYPE html>
 <html>
@@ -35,22 +35,40 @@
         <table>
             <thead>
                 <tr>
-                    <td>Linea</td>
                     <td>Producto</td>
+                    <td>Cantidad</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
                 <%
-                    for (Map.Entry<ProductoDTO,Integer > producto : productos.entrySet()) {
+                    for (Map.Entry<ProductoDTO, Integer> producto : productos.entrySet()) {
                         ProductoDTO key = producto.getKey();
                         int value = producto.getValue();
                 %> 
                 <tr>
-                    <td><%= key %></td> <td><%= value %></td>
-                </tr>
-                
-                <%
-                    }
-                %>
-                </body>
-                </html>
+                    <td><%= key%></td> 
+                    <td> <%= value%>
+                        <form action="./carrito" method="get">
+                            <input type="hidden" name="carrito" value="mod">
+                            <input type="hidden" name="line"  value="<%= key.getCodigo()%>">
+                            <input type="number" name="value" value="<%= value%>">  
+                            <input type="submit" value="Guardar"> 
+                        </form>
+                    </td> 
+                    <td> <a href="./carrito?carrito=del&line=<%= key.getCodigo()%>">Eliminar<a></td>
+                                </tr>
+
+                                <%
+                                    }
+                                %>
+                                <%
+                                    if (productos.size() > 0) {
+                                %> 
+                                <a href='./makeOrder'>Crear pedido</a>
+                                <%
+                                    }
+                                %>
+
+                                </body>
+                                </html>

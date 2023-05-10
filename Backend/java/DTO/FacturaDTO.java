@@ -17,6 +17,11 @@ public class FacturaDTO implements Serializable {
     PedidoDTO pedido;
     LocalDateTime fecha;
 
+    public FacturaDTO() {
+        this.pedido = new PedidoDTO();
+
+    }
+
     public FacturaDTO(int codigo, PedidoDTO pedido, LocalDateTime fecha) {
         this.codigo = codigo;
         this.pedido = pedido;

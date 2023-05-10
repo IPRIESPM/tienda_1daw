@@ -13,10 +13,7 @@
     UsuarioDTO usuario = session.getAttribute("usuario") != null ? (UsuarioDTO) session.getAttribute("usuario") : new UsuarioDTO();
 %>
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
+
 <html>
     <head>
         <title>Tienda</title>
@@ -27,9 +24,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <body>
 
         <%
-            if (usuario.getEmail() != null) {
-                out.println(usuario.getTipo());
-                if (usuario.isAdmin()) {
+            if (!usuario.isGuest()) {
+                out.println(usuario.getTipo() + " última conexión: " + usuario.getUltimaConexion());
+        %>
+        <div>
+            <a href="./cerrarSesion">Cerrar Sesión</a>
+        </div>
+        <div>
+            <a href="./verFacturas">Ver Facturas</a>
+        </div>
+        <div>
+            <a href="./verPedidos">Ver Pedidos</a>
+        </div>
+        <%
+            if (usuario.isAdmin()) {
         %>
         <div>
             <a href="./verDirecciones">Ver Direcciones</a>
@@ -38,20 +46,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <div>
             <a href="./verUsuarios">Ver usuarios</a>
         </div>
-            <div>
-            <a href="./verFacturas">Ver Facturas</a>
-        </div>
         <%
-            }
+        } else {
         %>
 
         <div>
             <a href="./carrito?carrito=ver">Ver carrito</a>
         </div>
 
-        <div>
-            <a href="./cerrarSesion">Cerrar Sesión</a>
-        </div>
+        <%
+            }
+        %>
 
         <%
         } else {
@@ -64,6 +69,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <%
             }
         %>
+
         <div>
             <a href="./verCategorias">Ver categorias</a>
         </div>
@@ -71,5 +77,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <div>
             <a href="./verProductos">Ver Productos</a>
         </div>
+        <form name="buscarProductos" action="verProductos">
+            <label for="search">Buscar Producto</label>
+            <input type="search" id="search" name="buscar" placeholder="Ej: Plort rosa" required>
+            <input type="submit" value="buscar">
+        </form>
+
     </body>
 </html>

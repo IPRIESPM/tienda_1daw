@@ -38,9 +38,9 @@ public class verUsuarios extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             Object sesion = request.getSession().getAttribute("usuario");
-            UsuarioDTO tiendaUsuario = tiendaSesion.usuario(sesion);
+            UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(sesion);
 
-            if (tiendaUsuario.getEmail() == null || !tiendaUsuario.isAdmin()) {
+            if (!tiendaUsuario.isAdmin()) {
                 response.sendRedirect("index.jsp");
             } else {
 
@@ -51,7 +51,7 @@ public class verUsuarios extends HttpServlet {
                 }
 
                 request.setAttribute("usuarios", usuarios);
-                request.getRequestDispatcher("/productos.jsp").forward(request, response);
+                request.getRequestDispatcher("/usuarios.jsp").forward(request, response);
             }
 
         } catch (SQLException ex) {

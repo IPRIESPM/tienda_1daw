@@ -69,6 +69,18 @@ public class PedidoDTO implements Serializable {
         return productos;
     }
 
+    public LinkedHashMap<ProductoDTO, Integer> addLines(ProductoDTO product) {
+        if (this.productos.containsKey(product)) {
+
+            int quantity = this.productos.get(product) + 1;
+            this.productos.replace(product, quantity);
+        } else {
+            this.productos.put(product, 1);
+        }
+
+        return this.productos;
+    }
+
     public void setProductos(LinkedHashMap<ProductoDTO, Integer> productos) {
         this.productos = productos;
     }

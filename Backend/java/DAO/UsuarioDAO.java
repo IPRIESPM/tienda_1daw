@@ -63,9 +63,13 @@ public class UsuarioDAO extends TablaDAO<UsuarioDTO> {
     }
 
     @Override
-    public int actualizar(UsuarioDTO u) {
-        // NO SE UTILIZA EN NUESTRO PROYECTO
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int actualizar(UsuarioDTO u) throws SQLException {
+        String sentenciaSQL = "UPDATE " + tabla + " SET ultima_conexion=? WHERE codigo=?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setTimestamp(1, Timestamp.valueOf(u.getUltimaConexion()));
+        prepared.setInt(2, u.getCodigo());
+        int resultado = prepared.executeUpdate();
+        return resultado;
     }
 
     @Override
