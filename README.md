@@ -29,7 +29,7 @@ Secciones
 
 #### Mockup
 
-Puedes ver el mockup del proyecto aquí [Figma](https://www.figma.com/file/8G9xQP1LFwZPP0mHR8pXcB/Plort-marquet?node-id=1%3A2&t=yRjYLueuugNaM6ap-1)
+Puedes ver el mockup del proyecto aquí [Figma](https://www.figma.com/file/zSowJrLmcIe1M7s3rM4a8E/TIendaDaw?type=design&node-id=2%3A112&t=NcXDF7y281Zpuc8C-1)
 
 #### Previsualización
 
