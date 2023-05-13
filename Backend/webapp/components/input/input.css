@@ -1,0 +1,48 @@
+fieldset {
+    padding: 8px 25px;
+    width:200px;
+    height: 30px;
+    background: #F8F8F8;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.42);
+
+    display: flex;
+    overflow: hidden;
+
+    transition: box-shadow 0.2s;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    background: #F8F8F8;
+
+    outline: none;
+    border: none;
+
+    font-family: Montserrat;
+    font-weight: 500;
+}
+
+img{
+    width: 35px;
+    height: 100%;
+    background-image: url("/tiendaDaw/assets/img/pink.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    outline: none;
+
+    transform: translate(100px, 50px);
+    transition: all 1s;
+}
+
+
+fieldset:hover > img{
+    transform: translate(5px, 1px);
+}
+
+fieldset:focus-within {
+    box-shadow: 0px 1px 15px rgba(3, 241, 227, 0.81), 0px 1px 4px rgba(0, 0, 0, 0.42);
+    transition: box-shadow 0.8s;
+}

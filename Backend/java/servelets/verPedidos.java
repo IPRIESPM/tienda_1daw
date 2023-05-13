@@ -50,6 +50,7 @@ public class verPedidos extends HttpServlet {
             request.setAttribute("pedidos", pedidos);
 
             request.getRequestDispatcher("/pedidos.jsp").forward(request, response);
+
         } catch (SQLException ex) {
             Logger.getLogger(verPedidos.class.getName()).log(Level.SEVERE, null, ex);
         }

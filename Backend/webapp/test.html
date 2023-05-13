@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <button-element></button-element>
+    <link-element></link-element>
+    <input-element></input-element>
+
+    <nav-element>
+        <link-element name="principal" href="./index.jsp" ></link-element>
+        <link-element name="productos" href="./verProductos" ></link-element>
+        <link-element name="categorías" href="./verCategorias" ></link-element>
+        <link-element name="SobreNosotros" href="./about.html" ></link-element>
+        <link-element name="Iniciar Sesión" href="./loggin.jsp" ></link-element>
+        <button-element name="button"></button-element>
+    </nav-element>
+
+    <footer-element>
+        <link-element slot="1" name="principal"  isVariant href="./index.jsp" ></link-element>
+        <link-element slot="2" name="productos"  isVariant href="./verProductos" ></link-element>
+        <link-element slot="3" name="categorías" isVariant href="./verCategorias" ></link-element>
+        <link-element slot="4" name="SobreNosotros" isVariant href="./about.html" ></link-element>
+        <link-element slot="5" name="Iniciar Sesión" isVariant href="./loggin.jsp" ></link-element>
+        <link-element slot="6" name="principal" isVariant href="./index.jsp" ></link-element>
+        <link-element slot="7" name="productos" isVariant href="./verProductos" ></link-element>
+        <link-element slot="8" name="categorías" isVariant href="./verCategorias" ></link-element>
+        <link-element slot="9" name="SobreNosotros" isVariant href="./about.html" ></link-element>
+    </footer-element>
+
+    <script type="module" src="./components/main.js"></script>
+</body>
+</html>

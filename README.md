@@ -33,7 +33,7 @@ Puedes ver el mockup del proyecto aquí [Figma](https://www.figma.com/file/zSowJ
 
 #### Previsualización
 
-Puedes ver el proyecto aquí [versión Live](https://ipriespm.github.io/tienda_1daw/frontend/dist/)
+Puedes ver el proyecto aquí [versión Live](https://www.figma.com/proto/zSowJrLmcIe1M7s3rM4a8E/TIendaDaw?node-id=1-2&starting-point-node-id=1%3A2)
 
 #### Ejecutar el proyecto
 

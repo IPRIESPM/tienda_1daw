@@ -1,0 +1,20 @@
+nav {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+
+    width: min-content;
+    padding-left: 22px;
+
+    background: #F9F9F9;
+    box-shadow: 1px 1px 11px rgba(0, 0, 0, 0.4);
+    border-radius: 22px;
+
+    font-size: 13px;
+    overflow: hidden;
+}
+
+::slotted(button-element) {
+    position: relative;
+    transform: translateX(20px);
+}

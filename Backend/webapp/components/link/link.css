@@ -1,0 +1,17 @@
+a,
+a:active,
+a:visited{
+    font-family: "Montserrat",sans-serif;
+    font-weight: bold;
+    font-size: 16pt;
+
+    text-decoration: none;
+    transition: color 1s;
+    color:black;
+
+    text-transform: capitalize;
+}
+
+a:hover{
+    color: #F44FC6;
+}

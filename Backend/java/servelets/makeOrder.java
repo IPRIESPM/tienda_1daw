@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servelets;
 
 import DAO.PedidoDAO;
@@ -32,6 +28,7 @@ public class makeOrder extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     *
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,6 +53,9 @@ public class makeOrder extends HttpServlet {
                 response.sendRedirect("./verPedidos");
                 return;
 
+            } else {
+                response.sendRedirect("./index.jsp");
+                return;
             }
         } catch (SQLException ex) {
             Logger.getLogger(makeOrder.class.getName()).log(Level.SEVERE, null, ex);

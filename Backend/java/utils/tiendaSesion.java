@@ -2,8 +2,6 @@ package utils;
 
 import DTO.PedidoDTO;
 import DTO.UsuarioDTO;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  *
@@ -16,9 +14,7 @@ public class tiendaSesion {
     // Usuario
     public static UsuarioDTO checkUsuario(Object session) {
 
-        Supplier<UsuarioDTO> generarUsuario = UsuarioDTO::new;
-        Function<UsuarioDTO, UsuarioDTO> generarUsuario2 = UsuarioDTO::new;
-        UsuarioDTO usuario = session == null ? generarUsuario.get() : generarUsuario2.apply((UsuarioDTO) session);
+        UsuarioDTO usuario = session == null ? new UsuarioDTO() : (UsuarioDTO) session;
         return usuario;
     }
 
