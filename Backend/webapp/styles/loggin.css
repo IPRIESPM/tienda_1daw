@@ -1,0 +1,14 @@
+body{
+    background: url(/tiendaDaw/assets/img/shop-bg-tile.png), #EBCB58;
+}
+
+fieldset.loggin{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+label{
+    display: block;
+}

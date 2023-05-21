@@ -1,0 +1,15 @@
+article{
+
+    width: 600px;
+    padding: 15px 50px;
+}
+
+article h2{
+    color:#F44FC6;
+}
+
+@media (max-width: 800px) {
+    article{
+        width: calc(100vw - 100px);
+    }
+}

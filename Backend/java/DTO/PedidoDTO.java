@@ -90,11 +90,11 @@ public class PedidoDTO implements Serializable {
         for (Map.Entry<ProductoDTO, Integer> producto : productos.entrySet()) {
 
             ProductoDTO key = producto.getKey();
-            int value = producto.getValue();
+            int cantidad = producto.getValue();
 
-            total += key.getPrecio() * value;
+            total += key.getPrecio() * cantidad;
         }
-        return total;
+        return Math.round(total * 100.0) / 100.0;
     }
 
     @Override

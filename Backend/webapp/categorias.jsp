@@ -1,9 +1,3 @@
-<%-- 
-    Document   : direcciones
-    Created on : 29 abr. 2023, 20:22:10
-    Author     : isaac
---%>
-
 <%@page import="DTO.CategoriaDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -24,34 +18,33 @@
 
 %>
 <!DOCTYPE html>
+
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listado de categorias</title>
-        <%@ include file="/styles/style.jsp" %>
+        <%@ include file="/templates/head.jsp" %>
+        <title>Categorias</title>
+        <link rel="stylesheet" href="./styles/sheet.css">
+        <link rel="stylesheet" href="./styles/category.css">
+
     </head>
     <body>
-        <h1>Listado de Categorias</h1>
-        <table>
-            <thead>
-                <tr>
-                    <td>Codigo</td>
-                    <td>Nombre</td>
-                </tr>
-            </thead>
-            <tbody>
-                <%                    
+        <%@ include file="/templates/nav.jsp" %>
+        <main-element>
+            <section class="main">
+                <h1>Listado de Categorias</h1>
+                <section class="category">
+                <%
                     for (CategoriaDTO categoria : categorias) {
                 %>
-                <tr>
-                    <td><%= categoria.getCodigo()%></td>
-                    <td><%= categoria.getNombre()%></td>
-                    <td><a href="./categoryProducts?category=<%=categoria.getCodigo()%>">Ver productos</a></td>
-                </tr>
+                    <category-element href="./categoryProducts?category=<%=categoria.getCodigo()%>">
+                        <link-element name="<%= categoria.getNombre()%>"  href="./categoryProducts?category=<%=categoria.getCodigo()%>" ></link-element>
+                    </category-element>
                 <%
                     }
                 %>
-            </tbody>
-        </table>
+                </section>
+            </section>
+        </main-element>
+        <%@ include file="/templates/footer.jsp" %>
     </body>
 </html>

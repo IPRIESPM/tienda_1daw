@@ -4,7 +4,7 @@ class linkElement extends HTMLElement {
         this.attachShadow({ mode: "open" });
         this.href = this.getAttribute("href") !== null ? this.getAttribute("href") :"index.jsp";
         this.name = this.getAttribute("name") !== null ? this.getAttribute("name") :"principal";
-
+        this.isVariant = this.getAttribute("isVariant") == "" ? "variant" : "";
     }
 
     connectedCallback() {
@@ -12,7 +12,7 @@ class linkElement extends HTMLElement {
         <style>
             @import "./components/link/link.css";
         </style>
-        <a href="${this.href}">${this.name}</a>
+        <a class="${this.isVariant}" href="${this.href}">${this.name}</a>
       `;
     }
 };

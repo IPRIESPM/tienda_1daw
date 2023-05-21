@@ -1,0 +1,38 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 254px;
+    height: 232px;
+
+    border-radius: 20px;
+
+    background: url(/tiendaDaw/assets/img/shop-bg-tile.png), radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(244, 79, 198, 0.7) 100%), #F869C6;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.22);
+    border-radius: 20px;
+
+    overflow: hidden;
+    cursor: pointer;
+    transition: 1s all;
+}
+
+section.pink {
+    background: url(/tiendaDaw/assets/img/shop-bg-tile.png), radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(244, 79, 198, 0.7) 100%), #F869C6;
+}
+
+section.blue {
+    background: url(/tiendaDaw/assets/img/shop-bg-tile.png), radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(142, 223, 238, 0.7) 100%), #8EDFEE;
+}
+
+section.green {
+    background: url(/tiendaDaw/assets/img/shop-bg-tile.png), radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(3, 241, 227, 0.7) 100%), #03F1E3;
+}
+
+section:hover ::slotted(link-element) {
+    position: relative;
+    transform: scale(1.5);
+
+    transition: 1s all;
+}

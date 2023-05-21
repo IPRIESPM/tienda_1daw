@@ -3,9 +3,9 @@ class inputElement extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
-        this.href = this.getAttribute("href") !== null ? this.getAttribute("href") :"index.jsp";
-        this.data = this.getAttribute("data") !== null ? this.getAttribute("data") :"Principal";
-        
+        this.type = this.getAttribute("type") !== null ? this.getAttribute("type") :"text";
+        this.name = this.getAttribute("name") !== null ? this.getAttribute("name") :"";
+        this.place = this.getAttribute("place") !== null ? this.getAttribute("place") :"";
     }
 
     connectedCallback() {
@@ -13,9 +13,9 @@ class inputElement extends HTMLElement {
         <style>
             @import "./components/input/input.css";
         </style>
-        <fieldset>
-            <input type="text" placeholder="test">
-            <img src="/tiendaDaw/assets/img/pink.png" />
+        <fieldset class="inputComponent">
+            <input class="inputComponent" type="${this.type}" name="${this.name}" placeholder="${this.place}">
+            <img class="inputComponent" src="/tiendaDaw/assets/img/pink.png" />
         </fieldset>
       `;
     }

@@ -52,6 +52,7 @@ public class addInvoice extends HttpServlet {
 
                     FacturaDTO factura = new FacturaDTO(0, pedido, LocalDateTime.now());
                     new FacturaDAO().anyadir(factura);
+                    response.sendRedirect("./verFacturas");
                 }
             }
 

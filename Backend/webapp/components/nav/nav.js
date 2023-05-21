@@ -10,14 +10,17 @@ class navElement extends HTMLElement {
         <style>
             @import "./components/nav/nav.css";
         </style>
-        <nav>
-            <slot/>
-            <slot />
-            <slot />
-            <slot />
-            <slot />
-            <slot />
-        </nav>
+        <header>
+            <nav>
+                <i class="bi bi-list hidden"></i>
+                <slot> </slot>
+                <slot> </slot>
+                <slot> </slot>
+                <slot> </slot>
+                <slot> </slot>
+                <slot> </slot>
+            </nav>
+        </header>
       `;
 
     }

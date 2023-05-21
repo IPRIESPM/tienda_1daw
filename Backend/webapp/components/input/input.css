@@ -1,4 +1,4 @@
-fieldset {
+fieldset.inputComponent {
     padding: 8px 25px;
     width:200px;
     height: 30px;
@@ -13,7 +13,7 @@ fieldset {
     transition: box-shadow 0.2s;
 }
 
-input {
+input.inputComponent{
     width: 100%;
     height: 100%;
     background: #F8F8F8;
@@ -25,7 +25,7 @@ input {
     font-weight: 500;
 }
 
-img{
+img.inputComponent{
     width: 35px;
     height: 100%;
     background-image: url("/tiendaDaw/assets/img/pink.png");
@@ -38,11 +38,11 @@ img{
 }
 
 
-fieldset:hover > img{
+fieldset.inputComponent:hover > img{
     transform: translate(5px, 1px);
 }
 
-fieldset:focus-within {
+fieldset.inputComponent:focus-within {
     box-shadow: 0px 1px 15px rgba(3, 241, 227, 0.81), 0px 1px 4px rgba(0, 0, 0, 0.42);
     transition: box-shadow 0.8s;
 }

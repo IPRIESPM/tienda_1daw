@@ -1,0 +1,19 @@
+section.product{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 800px) {
+    section.product{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1280px) {
+    section.product{
+        display: flex;
+        flex-direction: column;
+    }
+}

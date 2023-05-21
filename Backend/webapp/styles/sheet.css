@@ -1,0 +1,18 @@
+body {
+   background: url(/tiendaDaw/assets/img/shop-bg-tile.png), #E1F6FF;
+}
+
+section.price-details {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   gap:8px;
+   font-weight: 500;
+}
+
+section.price-details p:nth-child(1){
+   color: #BC3131;
+}
+section.price-details p:nth-child(2){
+   color: #F44FC6;
+}

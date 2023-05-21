@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Document</title>
 </head>
 <body>
@@ -22,16 +23,61 @@
     </nav-element>
 
     <footer-element>
-        <link-element slot="1" name="principal"  isVariant href="./index.jsp" ></link-element>
-        <link-element slot="2" name="productos"  isVariant href="./verProductos" ></link-element>
-        <link-element slot="3" name="categorías" isVariant href="./verCategorias" ></link-element>
-        <link-element slot="4" name="SobreNosotros" isVariant href="./about.html" ></link-element>
-        <link-element slot="5" name="Iniciar Sesión" isVariant href="./loggin.jsp" ></link-element>
+        <link-element slot="1" name="principal"  isVariant href="./index.jsp" />
+        <link-element slot="2" name="productos"  isVariant href="./verProductos" />
+        <link-element slot="3" name="categorías" isVariant href="./verCategorias" />
+        <link-element slot="4" name="SobreNosotros" isVariant href="./about.html" />
+        <link-element slot="5" name="Iniciar Sesión" isVariant href="./loggin.jsp" />
         <link-element slot="6" name="principal" isVariant href="./index.jsp" ></link-element>
         <link-element slot="7" name="productos" isVariant href="./verProductos" ></link-element>
         <link-element slot="8" name="categorías" isVariant href="./verCategorias" ></link-element>
         <link-element slot="9" name="SobreNosotros" isVariant href="./about.html" ></link-element>
     </footer-element>
+
+
+    <category-element>
+        <link-element name="Plort Bum" href="./categoryProducts?category=1" ></link-element>
+    </category-element>
+
+    <category-element color="blue">
+        <link-element name="Plort Bum" href="./categoryProducts?category=1" ></link-element>
+    </category-element>
+
+
+    <category-element color="green">
+        <link-element name="Plort Bum" href="./categoryProducts?category=1" ></link-element>
+    </category-element>
+
+
+    <card-element>
+        <section slot="card-head">
+            <img src="./assets/img/pink.png" alt="img del producto" height="127" width="127">
+            <h2>Nombre articulo</h2>
+        </section>
+
+        <section slot="card-body">
+            <article>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur esse veniam, hic dolorum expedita aliquam, id saepe ipsa suscipit commodi nulla culpa tempore illum iure. Libero necessitatibus cum ad autem!
+            </article>
+            <button-element name="button"></button-element>
+        </section>
+    </card-element>
+
+    <product-element
+        img="./assets/img/plorts/rock.png"
+        name="Nombre"
+        price="9.99"
+        cant="5"
+        id=""
+    ></product-element>
+    <product-element
+        img="./assets/img/plort/rock.png"
+        name="Nombre"
+        price="9.99"
+        cant="5"
+        id=""
+        cart
+    ></product-element>
 
     <script type="module" src="./components/main.js"></script>
 </body>

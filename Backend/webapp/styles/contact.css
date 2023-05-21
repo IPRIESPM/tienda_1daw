@@ -1,0 +1,19 @@
+section.sheet section {
+   font-size: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+}
+
+section.sheet section i{
+    font-size: 32pt;
+}
+
+section.sheet section i.bi-telegram{
+    color:#3390EC;
+}
+
+section.sheet section a{
+    color:#F44FC6;
+}

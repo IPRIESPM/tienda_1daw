@@ -1,20 +1,65 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+header {
+    margin: 15px 0;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 nav {
     display: flex;
     gap: 13px;
     align-items: center;
-
     width: min-content;
     padding-left: 22px;
+    margin-right: 8px;
 
     background: #F9F9F9;
     box-shadow: 1px 1px 11px rgba(0, 0, 0, 0.4);
     border-radius: 22px;
-
+    height: 60px;
     font-size: 13px;
-    overflow: hidden;
+    overflow: initial;
 }
 
 ::slotted(button-element) {
     position: relative;
     transform: translateX(20px);
+}
+.hidden{
+    font-size: 45px;
+    display: none;
+}
+
+@media (max-width: 800px) {
+    nav {
+        width: 60px;
+        transition: width 1s;
+        padding-left: 18px;
+        overflow: hidden;
+    }
+
+    .hidden{
+        display: block;
+        padding-right: 5px;
+        cursor: pointer;
+    }
+
+    nav:hover {
+        width: inherit;
+        flex-direction: column;
+        padding: 15px 0;
+        margin-left: 5px;
+        height: max-content;
+    }
+
+    ::slotted(button-element) {
+        transform: translateX(0px);
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1280px) {
+
 }

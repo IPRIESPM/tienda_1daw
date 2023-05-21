@@ -51,13 +51,13 @@ public class verFacturas extends HttpServlet {
                 facturas = new FacturaDAO().getAll();
             }
 
-            for (FacturaDTO factura : facturas) {
-                out.println(factura.toString());
-            }
-
+            // for (FacturaDTO factura : facturas) {
+            //    out.println(factura.toString());
+            //}
             request.setAttribute("facturas", facturas);
 
             request.getRequestDispatcher("/facturas.jsp").forward(request, response);
+            return;
 
         } catch (SQLException ex) {
             Logger.getLogger(verFacturas.class.getName()).log(Level.SEVERE, null, ex);

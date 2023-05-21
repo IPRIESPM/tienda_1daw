@@ -1,0 +1,7 @@
+body{
+   background: url(/tiendaDaw/assets/img/bg/hero-scene-layer-1.png), url(/tiendaDaw/assets/img/bg/hero-scene-layer-2.png), url(/tiendaDaw/assets/img/bg/hero-scene-layer-3.png), url(/tiendaDaw/assets/img/bg/hero-scene-layer-4.png), url(/tiendaDaw/assets/img/bg/hero-scene-layer-5.png), #F44FC6;
+
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+}

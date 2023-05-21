@@ -16,13 +16,13 @@ class FooterElement extends HTMLElement {
                 <slot name="2"></slot>
                 <slot name="3"></slot>
             </section>
-            
+
             <section>
                 <slot name="4"></slot>
                 <slot name="5"></slot>
                 <slot name="6"></slot>
             </section>
-            
+
             <section>
                 <slot name="7"></slot>
                 <slot name="8"></slot>

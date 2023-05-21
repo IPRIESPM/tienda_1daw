@@ -1,0 +1,31 @@
+section {
+    height: 566px;
+    width: 760px;
+
+    border-radius: 46px;
+    background: #FFFFFF;
+    box-shadow: 11px 13px 13px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+}
+
+::slotted(section ){
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+::slotted(section:nth-child(1)){
+    background-color: #F1DEE2;
+    border-radius: 46px 46px 0 0;
+}
+
+::slotted(section:nth-child(2)){
+    padding: 0 25px;
+    border-radius: 0 0 46px 46px ;
+    text-align: center;
+    gap: 15px;
+}

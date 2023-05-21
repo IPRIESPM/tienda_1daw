@@ -3,3 +3,7 @@ import "./link/link.js";
 import "./input/input.js";
 import "./nav/nav.js";
 import "./footer/footer.js";
+import "./category/category.js";
+import "./card/card.js";
+import "./product/product.js";
+import "./main/main.js";

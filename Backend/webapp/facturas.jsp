@@ -1,9 +1,3 @@
-<%-- 
-    Document   : facturas
-    Created on : 30 abr. 2023, 1:31:49
-    Author     : isaac
---%>
-
 <%@page import="DTO.FacturaDTO"%>
 <%@page import="DTO.UsuarioDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -23,37 +17,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listado de facturas</title>
-        <%@ include file="/styles/style.jsp" %>
+        <%@ include file="/templates/head.jsp" %>
+        <link rel="stylesheet" href="./styles/sheet.css">
+        <link rel="stylesheet" href="./styles/article.css">
     </head>
     <body>
-        <h1>Listado de facturas</h1>
-        <table>
-            <thead>
-                <tr>
-                    <td>Codigo</td>
-                    <td>Fecha</td>
-                    <td>Pedido</td>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                   
+        <%@ include file="/templates/nav.jsp" %>
+        <main-element>
+            <section class="product">
+                <%
                     for (FacturaDTO factura : facturas) {
                 %>
-                <tr>
-                    <td><%= factura.getCodigo()%></td>
-                    <td><%= factura.getFecha()%></td>
-                    <td><%= factura.getPedido()%></td>
-                    <td><a href="#">XML</a></td>
-                    <td><a href="#">PDF</a></td>
-                </tr>
+                    <product-element
+                        id="<%= factura.getCodigo()%>"
+                        type="invoice"
+                        date="<%= factura.getFecha()%>"
+                    ></product-element>
                 <%
                     }
                 %>
-            </tbody>
-        </table>
+            </section>
+        </main-element>
+        <%@ include file="/templates/footer.jsp" %>
     </body>
 </html>
