@@ -1,20 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servelets;
 
+import DAO.PedidoDAO;
+import DAO.ProductoDAO;
 import DTO.PedidoDTO;
 import DTO.ProductoDTO;
 import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.LinkedHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.tiendaSesion;
+import utils.shopSession;
 
 /**
  *
@@ -31,20 +32,19 @@ public class carrito extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            Object usuario = request.getSession().getAttribute("usuario");
-            Object carrito = request.getSession().getAttribute("carrito");
-            UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(usuario);
-            PedidoDTO tiendaCarrito = tiendaSesion.checkCarrito(carrito);
+            UsuarioDTO tiendaUsuario = shopSession.checkUsuario(request.getSession().getAttribute("usuario"));
+            PedidoDTO tiendaCarrito = shopSession.checkCarrito(request.getSession().getAttribute("carrito"));
+
             if (tiendaUsuario.isAdmin()) {
                 response.sendRedirect("index.jsp");
             } else {
 
-                String options = request.getParameter("carrito");
-                int line = request.getParameter("line") != null ? Integer.parseInt(request.getParameter("line")) : 0;
+                String options = utils.utils.checkParam(request.getParameter("carrito"));
+                int line = utils.utils.checkParamInt(request.getParameter("line"));
 
                 if (options.equals("ver")) {
                     response.sendRedirect("verCarrito.jsp");
@@ -68,8 +68,6 @@ public class carrito extends HttpServlet {
                 }
 
                 if (options.equals("mod")) {
-                    out.println((String) request.getParameter("line"));
-                    out.println((String) request.getParameter("value"));
 
                     int value = Integer.parseInt(request.getParameter("value"));
 
@@ -82,6 +80,28 @@ public class carrito extends HttpServlet {
                     request.getSession().setAttribute("carrito", tiendaCarrito);
                     response.sendRedirect("verCarrito.jsp");
                     return;
+                }
+                if (options.equals("add") && request.getParameter("product") != null) {
+
+                    PedidoDTO pedido = new PedidoDTO();
+
+                    int codigo = utils.utils.checkParamInt(request.getParameter("product"));
+
+                    ProductoDTO producto = new ProductoDAO().getByCodigo(codigo);
+                    producto.setStock(1);
+
+                    pedido.addLines(producto);
+
+                    request.getSession().setAttribute("carrito", pedido);
+
+                    response.sendRedirect("./verProductos");
+                    return;
+                }
+
+                if (options.equals("makeOrder")) {
+                    PedidoDTO newOrder = (PedidoDTO) request.getSession().getAttribute("carrito");
+                    new PedidoDAO().anyadir(newOrder);
+
                 }
             }
         }
@@ -99,7 +119,11 @@ public class carrito extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(carrito.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -113,7 +137,11 @@ public class carrito extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(carrito.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

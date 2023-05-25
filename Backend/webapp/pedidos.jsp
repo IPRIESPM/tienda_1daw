@@ -19,6 +19,11 @@
     </head>
     <body>
         <%@ include file="/templates/nav.jsp" %>
+                        <%
+            if (request.getAttribute("error") != null) {
+                out.println("<div class='error'> " + request.getAttribute("error") + "</div>");
+            }
+        %>
         <main-element>
             <section class="product">
                 <%

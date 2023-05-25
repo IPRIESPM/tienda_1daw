@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servelets;
 
 import DAO.CategoriaDAO;
@@ -36,10 +32,6 @@ public class verCategorias extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             ArrayList<CategoriaDTO> categorias = new CategoriaDAO().getAll();
-
-            for (CategoriaDTO categoria : categorias) {
-                out.println(categoria.toString());
-            }
 
             request.setAttribute("categorias", categorias);
 

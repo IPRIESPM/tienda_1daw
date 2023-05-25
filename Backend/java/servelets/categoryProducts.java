@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servelets;
 
 import DAO.CategoriaDAO;
@@ -38,7 +34,7 @@ public class categoryProducts extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            int idCategory = request.getParameter("category") == null ? 1 : Integer.parseInt(request.getParameter("category"));
+            int idCategory = utils.utils.checkParamInt(request.getParameter("category"));
             CategoriaDTO category = new CategoriaDAO().getByCodigo(idCategory);
             ArrayList<ProductoDTO> products = new ProductoDAO().getAllByCategory(category);
             request.setAttribute("productos", products);

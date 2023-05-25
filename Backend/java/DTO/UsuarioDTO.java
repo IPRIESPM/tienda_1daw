@@ -32,13 +32,13 @@ public class UsuarioDTO implements Serializable {
         this.nombre = usuario.getNombre();
         this.apellido = usuario.apellido;
         this.contrasenya = usuario.contrasenya;
-        this.ultimaConexion = ultimaConexion;
-        this.telefono = telefono;
-        this.fechaNacimiento = fechaNacimiento;
-        this.email = email;
-        this.foto = foto;
-        this.tipo = tipo;
-        this.direccion = direccion;
+        this.ultimaConexion = usuario.ultimaConexion;
+        this.telefono = usuario.telefono;
+        this.fechaNacimiento = usuario.fechaNacimiento;
+        this.email = usuario.email;
+        this.foto = usuario.foto;
+        this.tipo = usuario.tipo;
+        this.direccion = usuario.direccion;
 
     }
 
@@ -54,6 +54,10 @@ public class UsuarioDTO implements Serializable {
         this.foto = foto;
         this.tipo = tipo;
         this.direccion = direccion;
+    }
+
+    public String getFullName() {
+        return this.nombre + " " + this.apellido;
     }
 
     public int getCodigo() {

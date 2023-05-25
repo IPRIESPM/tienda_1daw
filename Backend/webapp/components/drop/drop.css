@@ -1,0 +1,53 @@
+a,
+a:active,
+a:visited{
+    font-family: "Montserrat",sans-serif;
+    font-weight: bold;
+    font-size: 16pt;
+    text-decoration: none;
+    transition: color 1s;
+    color:black;
+    text-transform: capitalize;
+    transition: color 1s;
+    width: auto;
+    cursor: pointer;
+}
+
+a.variant,
+a.variant:active,
+a.variant:visited{
+    color: white;
+}
+
+a:hover{
+    color: #F44FC6;
+}
+
+a.focus{
+    color: #F44FC6;
+}
+
+section.drop{
+    opacity: 0;
+    width: 0;
+    position: absolute;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+section.drop.show{
+    padding: 15px;
+
+    opacity: 1;
+    width: max-content;
+    height: max-content;
+
+    background: #F9F9F9;
+    box-shadow: 1px 1px 11px rgba(0, 0, 0, 0.4);
+    border-radius: 22px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+    transition: all 1s;
+}

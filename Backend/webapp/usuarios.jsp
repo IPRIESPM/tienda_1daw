@@ -21,14 +21,15 @@
 
 %>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listado de usuarios</title>
-        <%@ include file="/styles/style.jsp" %>
-    </head>
+    <html lang="es">
+        <head>
+            <%@ include file="/templates/head.jsp" %>
+            <link rel="stylesheet" href="./styles/sheet.css">
+            <link rel="stylesheet" href="./styles/about.css">
+            <title>Contacta</title>
+
+        </head>
     <body>
-        <h1>Listado de usuarios</h1>
         <table>
             <thead>
                 <tr>

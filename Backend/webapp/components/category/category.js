@@ -30,7 +30,7 @@ class CategoryElement extends HTMLElement {
             @import "./components/category/category.css";
         </style>
         <section class=" ${this.autoColor(this.color)}">
-            <slot/>
+            <slot></slot>
         </section>
       `;
 

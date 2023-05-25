@@ -10,23 +10,12 @@
     <link-element slot="3" name="categorías" isVariant href="./verCategorias" >
     </link-element>
 
-    <link-element slot="4" name="SobreNosotros" isVariant href="./about.jsp" >
+    <link-element slot="4" name="Sobre Nosotros" isVariant href="./about.jsp" >
     </link-element>
 
-    <link-element slot="5" name="Iniciar Sesión" isVariant href="./loggin.jsp" >
+    <link-element slot="5" name="Contacta" isVariant href="./contact.jsp" >
     </link-element>
 
-    <link-element slot="6" name="principal" isVariant href="./index.jsp" >
-    </link-element>
-
-    <link-element slot="7" name="productos" isVariant href="./verProductos" >
-    </link-element>
-
-    <link-element slot="8" name="categorías" isVariant href="./verCategorias" >
-    </link-element>
-
-    <link-element slot="9" name="SobreNosotros" isVariant href="./about.jsp" >
-    </link-element>
 
 </footer-element>
 

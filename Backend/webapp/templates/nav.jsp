@@ -10,29 +10,29 @@
     <link-element name="principal" href="./index.jsp" ></link-element>
     <link-element name="productos" href="./verProductos" ></link-element>
     <link-element name="categorias" href="./verCategorias" ></link-element>
-    <link-element name="Contacta" href="./contact.jsp" ></link-element>
     <%
         if (!usuario.isGuest()) {
            // out.println(usuario.getTipo() + " última conexión: " + usuario.getUltimaConexion());
     %>
-        <link-element name="Pedidos" href="./verPedidos" ></link-element>
-        <link-element name="Facturas" href="./verFacturas" ></link-element>
- 
+            <drop-element name="Mis compras">
+                <link-element slot="1" name="Pedidos" href="./verPedidos" ></link-element>
+                <link-element slot="2" name="Facturas" href="./verFacturas" ></link-element>
+            </drop-element>
         <%
             if (!usuario.isAdmin()) {
-         
         %>
             <link-element name="Carrito" href="./carrito?carrito=ver" ></link-element>
-        <% 
-            } 
+            <!-- comment  <link-element name="Perfil" href="./usuarios.jsp" ></link-element> -->
+
+        <%
+            }
         %>
         <button-element data="Salir" href="./cerrarSesion"></button-element>
     <%
         } else {
     %>
-        <button-element data="Inciar" href="./loggin.jsp"></button-element>
+        <button-element data="InIciar" href="./loggin.jsp"></button-element>
     <%
-        } 
+        }
     %>
-    
 </nav-element>

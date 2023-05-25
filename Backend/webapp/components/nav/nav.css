@@ -12,7 +12,7 @@ nav {
     display: flex;
     gap: 13px;
     align-items: center;
-    width: min-content;
+    width: max-content;
     padding-left: 22px;
     margin-right: 8px;
 

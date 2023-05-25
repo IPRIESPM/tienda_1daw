@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.tiendaSesion;
+import utils.shopSession;
 
 /**
  *
@@ -35,17 +35,18 @@ public class verPedidos extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
-            Object sesion = request.getSession().getAttribute("usuario");
-            UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(sesion);
+            UsuarioDTO tiendaUsuario = shopSession.checkUsuario(request.getSession().getAttribute("usuario"));
             ArrayList<PedidoDTO> pedidos = new ArrayList<>();
 
-            if (tiendaUsuario.getEmail() == null) {
+            if (tiendaUsuario.isGuest()) {
                 response.sendRedirect("index.jsp");
-            } else if (tiendaUsuario.isCliente()) {
-                pedidos = new PedidoDAO().getByUser(tiendaUsuario);
-            } else {
-                pedidos = new PedidoDAO().getAll();
             }
+
+            if (tiendaUsuario.isCliente()) {
+                pedidos = new PedidoDAO().getByUser(tiendaUsuario);
+            }
+
+            pedidos = new PedidoDAO().getAll();
 
             request.setAttribute("pedidos", pedidos);
 

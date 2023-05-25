@@ -12,7 +12,7 @@ class MainElement extends HTMLElement {
     }
 
     connectedCallback() {
-        this.shadowRoot.innerHTML = `
+        this.shadowRoot.innerHTML = /*html*/`
         <style>
             @import "./components/main/main.css";
         </style>

@@ -7,3 +7,4 @@ import "./category/category.js";
 import "./card/card.js";
 import "./product/product.js";
 import "./main/main.js";
+import "./drop/drop.js";

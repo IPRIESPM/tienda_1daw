@@ -16,7 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.tiendaSesion;
+import utils.shopSession;
 
 /**
  *
@@ -37,8 +37,7 @@ public class verUsuarios extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            Object sesion = request.getSession().getAttribute("usuario");
-            UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(sesion);
+            UsuarioDTO tiendaUsuario = shopSession.checkUsuario(request.getSession().getAttribute("usuario"));
 
             if (!tiendaUsuario.isAdmin()) {
                 response.sendRedirect("index.jsp");

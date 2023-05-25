@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servelets;
 
 import DAO.FacturaDAO;
@@ -17,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.tiendaSesion;
+import utils.shopSession;
 
 /**
  *
@@ -38,26 +34,21 @@ public class verFacturas extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            Object sesion = request.getSession().getAttribute("usuario");
-            UsuarioDTO tiendaUsuario = tiendaSesion.checkUsuario(sesion);
+            UsuarioDTO tiendaUsuario = shopSession.checkUsuario(request.getSession().getAttribute("usuario"));
             ArrayList<FacturaDTO> facturas = new ArrayList<>();
 
-            if (tiendaUsuario.getEmail() == null) {
+            if (tiendaUsuario.isGuest()) {
                 response.sendRedirect("index.jsp");
-            } else if (tiendaUsuario.isCliente()) {
-                facturas = new FacturaDAO().getByUser(tiendaUsuario.getCodigo());
-            } else {
-
-                facturas = new FacturaDAO().getAll();
             }
 
-            // for (FacturaDTO factura : facturas) {
-            //    out.println(factura.toString());
-            //}
+            if (tiendaUsuario.isCliente()) {
+                facturas = new FacturaDAO().getByUser(tiendaUsuario.getCodigo());
+            }
+            facturas = new FacturaDAO().getAll();
+
             request.setAttribute("facturas", facturas);
 
             request.getRequestDispatcher("/facturas.jsp").forward(request, response);
-            return;
 
         } catch (SQLException ex) {
             Logger.getLogger(verFacturas.class.getName()).log(Level.SEVERE, null, ex);

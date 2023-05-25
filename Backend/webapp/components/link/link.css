@@ -21,3 +21,7 @@ a.variant:visited{
 a:hover{
     color: #F44FC6;
 }
+
+a.focus{
+    color: #F44FC6;
+}

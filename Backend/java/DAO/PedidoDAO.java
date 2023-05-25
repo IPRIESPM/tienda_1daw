@@ -27,6 +27,27 @@ public class PedidoDAO extends TablaDAO<PedidoDTO> implements Serializable {
         this.tabla = "TIENDA_PEDIDO";
     }
 
+    public boolean checkInvoiced(int idOrder) throws SQLException {
+        String estado = "";
+        String sentenciaSQL = "SELECT estado FROM " + this.tabla + " WHERE CODIGO LIKE ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, idOrder);
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            estado = resultSet.getString("estado");
+        }
+
+        return estado.equals("FACTURADO");
+    }
+
+    public void chageStatus(PedidoDTO order) throws SQLException {
+        int idOrder = order.getCodigo();
+        String sentenciaSQL = "UPDATE " + this.tabla + " set estado='FACTURADO' WHERE CODIGO LIKE ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, idOrder);
+        prepared.executeQuery();
+    }
+
     public ArrayList<PedidoDTO> getByUser(UsuarioDTO user) throws SQLException {
         int userCode = user.getCodigo();
         ArrayList<PedidoDTO> lista = new ArrayList<>();
@@ -78,6 +99,31 @@ public class PedidoDAO extends TablaDAO<PedidoDTO> implements Serializable {
 
     public boolean existe(PedidoDTO p) throws SQLException {
         return existe(p.getCodigo());
+    }
+
+    public Boolean checkStock(ProductoDTO product, int stock) throws SQLException {
+        boolean result = false;
+        String sentenciaSQL = "SELECT STOCK FROM TIENDA_PRODUCTO WHERE CODIGO like ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+
+        prepared.setInt(1, product.getCodigo());
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            int productStock = resultSet.getInt("stock");
+            System.out.println("cantidad recibida " + productStock + " cantidad a descontar" + stock);
+            result = productStock > stock;
+        }
+        return result;
+    }
+
+    public void discountStock(ProductoDTO product, int restStock) throws SQLException {
+
+        String sentenciaSQL = "UPDATE TIENDA_PRODUCTO set STOCK=STOCK-? WHERE CODIGO LIKE ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+
+        prepared.setInt(1, restStock);
+        prepared.setInt(2, product.getCodigo());
+        prepared.executeUpdate();
     }
 
     public ArrayList<PedidoDTO> getAll() throws SQLException {

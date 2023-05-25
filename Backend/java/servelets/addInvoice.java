@@ -19,7 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.tiendaSesion;
+import utils.shopSession;
 
 /**
  *
@@ -39,20 +39,22 @@ public class addInvoice extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Object sesionUsuario = request.getSession().getAttribute("usuario");
-            Object sesionCarrito = request.getSession().getAttribute("carrito");
 
-            UsuarioDTO usuario = tiendaSesion.checkUsuario(sesionUsuario);
-            PedidoDTO carrito = tiendaSesion.checkCarrito(sesionCarrito);
+            UsuarioDTO usuario = shopSession.checkUsuario(request.getSession().getAttribute("usuario"));
 
             if (!usuario.isGuest()) {
-                if (request.getParameter("invoice") != null && new PedidoDAO().existe(Integer.parseInt(request.getParameter("invoice")))) {
+                int idInvoice = Integer.parseInt(request.getParameter("invoice"));
+                if (request.getParameter("invoice") != null && new PedidoDAO().existe(idInvoice) && !new PedidoDAO().checkInvoiced(idInvoice)) {
 
                     PedidoDTO pedido = new PedidoDAO().getByCodigo(Integer.parseInt(request.getParameter("invoice")));
-
+                    new PedidoDAO().chageStatus(pedido);
                     FacturaDTO factura = new FacturaDTO(0, pedido, LocalDateTime.now());
                     new FacturaDAO().anyadir(factura);
                     response.sendRedirect("./verFacturas");
+
+                } else {
+                    request.setAttribute("error", "Tu programa ha fallado con exito, al facturar tu pedido.");
+                    request.getRequestDispatcher("/verPedidos").forward(request, response);
                 }
             }
 

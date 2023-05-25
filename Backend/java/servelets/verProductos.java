@@ -44,7 +44,7 @@ public class verProductos extends HttpServlet {
 
             List<ProductoDTO> productos = new ProductoDAO().getAll();
             if (request.getParameter("buscar") != null) {
-                String productName = request.getParameter("buscar");
+                String productName = utils.utils.checkParam(request.getParameter("buscar"));
                 productos = new ProductoDAO().searchProduct(productName);
             }
 

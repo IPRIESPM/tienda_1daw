@@ -68,6 +68,14 @@
         <servlet-name>addInvoice</servlet-name>
         <servlet-class>servelets.addInvoice</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>exportPDF</servlet-name>
+        <servlet-class>servelets.exportPDF</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>exportXML</servlet-name>
+        <servlet-class>servelets.exportXML</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
@@ -135,6 +143,14 @@
     <servlet-mapping>
         <servlet-name>addInvoice</servlet-name>
         <url-pattern>/addInvoice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>exportPDF</servlet-name>
+        <url-pattern>/exportPDF</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>exportXML</servlet-name>
+        <url-pattern>/exportXML</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

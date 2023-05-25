@@ -2,18 +2,20 @@ package servelets;
 
 import DAO.PedidoDAO;
 import DTO.PedidoDTO;
+import DTO.ProductoDTO;
 import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.tiendaSesion;
+import utils.shopSession;
 
 /**
  *
@@ -35,27 +37,32 @@ public class makeOrder extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            Object sesionUsuario = request.getSession().getAttribute("usuario");
-            Object sesionCarrito = request.getSession().getAttribute("carrito");
+            UsuarioDTO user = shopSession.checkUsuario(request.getSession().getAttribute("usuario"));
+            PedidoDTO shoppingCart = shopSession.checkCarrito(request.getSession().getAttribute("carrito"));
 
-            UsuarioDTO usuario = tiendaSesion.checkUsuario(sesionUsuario);
-            PedidoDTO carrito = tiendaSesion.checkCarrito(sesionCarrito);
+            if (!user.isGuest()) {
 
-            if (!usuario.isGuest()) {
+                shoppingCart.setUsuario(user);
+                shoppingCart.setFecha(LocalDateTime.now());
 
-                carrito.setUsuario(usuario);
-                carrito.setFecha(LocalDateTime.now());
-                carrito.setEstado("EN PROCESO");
-                int result = new PedidoDAO().anyadir(carrito);
+                if (shoppingCart.revisarStock()) {
+
+                    for (Map.Entry<ProductoDTO, Integer> linea : shoppingCart.getProductos().entrySet()) {
+                        new PedidoDAO().discountStock(linea.getKey(), linea.getValue());
+                    }
+
+                } else {
+                    request.setAttribute("error", "No hay stock suficiente para procesar el carrito");
+                    request.getRequestDispatcher("/verCarrito.jsp").forward(request, response);
+                }
+
+                shoppingCart.setEstado("EN PROCESO");
 
                 request.getSession().setAttribute("carrito", new PedidoDTO());
-
                 response.sendRedirect("./verPedidos");
-                return;
 
             } else {
                 response.sendRedirect("./index.jsp");
-                return;
             }
         } catch (SQLException ex) {
             Logger.getLogger(makeOrder.class.getName()).log(Level.SEVERE, null, ex);

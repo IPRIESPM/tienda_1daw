@@ -27,7 +27,6 @@ class ProductElement extends HTMLElement {
 
         this.result="";
 
-        console.log(this.type);
     }
 
     selectType() {
@@ -53,6 +52,7 @@ class ProductElement extends HTMLElement {
                 <form action="./carrito" method="get">
                 <input type="hidden" name="carrito" value="mod">
                 <input type="hidden" name="line"  value="${this.id}">
+                <input type="hidden" name="stock"  value="${this.cant}">
                     <fieldset class="inputComponent">
                         <input
                             class="inputComponent"
@@ -66,7 +66,7 @@ class ProductElement extends HTMLElement {
         }
 
         if (this.type == "order") {
-            // Ficha de producto
+            // Ficha de pedido
             this.result = /* html */ `
             <section class="price">
                 <p>Pedido nº${this.id}</p>
@@ -82,9 +82,11 @@ class ProductElement extends HTMLElement {
                 <p>Pedido el:</p>
                 <p>${this.date}</p>
                 <p class="secondaryColor">${this.cant}u.</p>
-            </section>
-
-            <button-element data='Facturar' href='./addInvoice?invoice=${this.id}'></button-element>`;
+            </section>`;
+            if(this.state.toLowerCase() === "facturado") {
+                
+                this.result += "<button-element data='Facturar' href='./addInvoice?invoice=${this.id}'></button-element>";
+            }
             return this.result;
         }
         if (this.type == "invoice") {
@@ -94,16 +96,12 @@ class ProductElement extends HTMLElement {
                 <p>Factura nº${this.id}</p>
             </section>
 
-            <section class="state">
-
-            </section>
-
             <section class="quantity">
                 <p>Facturado el:</p>
                 <p>${this.date}</p>
             </section>
-            <button-element data='XML' href=""></button-element>
-            <button-element data='PDF' href=""></button-element>
+            <button-element data='XML' href="./exportXML?id=${this.id}"></button-element>
+            <button-element data='PDF' href="./exportPDF?id=${this.id}"></button-element>
             `;
             return this.result;
         }
@@ -126,16 +124,16 @@ class ProductElement extends HTMLElement {
 
     addCart() {
         this.result = "";
-        if (this.cart && this.type != "order") {
+        if (this.cart && this.type != "order" && this.type != "invoice") {
             this.result = /* html */`
             <section>
-                <a href="./addCarrito?carrito=add&product=${this.id}">
+                <a href="./carrito?carrito=add&product=${this.id}">
                     <i class="bi bi-cart-plus"></i>
                 </a>
             </section>`
         }
 
-        if (this.link) {
+        if (!this.cart) {
             this.result = /* html */`
             <section>
                 <a href="./carrito?carrito=del&line=${this.id}">
@@ -143,6 +141,7 @@ class ProductElement extends HTMLElement {
                 </a>
             </section>`
         }
+
         return this.result;
     }
 

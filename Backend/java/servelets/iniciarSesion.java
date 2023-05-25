@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servelets;
 
 import DAO.UsuarioDAO;
@@ -37,11 +33,12 @@ public class iniciarSesion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String email = request.getParameter("email") == null ? " " : request.getParameter("email").toString();
-            String password = request.getParameter("password") == null ? " " : request.getParameter("password").toString();
+            String email = utils.utils.checkParam(request.getParameter("email"));
+            String password = utils.utils.checkParam(request.getParameter("password"));
+
             UsuarioDTO usuarioIdentificado = new UsuarioDAO().comprobarContrasenya(email, password);
 
-            if (usuarioIdentificado.getEmail() == null) {
+            if (usuarioIdentificado.isGuest()) {
                 request.setAttribute("error", "Usuario/contraseña incorrectos");
                 request.getRequestDispatcher("./loggin.jsp").forward(request, response);
             } else {

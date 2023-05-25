@@ -24,15 +24,23 @@
     </head>
     <body>
         <%@ include file="/templates/nav.jsp" %>
+                <%
+            if (request.getAttribute("error") != null) {
+                out.println("<div class='error'> " + request.getAttribute("error") + "</div>");
+            }
+        %>
         <main-element>
             <section class="product">
                 <%
-                    if (productos.size() > 0) { out.println("<a href='./makeOrder'>Crear pedido</a>"); }
-
+                    if (productos.size() > 0) {
+                        %>
+                        <button-element data="Crear pedido" href="./makeOrder"></button-element>
+                        <%
+                    }
                     for (Map.Entry<ProductoDTO, Integer> producto : productos.entrySet()) {
                         ProductoDTO key = producto.getKey();
                         int value = producto.getValue();
-                %> 
+                %>
                         <product-element
                             img="<%= key.getImagen()%>"
                             type="cart"
@@ -40,7 +48,6 @@
                             price="<%= key.getPrecio()%>"
                             cant="<%= value%>"
                             id="<%= key.getCodigo()%>"
-                            addCart
                         ></product-element>
                 <%
                     }

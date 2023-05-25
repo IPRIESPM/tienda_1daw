@@ -4,10 +4,13 @@
  */
 package DTO;
 
+import DAO.PedidoDAO;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import utils.utils;
 
 /**
  *
@@ -95,6 +98,24 @@ public class PedidoDTO implements Serializable {
             total += key.getPrecio() * cantidad;
         }
         return Math.round(total * 100.0) / 100.0;
+    }
+
+    public double getTotalPriceTax() {
+        //return Math.round(getPrecioTotal() * 1.15 * 100.0) / 100.0;
+        return utils.round(getPrecioTotal() * 1.5);
+    }
+
+    public boolean revisarStock() throws SQLException {
+        for (Map.Entry<ProductoDTO, Integer> linea : productos.entrySet()) {
+            System.out.println("Imprimiendo:" + linea.getKey().toString());
+            if (!new PedidoDAO().checkStock(linea.getKey(), linea.getValue())) {
+                return false;
+            }
+//            if (linea.getKey().getStock() - linea.getValue() < linea.getKey().getStock()) {
+//                return false;
+//            }
+        }
+        return true;
     }
 
     @Override

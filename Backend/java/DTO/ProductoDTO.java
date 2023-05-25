@@ -39,6 +39,10 @@ public class ProductoDTO implements Serializable {
 
     }
 
+    public double getTotalPriceTax() {
+        return Math.round(this.precio * 1.15 * 1.15 * 100.0) / 100.0;
+    }
+
     public int getCodigo() {
         return codigo;
     }
