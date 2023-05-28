@@ -19,13 +19,15 @@ class ProductElement extends HTMLElement {
 
         this.state = this.getAttribute("state") || "Error";
 
-        this.href = this.getAttribute("href") !=null;
+        this.category = this.getAttribute("cat") || "plort";
+
+        this.href = this.getAttribute("href") != null;
 
         this.type = this.getAttribute("type") == null ? false : this.getAttribute("type");
 
-        this.cart = this.getAttribute("addCart") != null;
+        this.cart = this.getAttribute("addCart") || "";
 
-        this.result="";
+        this.result = "";
 
     }
 
@@ -35,12 +37,12 @@ class ProductElement extends HTMLElement {
             // Carrito
             this.result = /* html */ `
             <figure>
-                <img src="/tiendaDaw/assets/img/plorts/${this.path}">
+                <img src="/tiendaDaw/assets/img/${this.category}/${this.path}" onerror="this.src='/tiendaDaw/assets/img/slimes/GlitchSlime.webp';">
             </figure>
 
             <section class="description">
                 <h2>${this.name}</h2>
-                <p class="price" >${this.price}</p>
+                <p class="price" >${this.price} <img class="bucks"src="/tiendaDaw/assets/img/Newbucks.webp"/></p>
             </section>
 
             <section>
@@ -70,7 +72,7 @@ class ProductElement extends HTMLElement {
             this.result = /* html */ `
             <section class="price">
                 <p>Pedido nº${this.id}</p>
-                <p class="primaryColor">Total: ${this.price}</p>
+                <p class="primaryColor price">Total: ${this.price} <img class="bucks"src="/tiendaDaw/assets/img/Newbucks.webp"/></p>
             </section>
 
             <section class="state">
@@ -83,9 +85,8 @@ class ProductElement extends HTMLElement {
                 <p>${this.date}</p>
                 <p class="secondaryColor">${this.cant}u.</p>
             </section>`;
-            if(this.state.toLowerCase() === "facturado") {
-                
-                this.result += "<button-element data='Facturar' href='./addInvoice?invoice=${this.id}'></button-element>";
+            if (this.state.toLowerCase() !== "facturado") {
+                this.result += `<button-element data='Facturar' href='./addInvoice?invoice=${this.id}'></button-element>`;
             }
             return this.result;
         }
@@ -108,11 +109,11 @@ class ProductElement extends HTMLElement {
 
         this.result = /* html */ `
             <figure>
-                <img src="assets/img/plorts/${this.path}" alt="" />
+            <img src="/tiendaDaw/assets/img/${this.category}/${this.path}" onerror="this.src='/tiendaDaw/assets/img/slimes/GlitchSlime.webp';">
             </figure>
             <section class="description">
                 <h2>${this.name}</h2>
-                <p class="price" >${this.price}</p>
+                <p class="price" >${this.price} <img class="bucks"src="/tiendaDaw/assets/img/Newbucks.webp"/></p>
             </section>
             <section>
                 <p>Cantidad disponible</p>
@@ -124,7 +125,7 @@ class ProductElement extends HTMLElement {
 
     addCart() {
         this.result = "";
-        if (this.cart && this.type != "order" && this.type != "invoice") {
+        if (this.cart == "add") {
             this.result = /* html */`
             <section>
                 <a href="./carrito?carrito=add&product=${this.id}">
@@ -133,7 +134,7 @@ class ProductElement extends HTMLElement {
             </section>`
         }
 
-        if (!this.cart) {
+        if (this.cart == "remove") {
             this.result = /* html */`
             <section>
                 <a href="./carrito?carrito=del&line=${this.id}">
@@ -157,13 +158,13 @@ class ProductElement extends HTMLElement {
             ${this.addCart()}
         </section>
       `;
-      if(!this.type){
-        this.section = this.shadowRoot.querySelector("section");
-        this.section.style.cursor="pointer";
-        this.section.addEventListener("click", ()=>{
-            location.href = `./verProductos?product=${this.id}`;
-        });
-    }
+        if (!this.type) {
+            this.section = this.shadowRoot.querySelector("section");
+            this.section.style.cursor = "pointer";
+            this.section.addEventListener("click", () => {
+                location.href = `./verProductos?product=${this.id}`;
+            });
+        }
     }
 };
 

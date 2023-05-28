@@ -57,12 +57,14 @@ public class makeOrder extends HttpServlet {
                 }
 
                 shoppingCart.setEstado("EN PROCESO");
-
+                new PedidoDAO().anyadir(shoppingCart);
+                System.out.println("Pedido creado correctamente");
                 request.getSession().setAttribute("carrito", new PedidoDTO());
                 response.sendRedirect("./verPedidos");
 
             } else {
-                response.sendRedirect("./index.jsp");
+                request.getSession().setAttribute("error", "No tienes poder aquí.");
+                response.sendRedirect("./index");
             }
         } catch (SQLException ex) {
             Logger.getLogger(makeOrder.class.getName()).log(Level.SEVERE, null, ex);

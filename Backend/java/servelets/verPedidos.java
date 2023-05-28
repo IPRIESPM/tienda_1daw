@@ -39,6 +39,7 @@ public class verPedidos extends HttpServlet {
             ArrayList<PedidoDTO> pedidos = new ArrayList<>();
 
             if (tiendaUsuario.isGuest()) {
+                request.getSession().setAttribute("error", "No tienes acceso a esa zona.");
                 response.sendRedirect("index.jsp");
             }
 

@@ -3,7 +3,11 @@ section.product{
     grid-template-columns: 1fr 1fr;
     gap: 12px;
 }
-
+img.bucks{
+    height: 18px;
+    width: 18px;
+    background-position: bottom;
+}
 @media (max-width: 800px) {
     section.product{
         display: flex;

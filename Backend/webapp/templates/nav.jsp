@@ -4,6 +4,14 @@
 
 <%
     UsuarioDTO usuario = session.getAttribute("usuario") != null ? (UsuarioDTO) session.getAttribute("usuario") : new UsuarioDTO();
+    
+    if (session.getAttribute("error") != null){
+        String error = session.getAttribute("error").toString();
+%>
+    <section class="error" onlick="this.style.dipslay='none'"> <%= error %></section>
+<%
+        session.setAttribute("error", null); 
+    }
 %>
 
 <nav-element>
@@ -31,7 +39,7 @@
     <%
         } else {
     %>
-        <button-element data="InIciar" href="./loggin.jsp"></button-element>
+        <button-element data="Iniciar" href="./loggin.jsp"></button-element>
     <%
         }
     %>

@@ -48,10 +48,6 @@ public class verProductos extends HttpServlet {
                 productos = new ProductoDAO().searchProduct(productName);
             }
 
-            for (ProductoDTO producto : productos) {
-                out.println(producto.toString());
-            }
-
             request.setAttribute("productos", productos);
 
             request.getRequestDispatcher("/productos.jsp").forward(request, response);

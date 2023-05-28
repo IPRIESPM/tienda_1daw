@@ -39,8 +39,10 @@ public class carrito extends HttpServlet {
             UsuarioDTO tiendaUsuario = shopSession.checkUsuario(request.getSession().getAttribute("usuario"));
             PedidoDTO tiendaCarrito = shopSession.checkCarrito(request.getSession().getAttribute("carrito"));
 
-            if (tiendaUsuario.isAdmin()) {
+            if (tiendaUsuario.isAdmin() || tiendaUsuario.isGuest()) {
+                request.getSession().setAttribute("error", "No tienes permiso para acceder aquí.");
                 response.sendRedirect("index.jsp");
+
             } else {
 
                 String options = utils.utils.checkParam(request.getParameter("carrito"));
@@ -83,16 +85,14 @@ public class carrito extends HttpServlet {
                 }
                 if (options.equals("add") && request.getParameter("product") != null) {
 
-                    PedidoDTO pedido = new PedidoDTO();
-
                     int codigo = utils.utils.checkParamInt(request.getParameter("product"));
 
                     ProductoDTO producto = new ProductoDAO().getByCodigo(codigo);
                     producto.setStock(1);
 
-                    pedido.addLines(producto);
+                    tiendaCarrito.addLines(producto);
 
-                    request.getSession().setAttribute("carrito", pedido);
+                    request.getSession().setAttribute("carrito", tiendaCarrito);
 
                     response.sendRedirect("./verProductos");
                     return;

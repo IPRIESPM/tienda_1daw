@@ -78,3 +78,23 @@ section.input fieldset.inputComponent{
 input[type="number"].inputComponent{
     width:42px;
 }
+
+p.price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img.bucks{
+    height: 18px;
+    width: 18px;
+    background-position: bottom;
+}
+
+@media (max-width: 800px) {
+
+    section.product{
+        flex-direction: column;
+        height: min-content;
+        padding: 30px 30px;
+    }
+}

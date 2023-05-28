@@ -26,6 +26,7 @@ public class cerrarSesion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             request.getSession().invalidate();
+            request.getSession().setAttribute("error", "Sesión finalizada");
             response.sendRedirect("index.jsp");
         }
     }

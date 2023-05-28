@@ -53,7 +53,8 @@ public class addInvoice extends HttpServlet {
                     response.sendRedirect("./verFacturas");
 
                 } else {
-                    request.setAttribute("error", "Tu programa ha fallado con exito, al facturar tu pedido.");
+
+                    request.getSession().setAttribute("error", "Tu programa ha fallado con exito, al facturar tu pedido.");
                     request.getRequestDispatcher("/verPedidos").forward(request, response);
                 }
             }

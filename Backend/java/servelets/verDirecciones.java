@@ -41,7 +41,8 @@ public class verDirecciones extends HttpServlet {
             UsuarioDTO tiendaUsuario = shopSession.checkUsuario(request.getSession().getAttribute("usuario"));
 
             if (tiendaUsuario.isGuest() || tiendaUsuario.isCliente()) {
-                response.sendRedirect("index.jsp");
+                request.getSession().setAttribute("error", "No tienes poder aqui");
+                response.sendRedirect("/index.jsp");
             } else {
 
                 List<DireccionDTO> direcciones = new DireccionDAO().getAll();

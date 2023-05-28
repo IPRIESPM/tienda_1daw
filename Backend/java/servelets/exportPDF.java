@@ -75,12 +75,12 @@ public class exportPDF extends HttpServlet {
                     response.setHeader("Content-disposition", "filename=factura" + factura.getCodigo() + ".pdf");
                     createPDF(out, factura);
                 } else {
-                    request.setAttribute("error", "Ha surgido un problema al cargar la factura");
-                    request.getRequestDispatcher("/verFacturas").forward(request, response);
+                    request.getSession().setAttribute("error", "Tu programa ha fallado con exito, al cargar la factura.");
+                    response.sendRedirect("/verFacturas");
                 }
             } else {
-                request.setAttribute("error", "Ha surgido un problema al cargar la factura");
-                request.getRequestDispatcher("/verFacturas").forward(request, response);
+                request.getSession().setAttribute("error", "Tu programa ha fallado con exito, al cargar la factura.");
+                response.sendRedirect("/verFacturas");
             }
 
         } catch (SQLException ex) {

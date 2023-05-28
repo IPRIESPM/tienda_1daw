@@ -3,7 +3,7 @@ footer{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     background-color: #24264C;
-    height: 233px;
+    height: 100%;
     width: auto;
     border-radius: 112px 112px 0 0;
     gap: 12px;

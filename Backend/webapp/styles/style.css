@@ -29,6 +29,8 @@ fieldset{
 .error {
     padding: 15px;
     margin: 15px;
+    height: 25px;
     background-color: red;
     color: white;
 }
+

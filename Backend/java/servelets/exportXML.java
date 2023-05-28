@@ -114,10 +114,12 @@ public class exportXML extends HttpServlet {
                 }
 
                 if (errorFactura) {
-                    out.println("<p>Error. No tienes acceso a esta factura. </p><p><a href=\"javascript: history.go(-1)\">Volver atrás</a></p>");
+                    request.getSession().setAttribute("error", "Tu programa ha fallado con exito, al cargar el XML.");
+                    response.sendRedirect("/verFacturas");
                 }
             } catch (SQLException e) {
-                out.println("<h1>ERROR SQL</h1>");
+                request.getSession().setAttribute("error", "Tu programa ha fallado con exito, con la BBDD.");
+                response.sendRedirect("/verFacturas");
             }
         }
 

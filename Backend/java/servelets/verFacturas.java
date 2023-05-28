@@ -38,7 +38,9 @@ public class verFacturas extends HttpServlet {
             ArrayList<FacturaDTO> facturas = new ArrayList<>();
 
             if (tiendaUsuario.isGuest()) {
-                response.sendRedirect("index.jsp");
+                request.getSession().setAttribute("error", "No tienes acceso a esa zona.");
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+
             }
 
             if (tiendaUsuario.isCliente()) {

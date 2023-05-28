@@ -26,12 +26,13 @@
 
             <card-element>
                 <section slot="card-head">
-                    <img src="/tiendaDaw/assets/img/plorts/<%=producto.getImagen()%>" alt="<%= producto.getNombre()%>" height="127" width="127">
+                
+                    <img src="/tiendaDaw/assets/img/<%= producto.getCategoria().getNombre()%>/<%=producto.getImagen()%>" alt="<%= producto.getNombre()%>" height="127" width="127"  onerror="this.src='/tiendaDaw/assets/img/slimes/GlitchSlime.webp';">
                     <h2><%= producto.getNombre()%> </h2>
 
                     <section class="price-details">
-                        <p><%= producto.getStock()%>u.</p>
-                        <p><%= producto.getPrecio()%>€/u.</p>
+                        <p class="p"><%= producto.getStock()%>u.</p>
+                        <p class="p" ><%= producto.getPrecio()%><img class="bucks"src="/tiendaDaw/assets/img/Newbucks.webp"/>/u.</p>
                     </section>
                 </section>
 
@@ -44,7 +45,7 @@
                     %>
                     <button-element
                         data="Añadir"
-                        href="./addCarrito?carrito=add&product=<%=producto.getCodigo()%>"
+                        href="./carrito?carrito=add&product=<%=producto.getCodigo()%>"
                     ></button-element>
                     <%
                         }

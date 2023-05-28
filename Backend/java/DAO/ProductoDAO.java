@@ -91,7 +91,7 @@ public class ProductoDAO extends TablaDAO<ProductoDTO> implements Serializable {
 
     @Override
     public int anyadir(ProductoDTO p) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?";
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, p.getCodigo());
         prepared.setInt(2, p.getCategoria().getCodigo());

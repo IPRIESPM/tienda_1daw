@@ -9,7 +9,6 @@
 <%
     PedidoDTO carrito = new PedidoDTO();
    if (session.getAttribute("carrito") != null) {
-        System.out.println(session.getAttribute("carrito"));
         carrito = (PedidoDTO) session.getAttribute("carrito");
     }
 
@@ -48,6 +47,8 @@
                             price="<%= key.getPrecio()%>"
                             cant="<%= value%>"
                             id="<%= key.getCodigo()%>"
+                            addCart="remove"
+                            cat="<%= key.getCategoria().getNombre()%>"
                         ></product-element>
                 <%
                     }

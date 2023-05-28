@@ -40,6 +40,7 @@ public class verUsuarios extends HttpServlet {
             UsuarioDTO tiendaUsuario = shopSession.checkUsuario(request.getSession().getAttribute("usuario"));
 
             if (!tiendaUsuario.isAdmin()) {
+                request.getSession().setAttribute("error", "No tienes acceso a esa zona.");
                 response.sendRedirect("index.jsp");
             } else {
 

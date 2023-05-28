@@ -31,8 +31,9 @@
                         cant="<%= producto.getStock()%>"
                         id="<%= producto.getCodigo()%>"
                         href="<%= producto.getCodigo()%>"
+                        cat="<%= producto.getCategoria().getNombre()%>"
                         <%
-                            if(usuario.isCliente()){out.println("addCart");}
+                            if(usuario.isCliente()){out.println("addCart='add'");}
                         %>
                     ></product-element>
                 <%

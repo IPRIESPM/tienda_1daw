@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTO;
 
 import DAO.PedidoDAO;
@@ -107,13 +103,10 @@ public class PedidoDTO implements Serializable {
 
     public boolean revisarStock() throws SQLException {
         for (Map.Entry<ProductoDTO, Integer> linea : productos.entrySet()) {
-            System.out.println("Imprimiendo:" + linea.getKey().toString());
+
             if (!new PedidoDAO().checkStock(linea.getKey(), linea.getValue())) {
                 return false;
             }
-//            if (linea.getKey().getStock() - linea.getValue() < linea.getKey().getStock()) {
-//                return false;
-//            }
         }
         return true;
     }

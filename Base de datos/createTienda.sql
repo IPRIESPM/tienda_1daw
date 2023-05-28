@@ -41,8 +41,8 @@ CREATE TABLE TIENDA_PRODUCTO (
   nombre VARCHAR2(100) NOT NULL,
   descripcion VARCHAR2(500),
   precio NUMBER(10,2) NOT NULL,
-  stock NUMBER(10) NOT NULL,
-  imagen VARCHAR2(100),
+  stock NUMBER(10) DEFAULT 200 NOT NULL,
+  imagen VARCHAR2(100) DEFAULT 'GlitchSlime.webp' NOT NULL ,
   CONSTRAINT fk_productos_categorias FOREIGN KEY (codigo_categoria) REFERENCES TIENDA_CATEGORIA(codigo)
 );
 
@@ -58,7 +58,7 @@ CREATE TABLE PEDIDO_PRODUCTO (
 CREATE TABLE TIENDA_FACTURA (
   codigo NUMBER(10) PRIMARY KEY,
   codigo_pedido NUMBER(10) NOT NULL,
-  fecha DATE NOT NULL,
+  fecha DATE DEFAULT SYSDATE NOT NULL,
   CONSTRAINT fk_factura_pedido FOREIGN KEY (codigo_pedido) REFERENCES TIENDA_PEDIDO(codigo)
 );
 
@@ -73,4 +73,3 @@ drop table tienda_direccion;
 
 -- CREATE SEQUENCE dept_seq START WITH 1;
 -- ID  NUMBER(10) DEFAULT dept_seq.nextval NOT NULL
-

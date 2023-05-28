@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import DTO.PedidoDTO;
@@ -110,7 +106,6 @@ public class PedidoDAO extends TablaDAO<PedidoDTO> implements Serializable {
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int productStock = resultSet.getInt("stock");
-            System.out.println("cantidad recibida " + productStock + " cantidad a descontar" + stock);
             result = productStock > stock;
         }
         return result;

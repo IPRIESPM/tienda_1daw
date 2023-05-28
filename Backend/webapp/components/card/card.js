@@ -6,7 +6,7 @@ class CardElement extends HTMLElement {
     }
 
     connectedCallback() {
-        this.shadowRoot.innerHTML = `
+        this.shadowRoot.innerHTML =/*html*/ `
         <style>
             @import "./components/card/card.css";
         </style>
@@ -14,6 +14,7 @@ class CardElement extends HTMLElement {
         <section>
             <slot name="card-head"></slot>
             <slot name="card-body"></slot>
+            <div class="hidden slime"></div>
         </section>
       `;
 

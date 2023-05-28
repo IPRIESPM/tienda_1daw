@@ -29,3 +29,39 @@ section {
     text-align: center;
     gap: 15px;
 }
+
+.hidden{
+    overflow: hidden;
+}
+
+.slime{
+    background-image: url("/tiendaDaw/assets/img/pink.png");
+    transform: translate(100px, 50px);
+    transition: all 1s;
+}
+
+
+
+
+fieldset.inputComponent:hover > .slime{
+    transform: translate(5px, 1px);
+}
+
+@media (max-width: 800px) {
+    section{
+        height: max-content;
+        width: 100%;
+    }
+
+    ::slotted(section ){
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    ::slotted(section:nth-child(2)){
+        padding: 25px;
+    }
+}

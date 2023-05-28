@@ -32,7 +32,6 @@
                         id="<%= factura.getCodigo()%>"
                         type="invoice"
                         date="<%= factura.getFecha()%>"
-                        addCart
                     ></product-element>
                 <%
                     }
