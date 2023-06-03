@@ -4,15 +4,20 @@ Proyecto inter-modular de final de curso
 
 El proyecto consta en una tienda web con un carrito de compra.
 
+**Índice**
+
+1. [CONSULTAS SIMPLES](#font-end)
+Texto del segundo apartado
+
 ## Partes
 
 1. El front-end constará de css y JavaScript.
 2. El back-end estará construido en Java.
 3. La base de datos estará en Oracle.
 
-## 🔩Funcionalidad
+## Funcionalidad
 
-### 🌈Font-end
+### Font-end
 
 El proyecto constará de una vista para "guest" general, que se podrán consultar los productos.
 Un apartado de registro y login para poder ver el carrito del usuario.
@@ -55,7 +60,7 @@ Preparar el proyecto para producción.
 npm run build
 ```
 
-### 🤖Backend
+### Backend
 
 1. 🛣Rutas
 
@@ -85,7 +90,7 @@ npm run build
         * Ver categorías.
         * Ver productos.
 
-### 🛢📊Base de datos
+### Base de datos
 
 Base de datos basada en oracle [Documentación base de datos](https://github.com/IPRIESPM/tienda_1daw/blob/main/Base%20de%20datos/ModeloRelacional.md).
 

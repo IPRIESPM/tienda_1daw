@@ -23,7 +23,10 @@ VALUES (3, 'victor@rancher.com', 'Victor', 'Humphries', 'plortzrule', SYSDATE, '
 -- Insert para TIENDA_CATEGORIA
 INSERT INTO TIENDA_CATEGORIA (codigo, nombre)
 VALUES (1, 'Plorts');
-
+INSERT INTO TIENDA_CATEGORIA (codigo, nombre)
+VALUES (2, 'Frutas');
+INSERT INTO TIENDA_CATEGORIA (codigo, nombre)
+VALUES (3, 'Vegetales');
 
 -- Insert para TIENDA_PRODUCTO
 INSERT INTO TIENDA_PRODUCTO (codigo, codigo_categoria, nombre, descripcion, precio, stock, imagen)
