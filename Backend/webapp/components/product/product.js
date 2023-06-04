@@ -59,7 +59,8 @@ class ProductElement extends HTMLElement {
                         <input
                             class="inputComponent"
                             type="number"
-                            name="value">
+                            name="value"
+                            min="0">
                     </fieldset>
                     <input type="submit" value="+" class="button">
                 </form>

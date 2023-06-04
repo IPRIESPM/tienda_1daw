@@ -1,17 +1,24 @@
 section.product{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 12px;
+    grid-auto-columns: 1fr;
+    width: 90vw;
 }
 img.bucks{
     height: 18px;
     width: 18px;
     background-position: bottom;
 }
+
+article{
+    font-size: 22rem;
+}
 @media (max-width: 800px) {
     section.product{
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -19,5 +26,6 @@ img.bucks{
     section.product{
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 }

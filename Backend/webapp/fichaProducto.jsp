@@ -26,7 +26,7 @@
 
             <card-element>
                 <section slot="card-head">
-                
+
                     <img src="/tiendaDaw/assets/img/<%= producto.getCategoria().getNombre()%>/<%=producto.getImagen()%>" alt="<%= producto.getNombre()%>" height="127" width="127"  onerror="this.src='/tiendaDaw/assets/img/slimes/GlitchSlime.webp';">
                     <h2><%= producto.getNombre()%> </h2>
 
