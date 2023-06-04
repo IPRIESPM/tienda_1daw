@@ -1,6 +1,6 @@
-# Memoria del proyecto
+# ReadMe del proyecto
 
-- [Memoria del proyecto](#memoria-del-proyecto)
+- [ReadMe del proyecto](#readme-del-proyecto)
   - [Presentacion](#presentacion)
   - [Para la base de datos](#para-la-base-de-datos)
   - [Para el backend](#para-el-backend)
