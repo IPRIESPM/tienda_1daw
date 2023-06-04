@@ -1,137 +1,129 @@
-# 🏪🛒Tienda
+# Memoria del proyecto
 
-Proyecto inter-modular de final de curso
+- [Memoria del proyecto](#memoria-del-proyecto)
+  - [Presentacion](#presentacion)
+  - [Para la base de datos](#para-la-base-de-datos)
+  - [Para el backend](#para-el-backend)
+  - [Para el frontend](#para-el-frontend)
+  - [BASES DE DATOS](#bases-de-datos)
+    - [Modelo entidad relación](#modelo-entidad-relación)
+    - [DDL](#ddl)
+    - [DML](#dml)
+  - [Programación](#programación)
+    - [Clases DAO](#clases-dao)
+    - [Clases DTO](#clases-dto)
+    - [Carrito](#carrito)
+    - [Facturación](#facturación)
+    - [Sesiones](#sesiones)
+    - [Atributos y otros datos en servlets](#atributos-y-otros-datos-en-servlets)
+  - [Frontend](#frontend)
+  - [Mockup](#mockup)
+    - [Primer desarrollo](#primer-desarrollo)
+    - [Segundo desarrollo](#segundo-desarrollo)
+  - [Estructuración del proyecto](#estructuración-del-proyecto)
 
-El proyecto consta en una tienda web con un carrito de compra.
+## Presentacion
 
-**Índice**
+El proyecto consta de una tienda web, basada en el juego slimerancher, para ello se han utilizado las siguientes tecnologías:
 
-1. [CONSULTAS SIMPLES](#font-end)
-Texto del segundo apartado
+## Para la base de datos
 
-## Partes
+Para la base de datos hemos utilizado Oracle DB dentro de un contenedor de Docker, ahorrándonos la implementación de un servidor dedicado.
 
-1. El front-end constará de css y JavaScript.
-2. El back-end estará construido en Java.
-3. La base de datos estará en Oracle.
+## Para el backend
 
-## Funcionalidad
+El proyecto consta de server side rendering constituido en Java EE, utilizando servlets y las plantillas JSP.
 
-### Font-end
+## Para el frontend
 
-El proyecto constará de una vista para "guest" general, que se podrán consultar los productos.
-Un apartado de registro y login para poder ver el carrito del usuario.
-Un apartado de admin, para poder registrar nuevas categorías y productos.
+Junto a las plantillas JSP hemos utilizado Webcomponents, para poder crear componentes aislados y reutilizables a lo largo del proyecto.
 
-Secciones
+## BASES DE DATOS
 
-1. 🏠 Home
-2. 🏷️ Categorías
-    * 🛍️ Productos
-        * 🆔 Ficha del producto
-3. 🏪 Nuestra tienda
-4. 📧 Contacto
+Para la constitución de la base de datos hemos usado los siguientes pasos
+Modelo Entidad relación
+Modelo Relacional
+DDL (Data Definition Language)
+DML (Data Manipulation Language)
 
-#### Mockup
+### Modelo entidad relación
 
-Puedes ver el mockup del proyecto aquí [Figma](https://www.figma.com/file/zSowJrLmcIe1M7s3rM4a8E/TIendaDaw?type=design&node-id=2%3A112&t=NcXDF7y281Zpuc8C-1)
+Para el modelo entidad relación hemos utilizado la aplicación web LucidChart y dejamos un esquema estático de la base de datos junto al enlace al proyecto.
 
-#### Previsualización
+### DDL
 
-Puedes ver el proyecto aquí [versión Live](https://www.figma.com/proto/zSowJrLmcIe1M7s3rM4a8E/TIendaDaw?node-id=1-2&starting-point-node-id=1%3A2)
+Para el DDL hemos tenido en cuenta  algunas restricciones como la del tipo de usuario o los valores DEFAULT como los de las fotos, en el caso de que no se introduzca nada
 
-#### Ejecutar el proyecto
+### DML
 
-hacemos la instalación de los módulos de node.
+Hemos introducido por defecto todos los Plorts del juego, así como su propia categoría, siendo este nuestro producto estrella, también todo tipo de alimentos.
 
-```bash
-npm i
-```
+## Programación
 
-Ejecutarlo en entorno de desarrollo.
+Para el apartado de backend del proyecto hemos intentado controlar toda las peticiones y tratamientos de datos a través de los servlets, para así usar solo las templates de JSP para mostrar datos o reutilizar vistas y archivos estáticos del FrontEnd.
 
-```bash
-npm run dev
-```
+### Clases DAO
 
-Preparar el proyecto para producción.
+Para controlar las llamadas a la base de datos hemos utilizado, clases con ese mismo fin llamadas DAO, esos datos obtenidos van a las clases dedicadas llamadas DAO, donde almacenamos la información para su posterior tratamiento.
+DIAGRAMA DE CLASES DAO
 
-```bash
-npm run build
-```
+### Clases DTO
 
-### Backend
+Siendo las más importantes del proyecto, las clases de UsuarioDTO usado a lo largo del proyecto a través de sesiones, para validar y controlar los accesos a la web, así como las diferentes compras o acciones en la base de datos derivadas, La clase PedidoDTO, que hemos utilizado tanto para el pedido como para el carrito.
 
-1. 🛣Rutas
+### Carrito
 
-    * La ruta "/" como general.
-    * La ruta "/login" para inicio de sesión.
-    * La ruta "/admin" para la administración del sitio.
+El carrito del proyecto tiene una mención especial ya que hemos obviado el almacenamiento de este en la base de datos, nuestro carrito de compras solo es válido durante la sesión del usuario, siendo convirtiéndose en un pedido en firme a la hora de confirmación del mismo, para la confirmación del carrito se siguen una serie de pasos:
+Se comprueba de que hay stock suficiente para poder crear el pedido
+Si hay stock suficiente pasamos a la creación del pedido, descontando las unidades pedidas de la base de datos.
+En el caso de lo contrario se devuelve un mensaje de error al usuario en la vista del carrito de la compra.
 
-2. Tendremos las opciones:
+### Facturación
 
-    1. 🙍‍♂️🙍‍♀️Usuario:
-        * Actualizar datos.
-        * Eliminar usuario.
-        * Set Carrito del usuario (LocalStorage)
-        * Delete Carrito.
-        * Generar factura.
+Una vez realizado el pedido este se podrá facturar, y generar los pdf y xml pertinentes.
 
-    2. 👩‍💻👩‍💻Admin:
-        * Modificar usuarios usuario.
-        * Añadir categorías.
-        * Añadir productos.
-        * Ver facturas.
-        * Dar de alta usuario.
+### Sesiones
 
-    3. 🤸‍♂️🤸‍♀️Invitado:
-        * Carrito temporal (LocalStorage).
-        * Dar de alta usuario.
-        * Ver categorías.
-        * Ver productos.
+Para los datos de la sesión, siempre seguimos el mismo procedimiento, comprobamos que el dato de la sesión no sea nulo, y en el caso de ser cierto creamos una clase DTO, correspondiente vacía, usando una forma adaptada del concepto Java Beans.
 
-### Base de datos
+### Atributos y otros datos en servlets
 
-Base de datos basada en oracle [Documentación base de datos](https://github.com/IPRIESPM/tienda_1daw/blob/main/Base%20de%20datos/ModeloRelacional.md).
+Para el tratamiento de los atributos y datos que se manejan en la aplicación por parte del usuario, comprobamos la existencia de estos atributos si no existen creemos vacíos o devolvemos la navegación en caso de ser oportuno, para el envío de estos correctamente, y por último validamos si el tipo de dato correspondiente es el que se necesita, en caso contrario, devolvemos la navegación con un mensaje de error en el frontend.
 
-## Requisitos
+## Frontend
 
-### OBLIGATORIAS
+El frontend ha sido desarrollado en dos versiones principales, a partir del mismo mockup.
 
--------------------------------
+## Mockup
 
-* Iniciar sesión -
-* Cerrar sesión -
-* Distintas vistas dependiendo del tipo de usuario -
-* Vista de artículos dinámica -
-* Vista de artículo individual -
-* Vista de pedidos -
-* Vista de factura -
-* Filtros de categorías -
-* Carrito -
-* Un usuario normal puede ver sólo sus facturas (GetByUsuario) -
-* Hacer pedido
-* Facturar Pedido
-* Cuando se facture descontar del stock esa cantidad
-* Si no hay stock mostrar mensaje de error
+para ello se ha utilizado la herramienta de Figma para el diseño intentando emular el principio de diseño atómico, que a grandes rasgos consta de crear elementos independientes para poder crear conjuntos compuestos de estos más simples, dando autonomía y escalabilidad al proyecto, simulando los principios de clases y funciones usando en el backend.
 
-### OPCIONALES
+Dentro del mockup podemos ver cada elemento del diseño separado en componentes que luego usaremos para montar el programa final.
 
--------------------------------
+Enlace al mockup
+Enlace al live Preview del mockup
 
-* Añadir usuario
-* Añadir comentario
-* Añadir artículo
-* Eliminar artículo
+### Primer desarrollo
 
-### ANOTACIONES
+Para el primer desarrollo se consideró el montaje del proyecto usando el framework de JavaScript Astro js, ya que permite la generación de proyectos SSR, es decir Server Side Rendering, contenidos estáticos, generados en el servidor, pudiendo simular el entorno de JSP y java, antes de que este mismo finalice.
 
--------------------------------
+Más información acerca de Astro.js
 
-* En filtros para categorias (En artículo tendrá un GetByCategorias) -
-* NO HACE FALTA HACER 'VER DATOS SESIÓN' -
-* HttpSession session = request.getSession(false); (si existe una sesión la importa, sino no la crea y se queda en null) -
-* producto.jsp se necesita enviar el codigo del articulo en AnyadirAlCarrito 'hidden' para el servlet -
-* Hacer método isAdmin o isCliente -
-* Cuando el usuario inicie sesión cambiar la fecha de ultima conexion de la base de datos -
-* En carrito antes de confirmar pedido poner un select con todas las direcciones del usuario
+Versión de Astro
+
+### Segundo desarrollo
+
+Para el segundo desarrollo fue necesario la fusión de los apartados del mockup junto con los jsp usando lo aprendido en la versión de astro, ya que pudimos distribuir y re-utilizar tanto las vistas y los elementos de una manera más homogénea. para ello intentamos convertir los componentes usados en Figma
+en WebComponents
+
+## Estructuración del proyecto
+
+Hemos dividido el proyecto en cuatro partes, dos para los DAO y DTO mencionados anteriormente,
+una parte dedicada a los SERVLETS y por último una clase dedicada a la verificación de sesiones y datos.
+
+Para el apartado de frontend tenemos:
+
+- el Directorio assets, donde se encuentran las imágenes y los audios del proyecto.
+- El directorio components, donde se encuentran los componentes simples y compuestos de WebComponents
+- El directorio styles con los css generales
+- El directorio templates con las plantillas del header, head y footer
